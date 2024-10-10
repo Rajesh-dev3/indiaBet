@@ -7,6 +7,8 @@ import { eventGameList } from './services/sport/eventGameList';
 import { eventgame } from './services/eventGame/gameEvent';
 import { inplay } from './services/inplay/Inplay';
 import { eventdetail } from './services/eventdetail';
+import { eventDetail } from './services/eventDetail/eventDetail';
+import { eventSession } from './services/fancy/Fancy';
 
 
 export const store = configureStore({
@@ -19,6 +21,8 @@ export const store = configureStore({
     [eventgame.reducerPath]: eventgame.reducer,
     [inplay.reducerPath]: inplay.reducer,
     [eventdetail.reducerPath]: eventdetail.reducer,
+    [eventDetail.reducerPath]: eventDetail.reducer,
+    [eventSession.reducerPath]: eventSession.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -28,6 +32,8 @@ export const store = configureStore({
   .concat(eventGameList.middleware)
   .concat(inplay.middleware)
   .concat(eventdetail.middleware)
+  .concat(eventDetail.middleware)
+  .concat(eventSession.middleware)
   .concat(eventgame.middleware),
 });
 

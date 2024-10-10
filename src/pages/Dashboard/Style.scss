@@ -8,13 +8,13 @@
 .dashboard-left{
 
     width: 58.33333333%;
-    background: white;
+    // background: white;
     @include media (phone){
     width: 100%;
     }
 .slider-wrapper{
     width: 100%;
-    height: 193px;
+    height: 290.816px;
     overflow: hidden;
     margin-bottom: .5px;
     @include media (phone){

@@ -1,0 +1,47 @@
+.statusOdds {
+    padding: 5px 5px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    background:white;
+    align-items: center;
+    .match{
+display: flex;
+color: #232323;
+    float: left;
+    padding: 5px 0;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    background: white;
+    align-items: center;
+    span{
+        margin-left: 5px;
+    }
+        .tv{
+            background-color: #303030;
+            color: #fff;
+            display: inline-block;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-left: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            img{
+                width: 18px;
+            }
+        }
+    }
+    .high-low{
+
+        span{
+            color: blue;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        .fa-bullhorn{
+            color: red;
+            padding-right: 13px;
+        }
+    }
+}

@@ -1,0 +1,263 @@
+@import '../../Styles/mixins';
+.BetHistory-sec{
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    margin: 0 auto;
+@include media (phone){
+    width: 100%;
+    padding: 0 0;
+}
+.BetHistory-sec-title {
+    width:  calc(100% - 20px);
+    display: inline-block;
+    background: linear-gradient(-180deg, #315195 0%, #14213D 100%);
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 13px;
+    // text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+
+   
+    }
+    .date-filters{
+        display: flex;
+        background: white;
+        flex-wrap: wrap;
+        .date1{
+            width: 14%;
+           
+            float: left;
+            padding: 2px 5px;
+            position: relative;
+            @include media (phone){
+                width: 48%;
+                padding: 2px 1%;
+            }
+
+            #fdate {
+                cursor: pointer;
+                font-weight: 700;
+                margin: 3px 0;
+                display: block;
+                width: calc(100% - 24px) ;
+                height: 34px;
+                padding: 0px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            }
+            #gameselect {
+                cursor: pointer;
+                font-weight: 400;
+                margin: 3px 0;
+                border-radius: 0;
+                display: block;
+                width: calc(100% - 0px) ;
+                height: 34px;
+                padding: 0px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                outline: none;
+                border: 1px solid #ccc;
+                transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            }
+
+        }
+        .filter2{
+            align-items: center;
+            display: flex;
+            width: 25%;
+            padding-left: 7px;
+            @include media (phone){
+                width: 46%;
+            }
+            .filter-btn{
+                background: #000 !important;
+    border: transparent !important;
+    padding: 5px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px !important;
+    color: #fff !important;
+    cursor: pointer;
+    @include media (phone){
+    padding: 5px 10px;
+    }
+            }
+            .clear{
+                background: #f8961e !important;
+                font-weight: 100;
+                color: #000 !important;
+                margin-left: 10px;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+
+
+    }
+    .betsalltab{
+        // background: red;
+        .bet-link-tabs{
+          display: flex;
+          list-style: none;
+          padding-left: 0;
+          margin: 5px auto;
+        //   gap: 1%;
+          justify-content: space-between;
+     
+          .bet-link{
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
+            // margin: 0 3px;
+            margin-right: 6px;
+            color: #fff;
+            padding: 11px 5px;
+            font-weight: 400;
+            &.active {
+                background: linear-gradient(#f60105 0, #801011 100%);
+              }
+            &:nth-child(1){
+                margin-left: 6px;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+              }
+        
+          }
+        }
+    }}
+    .data-filter{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .show-enteries{
+            display: flex;
+            align-items: center;
+            span{
+                font-size: 13px;
+                font-weight: 700;
+            }
+            #entery-data{
+                
+                background-clip: padding-box;
+                background-image: none;
+                border: 1px solid #d6d6d6;
+                border-top-color: #c2c2c2;
+                border-radius: 2px;
+                color: #555;
+                font-size: 13px;
+                line-height: 1.42857143;
+                height: 32px;
+                overflow: hidden;
+                align-items: center;
+                padding: 6px 12px;
+                position: relative;
+                margin: 0 5px;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                -ms-user-select: none;
+                user-select: none;
+                
+            }
+        }
+        .search-filter{
+            display: flex;
+            align-items: center;
+.search{
+    display: inline-block;
+    max-width: 100%;
+    // margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+            .search-data{
+                height: 30px;
+                padding: 0px 10px;
+                font-size: 12px;
+                line-height: 1.5;
+                margin-left: 0.5em;
+                border-radius: 2px;
+                // border-top-color: #c2c2c2;
+                border: solid 1px #c2c2c2;
+            }
+        }
+    }
+    .tablebody{
+        width: 100%;
+        overflow-x: scroll;
+        table{
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;   
+            border: 1px solid black;
+            tr{
+                th{
+                    background: linear-gradient(180deg, #76c7ce 0, #12717c) !important;
+                    color: #fff !important;
+                    border-right: 1px solid black;
+                    text-align: right;
+                    padding: 6px 4px;
+                  text-wrap:nowrap ;
+                    line-height: 1.42857143;
+                    font-size: 13px;
+                    &:nth-child(1){
+                      text-align: left;
+                    }
+                    &:nth-child(2){
+                      text-align: left;
+                    }
+                    &:nth-child(3){
+                      text-align: left;
+                    }
+                  
+                }
+            }
+        }
+    }
+    .data-list{
+ 
+        display: flex;
+        @include media (phone){
+            flex-direction: column;
+        }
+        .total-data{
+            font-size: 13px;
+            width: 60%;
+            padding: 6px 0;
+            font-weight: 500;
+            color: #333333;
+            padding-top: 10px;
+            @include media (phone){
+            width: 100%;   
+            text-align: center;
+
+            }
+        }
+        .pagination-area{
+            display: flex;
+            width: 40%;
+            justify-content: end;
+            @include media (phone){
+                width: 100%;   
+                justify-content: center;
+    
+                }
+        }
+    }

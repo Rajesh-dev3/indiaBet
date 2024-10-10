@@ -1,0 +1,35 @@
+@import '../../Styles/mixins';
+.Runningmarket-sec{
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    margin: 0 auto;
+    @include media (phone){
+        width: 100%;
+        padding: 0 0;
+    }
+}
+.Runningmarket-sec-title {
+    width:  calc(100% - 20px);
+    display: inline-block;
+    background: linear-gradient(-180deg, #315195 0%, #14213D 100%);
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 13px;
+    // text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+
+   
+    }
+    .data-area{
+        background: white;
+        border: 1px solid rgba(0, 0, 0, .58);
+        .no-data-found{
+            padding: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 0%;
+        }
+    }

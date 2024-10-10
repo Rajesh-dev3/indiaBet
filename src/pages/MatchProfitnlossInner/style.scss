@@ -1,0 +1,74 @@
+.MatchInner-sec{
+    width: calc(100% - 30px);
+    padding: 0 15px;
+    margin: 0 auto;
+    .game1{
+        margin-bottom: 20px;
+    }
+}
+.tablebody{
+width: 100%;
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;   
+    border: 1px solid black;
+    thead{
+
+        tr{
+           th{
+                background: linear-gradient(180deg, #76c7ce 0, #12717c) !important;
+                color: #fff !important;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+                text-align: left;
+                padding: 6px 4px;
+                line-height: 1.42857143;
+                font-size: 13px;
+              
+              
+            }
+        }
+    }
+//             tbody{
+//                 tr{
+// background-color:#ffffff;
+//                     &:nth-child(odd) {
+//                         background-color:#F9F9F9;
+//                       }
+//                     td{
+//                         border-right: 1px solid black;
+//                         border-bottom: 1px solid black;
+//                         text-align: left;
+//                         padding: 6px 4px;
+//                         line-height: 1.42857143;
+//                         font-size: 13px;
+//                         a{
+//                             color: #4083a9;
+//                             &:hover{
+//                                 text-decoration: underline;
+//                             }
+//                         }
+//                         .report{
+//                             color: white;
+//                             background: black;
+//                             padding: 5px 20px;
+//                             border-radius: 2px;
+//                             font-size: 12px;
+//                             font-weight: 600;
+//                             a{
+//                                 color: white;
+//                                 &:hover{
+//                                     text-decoration: underline;
+//                                 }
+//                             }
+//                         }
+            
+              
+//                     }
+
+//                 }
+//             }
+    
+}
+}

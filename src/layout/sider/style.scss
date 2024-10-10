@@ -1,0 +1,21 @@
+@import '../../Styles//mixins';
+.sports-heading{
+    margin: 0;
+    background: linear-gradient(#f60105 0, #801011 100%);
+    color: #fff;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 15px;
+}
+.play-heading{
+    margin: 0;
+    background: white;
+    color: #4083a9;
+    padding: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+    &:hover{
+        text-decoration: underline;
+    }
+}

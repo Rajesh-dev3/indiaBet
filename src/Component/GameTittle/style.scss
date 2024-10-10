@@ -1,0 +1,15 @@
+.title-bar {
+    width:  calc(100% - 20px);
+    display: inline-block;
+    background: linear-gradient(-180deg, #315195 0%, #14213D 100%);
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 13px;
+    // text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+
+   
+    }

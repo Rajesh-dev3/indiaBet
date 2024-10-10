@@ -1,0 +1,19 @@
+.pagination-sec{
+    .pagination-block{
+        display: flex;
+        margin: 0;
+        padding: 6px 0;
+        list-style: none;
+        .pagination-list{
+padding: 6px 9px;
+margin-right: 2px;
+background: #206764 ;
+border-radius: 2px;
+font-size: 13px;
+color: white;
+&:nth-child(3){
+    background: #52bdb4 
+}
+        }
+    }
+}

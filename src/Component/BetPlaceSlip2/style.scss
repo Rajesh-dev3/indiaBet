@@ -1,0 +1,244 @@
+.betplace2{
+    width: calc(100% - 0px);
+    color: black;
+    font-size: 13px;
+    line-height: 1.471;
+    letter-spacing: .3px;
+    margin-bottom: 5px;
+    padding-bottom:1px ;
+    padding-top: 5px;
+    position: relative;
+    background: #a7d8fd;
+    // border: 1px solid rgb(110 152 184);
+    .betheader2{
+        // background: #206764;
+        padding: 2px;
+        display: flex;
+        .bettitle2{
+            width: 30%;
+            margin-bottom: 5px;
+            font-weight: bold;
+           display: flex;
+           align-items: start;
+
+        }
+        .bet-profit2{
+            width: 20%;
+            font-weight: 600;
+
+            p{
+             margin: 0;
+             padding: 0;   
+             &:last-child{
+                color: #20d234;
+             }
+            }
+        }
+        .bet-loss2{
+            width: 20%;
+            font-weight: 600;
+
+
+            p{
+             margin: 0;
+             padding: 0;   
+             &:last-child{
+                color: red;
+             }
+            }
+        }
+        .bet-game-name2{
+            width: 25%;
+            .bet-name2{
+                text-align: end;
+                padding: 0;
+                margin: 0;
+                font-weight: 600;
+            }
+        }
+
+
+    }
+    .betstake2{
+        display: flex;
+        padding: 2px;
+        .left-bet-odd2{
+            width: 49.5%;
+            margin-right: .5%;
+
+            .odd2{
+                padding: 0;
+                margin: 0;
+                color: black;
+                font-weight: 600;
+
+            }
+            .bet-value2{
+                position: relative;
+                input{
+                    padding-left: 35px;
+                    height: 30px;
+                    margin-right: 1px;
+                    outline: none;
+                    border: 1px solid #ccc;
+                    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+
+                }
+                .minus2{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    // color: red;
+                    width: 33px;
+                    height: 100%;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 25px;
+                    cursor: pointer;
+
+                    background: #fc3a3a;
+
+                }
+                .plus2{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 33px;
+                    height: 100%;
+                    font-size: 25px;
+                    color: white;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #a6dc11;
+                    cursor: pointer;
+
+                }
+            }
+        }
+        .right-bet-stake2{
+            width: 50%;
+            .Stake2{
+                padding: 0;
+                margin: 0;
+                color: black;
+                font-weight: 600;
+            }
+            .bet-value2{
+                position: relative;
+                input{
+                    padding-left: 35px;
+                    height: 30px;
+                    margin-right: 1px;
+                    outline: none;
+                    border: 1px solid #ccc;
+                    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+
+                }
+                .minus2{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    // color: red;
+                    width: 33px;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+
+                    font-size: 25px;
+                    cursor: pointer;
+
+                    background: #fc3a3a;
+
+                }
+                .plus2{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 33px;
+                    height: 100%;
+                    font-size: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+
+                    background: #a6dc11;
+                    cursor: pointer;
+
+                }
+            }
+        }
+    }
+    .betprice-btn2{
+        width: 99%;
+        margin: auto;
+        .pricebtn2{
+            display: flex;
+            margin: auto;
+            // flex: 1;
+            flex-wrap: wrap;
+            row-gap: 1%;
+            .pr-btn2{
+                width: 20.8%;
+                    border-color: #ffffff;
+                    background: linear-gradient(180deg, #000000 0, #000000) !important;
+    padding: 4px 8px;
+    cursor: pointer;
+    
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+              
+            }
+            .cleanbtn2{
+                border-color: #ffffff;
+                background: linear-gradient(90deg, #f11f38, #f87f43) !important;
+padding: 4px 8px;
+cursor: pointer;
+
+color: white;
+font-size: 16px;
+text-align: center;
+border: 1px solid white;
+border-radius: 5px;
+            }
+        }
+   
+    }
+
+    .betclean-btn2{
+        display: flex;
+        gap: 1%;
+        margin-top: 3px;
+        margin-bottom: 5px;
+    
+        
+        .clean-all2{
+            width: 49%;
+            margin-left: .5%;
+            padding: 8px;
+            background:#d9534f;
+            color: white;
+            cursor: pointer;
+
+        border: none;
+        }
+        .place-bet2{
+            width:49%;
+            background: linear-gradient(180deg, #d56ee7 0, #9c2db0);
+            padding: 8px;
+            color: white;
+            cursor: pointer;
+
+            border: none;
+        }
+    }
+}

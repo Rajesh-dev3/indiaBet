@@ -1,3 +1,13 @@
+@import '../Styles/mixins';
+$footer-bg-color: #333;
+$active-bg-color: green;
+$active-text-color: white;
+$default-text-color: inherit;
+$margin-right: 15px;
+$margin-left: 5px;
+$padding: 10px;
+
+
 .layout-primary{
     width: 100%;
     height: 100vh;
@@ -6,8 +16,117 @@
         display: flex;
         flex-direction: column;
     }
-    .left{
-        width: 15%;
+    .content{
+background-color: #EDEDED;
+display: flex;
+height: 77.5%;
+overflow-y: auto;
 
+padding-top: 12px;
+@include media (phone){
+  width: 100%;
+  height: 100%;
+  padding-top: 0px;
+
+}
+        .left{
+            width: calc(15% - 20px);
+            padding: 0 10px;
+            @include media (phone){
+                display: none;
+            }
+            }
+            .main-center{
+                width: 85%;
+                @include media (phone){
+                    width: 100%;
+                    height: 100vh;
+                }
+
+            }
+            .footer {
+                background-color: #243a48;
+                // padding: $padding;
+                position: fixed;
+                left: 0;
+                width: 100%;
+                bottom: 0;
+                height: 50px;
+                display: none;
+                @include media (phone){
+                 display: block;
+                }
+              
+                ul {
+                  list-style: none;
+                  padding: 0;
+                  margin: auto;
+                  display: flex;
+                  height: 100%;
+                  justify-content: center;
+              
+                  li {
+                    // margin-right: $margin-right;
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+                    width: 65px;
+                    text-align: center;
+              
+                    &.active {
+                      background-color: $active-bg-color;
+                      
+              
+                      .navbar-brand {
+                        color: $active-text-color;
+                        display: flex;
+                        flex-direction: column;
+                        // align-items: center;
+                      }
+                    }
+                  }
+                }
+              
+                .navbar-brand {
+                  text-decoration: none;
+                  color: $default-text-color;
+                  display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      width: 60px;
+                      padding: 4px 0;
+                      gap: 6px;
+                      margin: auto;
+                }
+              
+                .footer-name {
+                  font-size: 12px;
+                  text-transform: uppercase;
+                }
+              }
     }
+}
+.sider-overlay{
+  height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  z-index: 99;
+}
+.sider-active{
+  width: 100%;
+  transition: width 0.5s;
+}
+.sider-close{
+  width: 0%;
+  transition: width 0.5s;
+
+
+}
+.sider-col{
+  width: 250px;
+  height: 100vh;
+  background: #15272A;
 }

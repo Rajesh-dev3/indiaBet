@@ -1,0 +1,23 @@
+@mixin media($breakpoint){
+    @if $breakpoint == phone{
+        @media (max-width: 780px){
+            @content;
+        }
+    }
+    @if $breakpoint == tablet{
+        @media (min-width: 1200px) and (max-width: 1399px){
+            @content;
+        }
+    }
+    @if $breakpoint == desktop{
+        @media (min-width: 992px){
+            @content;
+        }
+    }
+    @if $breakpoint == largeHug{
+        @media (min-width: 1480px){
+            @content;
+        }
+    }
+   
+ }

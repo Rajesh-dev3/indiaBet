@@ -1,0 +1,60 @@
+@import '../../../../Styles/mixins';
+.fancy-container{
+    width: 100%;
+//   border: 1px solid black;
+margin-top: 10px;
+  display: flex;
+  .fancy-row{
+    display: flex;
+    width: 10%;
+    height: 20px;
+    padding: 6px 3px;
+    justify-content: center;
+    color: #fff;
+
+    font-weight: 700;
+    font-size: 13px;
+    background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
+
+    border: .5px solid black;
+    border-left:none; 
+    &:first-child{
+        width: 67.1%;
+        background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
+        color: #fff;
+        letter-spacing: .3px;
+        font-weight: 700;
+        border-left: .5px solid black;
+        justify-content: left;
+        align-items: center;
+        @include media (phone){
+            width: 60%;
+        }
+
+    }
+    &:nth-child(5){
+        border-left:none;
+        @include media (phone){
+          display: none;
+        } 
+
+    }
+    &:nth-child(2){
+        @include media (phone){
+            width: 20%;
+        } 
+
+    }
+    &:nth-child(3){
+        @include media (phone){
+            width: 20%;
+        } 
+
+    }
+    &:nth-child(4){
+        border-right:none;
+        @include media (phone){
+        display: none;
+        }
+    }
+  }}

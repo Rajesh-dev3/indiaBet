@@ -1,0 +1,60 @@
+@import'../../Styles/mixins';
+
+#app {
+  height: 100%;
+}
+
+html, body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  // Center slide text vertically
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  // object-fit: cover;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff; /* Set the arrow color to white */
+  
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 30px; /* You can adjust the arrow size if needed */
+}
+
+.swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.5); /* Set pagination bullet color to white with some transparency */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #fff; /* Set the active pagination bullet color to solid white */
+}

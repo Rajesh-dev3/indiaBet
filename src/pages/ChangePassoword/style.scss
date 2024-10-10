@@ -1,0 +1,63 @@
+.ChangePassword{
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    // padding: 0 15px;
+    .Change-title {
+        display: inline-block;
+        width: calc(100% - 20px) ;
+        background: linear-gradient(-180deg, #315195 0%, #14213D 100%) !important;
+        padding: 7px 10px;
+ margin: 0 auto;
+        text-transform: capitalize;
+        color: #fff;
+        font-weight: 700;
+    }
+    .item{
+        margin: 5px 0;
+        width: calc(100% - 0px);
+        display: flex;
+        // background: green;
+        .password-name{
+            width: 22.5%;
+            text-align: right;
+            font-weight: 700;
+            letter-spacing: .3px;
+            padding-top: 8px;
+            font-size: 13px;
+            padding-right: 15px;
+    padding-left: 15px;
+        }
+        .password{
+           
+            width: 45%;
+            padding: 7px 12px;
+            font-size: 14px;
+            margin-left: 10px;
+            font-weight: 400;
+            border: 1px solid #ccc;
+            color: gray;
+            outline: none;
+         
+        
+        }
+    }
+    .btn-change-password{
+        padding-left: 26.5%;
+        margin-top: 12px;
+        .reset{
+            padding: 8px 12px;
+            background-color: #e2a521;       
+            margin-left: 5px;
+            font-size: 14px;
+            border-radius: 4px;
+            
+        }
+        .submit{
+            background-color: #25313e;
+            color: white;    
+            font-size: 14px;   
+            padding: 8px 12px;
+            
+        }
+    }
+}

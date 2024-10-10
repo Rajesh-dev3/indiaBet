@@ -1,0 +1,172 @@
+.sport-sec{
+    width: 100%;
+    margin: 3px auto;
+    border: 1px solid black;
+    background: #f2f2f2;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-top: 3px;
+
+    .game-name{
+        color: #fff;
+        margin: 0;
+        height: 38px;
+        line-height: 38px;
+        padding: 0px 5px;
+        font-weight: 500;
+        font-size: 16px;
+        background: #113a17;
+
+    
+    }
+    .game{
+      
+display: flex;
+width: 75%;
+margin-bottom: 5px;
+// background: green;
+        
+        .sport_name{
+           
+                padding: 0 0;
+                padding-right: 0;
+                display: inline-block;
+                width: 72%;
+                position: relative;
+                padding-left: 3px;
+               
+                // border: 1px solid #000;
+                font-size: 13px;
+               
+                margin-bottom: 1%;
+                border-radius: 5px;
+               
+                .player-top{
+                    display: flex;
+                    // flex-direction: row;    
+                    padding-top: 3px;
+                    svg{
+                        font-size: 18px;
+                        color: #508d0e;
+                    }
+                    img{
+                        // width: 20px;
+                        height: 20px;
+                        filter: brightness(.5);
+
+                    }    
+                
+.sportname {
+    font-weight: 700;
+    font-size: 11px;
+    color: #0b9a86;
+    margin-left: 1%;
+    // padding: 4px 0;
+    padding-top: 4px;
+
+a{
+    color: #0b9a86;
+}
+   
+
+            
+        }
+    }
+
+}
+    .match_status {
+        display: inline-block;
+        width: 12%;
+        vertical-align: middle;
+        font-size: 10px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 1%;
+    
+        .blinking-inplay {
+            animation: rainbow2 5s infinite;
+            font-size: 11px;
+            color: green;
+            font-weight: 400;
+            @keyframes rainbow2 {
+                0% {
+                    color: red;
+                }
+                10% {
+                    color: orange;
+                }
+                
+                20% {
+                    color: green;
+                }
+                30% {
+                    color: linear-gradient(#f60105 0, #801011 100%);
+                }
+                40% {
+                    color: #000;
+                }
+                50% {
+                    color: #f0f;
+                }
+                60% {
+                    color: #0f0;
+                }
+                70% {
+                    color: green;
+                }
+                80% {
+                    color: linear-gradient(#f60105 0, #801011 100%);
+                }
+                90% {
+                    color: orange;
+                }
+                100% {
+                    color: red;
+                }
+                
+            }
+        
+    }
+.going-inplay{
+    font-size: 10px;
+    float: left;
+    font-weight: 400;
+    color: #23527c;
+}
+}
+   
+}
+.match_odds_front{
+    display: flex;
+    text-align: right;
+    width: 25%;
+    justify-content: end;
+    // background-color: red;
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    span{
+        width: 70px;
+        background-color: #72bbef;
+    margin: 1px;
+    text-align: center;
+    width: 40px;
+    color: #000;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 5px;
+    vertical-align: text-bottom;
+    margin: 1px !important;
+padding: 8px;  
+cursor: pointer;
+&:last-child{
+    background: #faa9ba;
+    border-right: 1px solid black;
+}
+
+}
+}}

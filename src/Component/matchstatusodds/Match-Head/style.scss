@@ -1,0 +1,20 @@
+.match{display: inline-block;
+font-size: 13px;
+padding: 5px;
+font-weight: 700;
+width: calc(100% - 10px) ;
+color: #fff;
+position: relative;
+border-radius: 4px;
+line-height: 1.471;
+    letter-spacing: .3px;
+    display: flex;
+background: #25313e;
+
+.matchhead{
+    width: 60%;
+}
+.matchhead-right{
+    width: 40%;
+}
+}

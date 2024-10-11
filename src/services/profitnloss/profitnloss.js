@@ -1,15 +1,15 @@
 import { createApi,  } from '@reduxjs/toolkit/query/react';
-import { dynamicBaseQuery } from './badRequestHandler/BedRequestHandler';
+import { dynamicBaseQuery } from '../badRequestHandler/BedRequestHandler';
 
 // Define the base API slice
-export const eventdetail = createApi({
-  reducerPath: 'eventdetail',  // optional, for more advanced usage
+export const profitnloss = createApi({
+  reducerPath: 'profitnloss',  // optional, for more advanced usage
   baseQuery: dynamicBaseQuery,
 //    fetchBaseQuery({ baseUrl: '/api' }),  // Replace with your API URL
 endpoints: (builder) => ({
-    eventdetail: builder.mutation({
+    profitnloss: builder.mutation({
       query: (body) => ({
-        url: "v5/event-detals",   // API endpoint for login
+        url: "v5/my-profit-loss",   // API endpoint for login
         method: 'POST',
         body  // Send user credentials
       }),
@@ -18,4 +18,4 @@ endpoints: (builder) => ({
 });
 
 // Export the auto-generated hook for the `login` mutation
-export const { useEventdetailMutation } = eventdetail;
+export const { useProfitnlossMutation } = profitnloss;

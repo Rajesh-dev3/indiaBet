@@ -6,7 +6,8 @@ import { gameName } from './services/sport/gameName';
 import { eventGameList } from './services/sport/eventGameList';
 import { eventgame } from './services/eventGame/gameEvent';
 import { inplay } from './services/inplay/Inplay';
-import { eventdetail } from './services/eventdetail';
+import { bethistory } from './services/bethistory/betHistory';
+import { profitnloss } from './services/profitnloss/profitnloss';
 import { eventDetail } from './services/eventDetail/eventDetail';
 import { eventSession } from './services/fancy/Fancy';
 import { oddsBetsPlace } from './services/betPalce/oddsBetPlace';
@@ -22,7 +23,9 @@ export const store = configureStore({
     [eventGameList.reducerPath]: eventGameList.reducer,
     [eventgame.reducerPath]: eventgame.reducer,
     [inplay.reducerPath]: inplay.reducer,
-    [eventdetail.reducerPath]: eventdetail.reducer,
+    [bethistory.reducerPath]: bethistory.reducer,
+    [profitnloss.reducerPath]: profitnloss.reducer,
+    [eventDetail.reducerPath]: eventDetail.reducer,
     [eventDetail.reducerPath]: eventDetail.reducer,
     [eventSession.reducerPath]: eventSession.reducer,
     [oddsBetsPlace.reducerPath]: oddsBetsPlace.reducer,
@@ -34,7 +37,10 @@ export const store = configureStore({
   .concat(gameName.middleware)
   .concat(eventGameList.middleware)
   .concat(inplay.middleware)
-  .concat(eventdetail.middleware)
+  .concat(bethistory.middleware)
+  .concat(profitnloss.middleware)
+  // .concat(eventdetail.middleware)
+  .concat(eventDetail.middleware)
   .concat(eventDetail.middleware)
   .concat(eventSession.middleware)
   .concat(oddsBetsPlace.middleware)

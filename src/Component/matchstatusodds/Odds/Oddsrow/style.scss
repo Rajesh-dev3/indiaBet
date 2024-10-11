@@ -4,72 +4,24 @@
 //   border: 1px solid black;
 background: white;
   display: flex;
+ 
   .row-odds{
     display: flex;
     // height: auto;
-    width: 10%;
+    width: 40%;
     // height: 20px;
     padding: 6px 3px;
-    justify-content: center;
+    justify-content: space-between;
     font-weight: 700;
     font-size: 13px;
     border: .5px solid black;
     border-top: none;
     border-left:none; 
-    &:first-child{
-        width: 45%;
-        // background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
-        // color: #fff;
-        letter-spacing: .3px;
-        font-weight: 700;
-        justify-content: left;
-        // margin: 0;
-        // padding: 4px;
-        align-items: start;
-        border-left: .5px solid black;
-        display: flex;
-        justify-content: space-between;
-        @include media (phone){
-          width: 60%;
-          flex-direction: column;
-        }
+   
+    @include media (phone){
+      width:60% ;
+    }
 
-    }
-    &:nth-child(2){
-      @include media (phone){
-        display: none;
-      }
-
-    }
-    &:nth-child(3){
-      @include media (phone){
-        display: none;
-      }
-
-    }
-    &:nth-child(4){
-      @include media (phone){
-        width: 20%;
-      }
-    }
-    &:nth-child(5){
-      @include media (phone){
-        width: 20%;
-      }
-
-    }
-    &:nth-child(6){
-      @include media (phone){
-        display: none;
-      }
-
-    }
-    &:nth-child(7){
-      @include media (phone){
-        display: none;
-      }
-
-    }
     .game-name{
       padding: 4px;
       margin: 0;
@@ -82,6 +34,58 @@ background: white;
      }
     
   }
+  .bat{
+
+     border-left: .5px solid black; 
+
+  }
+  .rowright{
+    width: 60%;
+    @include media (phone){
+      width: 40%;
+    }
+    display: flex;
+    .col1{
+      width: 33.33%;
+      display: flex;
+      @include media (phone){
+        width: 100%;
+      }
+      .row-odds{
+        width: 50%;
+        // border: .5px solid black;
+      }
+      &:first-child{
+        @include media (phone){
+          display: none;
+        }
+      }
+      &:last-child{
+        @include media (phone){
+          display: none;
+        }
+      }
+    }
+    .col2{
+      position: relative;
+      .overback{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        // padding: 5px;
+        font-weight: 700;
+        color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background:  rgba(255,255,255,0.5);
+      }
+    }
+  }
 } 
 .back-value{
     background: #72bbef;
@@ -89,6 +93,7 @@ background: white;
     flex-direction: column;
     font-size: 12px;
     justify-content: center;
+    position: relative;
     p{
       text-align: center;
       padding: 0;
@@ -99,7 +104,9 @@ background: white;
         // color: green;
       }
     }
+
 }
+
 .lay-value{
     background: #faa9ba;
     display: flex;

@@ -13,8 +13,14 @@ const OddsRow = ({data,prevOdd,matchData,fun}) => {
       <p className='game-price' style={{color:data?.WinAndLoss>=0?"green":"red"}} >{data?.WinAndLoss}</p>
 
     </div>
+    <div className="rowright">
+    <div className="col1">
     <div className="row-odds"></div>
     <div className="row-odds"></div>
+
+    </div>
+    <div className="col1 col2">
+
     <div className="row-odds back-value">
  
       <BackValue top={data?.ex?.availableToBack[0].price} selectionId={data?.selectionId} bottom={data?.ex?.availableToBack[0]?.size} isBack={1} data={matchData}   bg={
@@ -25,15 +31,26 @@ const OddsRow = ({data,prevOdd,matchData,fun}) => {
                           : ""
                       } fun={fun}/>
       </div>
-    <div className="row-odds lay-value"><BackValue selectionId={data?.selectionId} top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} data={matchData} bg={
+     
+    <div className="row-odds lay-value">
+      <BackValue top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
                           : data?.price < prevOdd?.price
                           ? "odds-down-color"
                           : ""
-                      } fun={fun} isBack={0}/></div>
+                      } fun={fun} isBack={0}/>
+                      </div>
+                    
+                       {/* <div className="overback">suspended
+                       </div> */}
+    </div>
+    <div className="col1">
+
     <div className="row-odds"></div>
     <div className="row-odds"></div>
+    </div>
+    </div>
     </div>
 
 

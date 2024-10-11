@@ -66,7 +66,7 @@ const Event = () => {
       <div className="event">
         <MatchScore />
         <StatusOdds />
-        <div style={{ marginTop: "10px" }}>
+        <div style={{ marginBottom: "10px" }}>
 
           <OddsHeading max={odddata?.MatchDetails?.marketMaxStack} min={odddata?.MatchDetails?.marketMinStack} />
           {odddata?.MatchDetails?.runner_json?.map((item,i) => {
@@ -76,7 +76,7 @@ const Event = () => {
             )
           })}
         </div >
-        <div style={{ marginTop: "10px" }}>
+        <div style={{ marginBottom: "10px" }}>
 
           <OddsHeading max={odddata?.BookerMakerMarket?.marketMaxStack} min={odddata?.BookerMakerMarket?.marketMinStack} />
           {odddata?.BookerMakerMarket?.runner_json?.map((item) => {

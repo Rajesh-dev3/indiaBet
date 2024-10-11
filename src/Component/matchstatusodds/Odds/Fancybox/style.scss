@@ -43,8 +43,11 @@ margin-bottom: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: rgb(63, 178, 34);
+    border-left: .5px solid black ;
+    border-right: .5px solid black ;
+    
   }
-
+  
   .back-value{
     display: flex;
     flex-direction: column;
@@ -69,6 +72,8 @@ margin-bottom: 10px;
     flex-direction: column;
     justify-content: center;
     font-size: 12px;
+    border-right: .5px solid black ;
+
     p{
       text-align: center;
       padding: 0;

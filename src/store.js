@@ -8,8 +8,6 @@ import { eventgame } from './services/eventGame/gameEvent';
 import { inplay } from './services/inplay/Inplay';
 import { bethistory } from './services/bethistory/betHistory';
 import { profitnloss } from './services/profitnloss/profitnloss';
-// import { eventdetail } from './services/eventdetail';
-import { eventdetail } from './services/eventdetail';
 import { eventDetail } from './services/eventDetail/eventDetail';
 import { eventSession } from './services/fancy/Fancy';
 
@@ -25,8 +23,7 @@ export const store = configureStore({
     [inplay.reducerPath]: inplay.reducer,
     [bethistory.reducerPath]: bethistory.reducer,
     [profitnloss.reducerPath]: profitnloss.reducer,
-    // [eventdetail.reducerPath]: eventdetail.reducer,
-    [eventdetail.reducerPath]: eventdetail.reducer,
+    [eventDetail.reducerPath]: eventDetail.reducer,
     [eventDetail.reducerPath]: eventDetail.reducer,
     [eventSession.reducerPath]: eventSession.reducer,
   },
@@ -40,7 +37,7 @@ export const store = configureStore({
   .concat(bethistory.middleware)
   .concat(profitnloss.middleware)
   // .concat(eventdetail.middleware)
-  .concat(eventdetail.middleware)
+  .concat(eventDetail.middleware)
   .concat(eventDetail.middleware)
   .concat(eventSession.middleware)
   .concat(eventgame.middleware),

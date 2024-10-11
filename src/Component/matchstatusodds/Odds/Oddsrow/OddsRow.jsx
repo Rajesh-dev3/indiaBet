@@ -10,8 +10,14 @@ const OddsRow = ({data,prevOdd}) => {
       <p className='game-price'>0.00</p>
 
     </div>
+    <div className="rowright">
+    <div className="col1">
     <div className="row-odds"></div>
     <div className="row-odds"></div>
+
+    </div>
+    <div className="col1 col2">
+
     <div className="row-odds back-value">
  
       <BackValue top={data?.ex?.availableToBack[0].price} bottom={data?.ex?.availableToBack[0]?.size}    bg={
@@ -22,6 +28,7 @@ const OddsRow = ({data,prevOdd}) => {
                           : ""
                       }/>
       </div>
+     
     <div className="row-odds lay-value"><BackValue top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
@@ -29,8 +36,15 @@ const OddsRow = ({data,prevOdd}) => {
                           ? "odds-down-color"
                           : ""
                       }/></div>
+                       {/* <div className="overback">suspended
+                       </div> */}
+    </div>
+    <div className="col1">
+
     <div className="row-odds"></div>
     <div className="row-odds"></div>
+    </div>
+    </div>
     </div>
 
 

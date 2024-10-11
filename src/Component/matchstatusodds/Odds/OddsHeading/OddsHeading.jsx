@@ -14,17 +14,41 @@ const OddsHeading = ({min,max}) => {
   return (
     <>
    
-   <div className="table-container">
-    <div className="row-heading max-min">Min :{convertToKOrLakh(min)} Max :{convertToKOrLakh(max)}</div>
-    <div className="row-heading"></div>
-    <div className="row-heading"></div>
-    <div className="row-heading back"><Lay name='Back' backgroundColor="#3199e7" /></div>
-    <div className="row-heading lay"><Lay name='Lay' backgroundColor="#f77791" /></div>
-    <div className="row-heading"></div>
-    <div className="row-heading"></div>
+   
+
+
+
+
+    <div className="row-container">
+    <div className="row-odds bat" style={{background:"black"}}>
+      <p className='game-name' style={{color:"white"}}>Min :{convertToKOrLakh(min)} Max :{convertToKOrLakh(max)}</p>
+      <p className='game-price' style={{display:"none"}}>0.00</p>
+
     </div>
+    <div className="rowright" style={{borderTop:"1px solid black"}}>
+    <div className="col1">
+    <div className="row-odds"></div>
+    <div className="row-odds"></div>
 
+    </div>
+    <div className="col1 col2">
 
+    <div className="row-odds " style={{padding:'0'}}>
+ 
+    <Lay name='Back' backgroundColor="#3199e7" />
+      </div>
+     
+    <div className="row-odds" style={{padding:'0'}}><Lay name='Lay' backgroundColor="#f77791" /></div>
+                       {/* <div className="overback">suspended
+                       </div> */}
+    </div>
+    <div className="col1">
+
+    <div className="row-odds"></div>
+    <div className="row-odds"></div>
+    </div>
+    </div>
+    </div>
 
     </>
   )

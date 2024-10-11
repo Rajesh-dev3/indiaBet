@@ -1,28 +1,51 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.scss';
 import Countdown from '../Coundown/Countdown';
-const BetPlaceSlip2 = () => {
-  const [stakeValue, setStakeValue] = useState(0);
+import { useOddsBetsPlaceMutation } from '../../services/betPalce/oddsBetPlace';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useEventDetailMutation } from '../../services/eventDetail/eventDetail';
+const BetPlaceSlip2 = ({setBetModuleOpen}) => {
+  const [stakeValue, setStakeValue] = useState(null);
+
 
   const handleStakeChange = (e) => {
-    const newStakeValue = Number(e.target.value);
-    setStakeValue(newStakeValue);  // Update the Stake value based on input field
+    const newStakeValue = e.target.value;
+
+    // Allow the stake value to be empty or a valid number
+    if (newStakeValue === '' || !isNaN(Number(newStakeValue))) {
+      setStakeValue(newStakeValue);  // Update the stake value based on input field
+    }
   };
 
+  const [trigge, { data:odds }] = useEventDetailMutation()
 
 
+  
 
+  const betData = useSelector((state) => state.betData.betData);
+  const [stakeDat, setstakeData] = useState([])
+  const { sportId, matchId } = useParams()
+const [trigger,{data}] = useOddsBetsPlaceMutation()
+const betSubmitHandler = ()=>{
+    const payloadBetData = {...betData,stake:stakeValue}
+    trigger(payloadBetData)
+}
 
+useEffect(() => {
+if(betData){
 
+    trigge({ "match_id": matchId, "sport_id": sportId })
+    
+}
 
-
-
-
+}, [])
+const stakeData = odds?.data?.UserSportSettings[0]?.match_stack.split(",")
 
   return (
     <>
     <div className='betplace2'>
-        <Countdown/>
+        <Countdown setBetModuleOpen={setBetModuleOpen}/>
         <div className="betheader2">
 <div className="bettitle2">
     <span>Lay</span>(Bet For)
@@ -64,13 +87,13 @@ const BetPlaceSlip2 = () => {
         </div>
         <div className="betprice-btn2">
             <div className="pricebtn2">
-            <div  className='pr-btn2' onClick={() => setStakeValue((prev) => prev + 500)}>500</div>
-            <div className='pr-btn2'  onClick={() => setStakeValue((prev) => prev + 1000)}>1000</div>
-            <div className='pr-btn2'  onClick={() => setStakeValue((prev) => prev + 1500)}>1500</div>
-            <div className='pr-btn2'  onClick={() => setStakeValue((prev) => prev + 2000)}>2000</div>
-            <div  className='pr-btn2'  onClick={() => setStakeValue((prev) => prev + 2500)}>2500</div>
-            <div className='pr-btn2'  onClick={() => setStakeValue((prev) => prev + 3000)}>3000</div>
-            <div className='pr-btn2'  onClick={() => setStakeValue((prev) => prev + 3500)}>3500</div>
+                {stakeData?.map((item)=>{
+                    return(
+
+                        <div  className='pr-btn2' onClick={() => setStakeValue((prev) => prev + item)} key={item}>{item}</div>
+                    )
+                })}
+     
             <div className='pr-btn2 cleanbtn2' onClick={() => setStakeValue(0)}><i className='fa fa-trash-o'></i> Clean</div>
 
             </div>
@@ -79,7 +102,7 @@ const BetPlaceSlip2 = () => {
         </div>
         <div className="betclean-btn2">
             <button className='clean-all2'> <i className='fa fa-trash-o'></i> Clean All Selection</button>
-            <button className='place-bet2'> <i className='fa fa-trash-o'></i> Place Bet</button>
+            <button className='place-bet2'  onClick={()=>betSubmitHandler()}> <i className='fa fa-trash-o'></i> Place Bet</button>
         </div>
     </div>
     

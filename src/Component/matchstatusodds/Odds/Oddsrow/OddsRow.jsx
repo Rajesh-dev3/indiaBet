@@ -1,34 +1,37 @@
 import React from 'react'
 import './style.scss'
 import BackValue from '../../back-lay-value/BackValue'
-const OddsRow = ({data,prevOdd}) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { setBetData } from '../../../../services/betSlice/betSlice';
+const OddsRow = ({data,prevOdd,matchData,fun}) => {
+
   return (
   <>
    <div className="row-container">
     <div className="row-odds bat">
       <p className='game-name'>{data?.selectionName}</p>
-      <p className='game-price'>0.00</p>
+      <p className='game-price' style={{color:data?.WinAndLoss>=0?"green":"red"}} >{data?.WinAndLoss}</p>
 
     </div>
     <div className="row-odds"></div>
     <div className="row-odds"></div>
     <div className="row-odds back-value">
  
-      <BackValue top={data?.ex?.availableToBack[0].price} bottom={data?.ex?.availableToBack[0]?.size}    bg={
+      <BackValue top={data?.ex?.availableToBack[0].price} selectionId={data?.selectionId} bottom={data?.ex?.availableToBack[0]?.size} isBack={1} data={matchData}   bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
                           : data?.price < prevOdd?.price
                           ? "odds-down-color"
                           : ""
-                      }/>
+                      } fun={fun}/>
       </div>
-    <div className="row-odds lay-value"><BackValue top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} bg={
+    <div className="row-odds lay-value"><BackValue selectionId={data?.selectionId} top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} data={matchData} bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
                           : data?.price < prevOdd?.price
                           ? "odds-down-color"
                           : ""
-                      }/></div>
+                      } fun={fun} isBack={0}/></div>
     <div className="row-odds"></div>
     <div className="row-odds"></div>
     </div>

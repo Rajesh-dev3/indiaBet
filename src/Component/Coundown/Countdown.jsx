@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Countdown.css'; // Import styles if needed
 
-const Countdown = () => {
+const Countdown = ({setBetModuleOpen}) => {
   const [count, setCount] = useState(8);
 
   useEffect(() => {
@@ -10,6 +10,9 @@ const Countdown = () => {
         setCount((prevCount) => prevCount - 1);
       }, 1000);
       return () => clearInterval(timer);
+    }
+    if(count ==0){
+      setBetModuleOpen(false)
     }
   }, [count]);
 

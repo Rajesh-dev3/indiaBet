@@ -9,11 +9,13 @@ import { inplay } from './services/inplay/Inplay';
 import { eventdetail } from './services/eventdetail';
 import { eventDetail } from './services/eventDetail/eventDetail';
 import { eventSession } from './services/fancy/Fancy';
-
+import { oddsBetsPlace } from './services/betPalce/oddsBetPlace';
+import betDataSlice from "./services/betSlice/betSlice"
 
 export const store = configureStore({
   reducer: {
     // Add the API reducer to the store
+    betData: betDataSlice,
     [login.reducerPath]: login.reducer,
     [accountstatement.reducerPath]: accountstatement.reducer,
     [gameName.reducerPath]: gameName.reducer,
@@ -23,6 +25,7 @@ export const store = configureStore({
     [eventdetail.reducerPath]: eventdetail.reducer,
     [eventDetail.reducerPath]: eventDetail.reducer,
     [eventSession.reducerPath]: eventSession.reducer,
+    [oddsBetsPlace.reducerPath]: oddsBetsPlace.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -34,6 +37,7 @@ export const store = configureStore({
   .concat(eventdetail.middleware)
   .concat(eventDetail.middleware)
   .concat(eventSession.middleware)
+  .concat(oddsBetsPlace.middleware)
   .concat(eventgame.middleware),
 });
 

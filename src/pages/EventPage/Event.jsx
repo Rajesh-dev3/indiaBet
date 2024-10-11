@@ -9,6 +9,8 @@ import MatchScore from '../../Component/MatchScorebox/.MatchScore'
 import { useParams } from 'react-router-dom'
 import { useEventDetailMutation } from '../../services/eventDetail/eventDetail'
 import { useGetEventSessionMutation } from '../../services/fancy/Fancy'
+import { useDispatch } from 'react-redux'
+import { setBetData } from '../../services/betSlice/betSlice'
 
 const Event = () => {
   const [odddata, setOdddata] = useState();
@@ -19,7 +21,7 @@ const Event = () => {
   const [trigger, { data }] = useEventDetailMutation()
   const [trigg, { data: fancy }] = useGetEventSessionMutation()
 
-
+  
 
   useEffect(() => {
 
@@ -61,28 +63,41 @@ const Event = () => {
       const prevNormalFancy = prevFancy?.filter((item) => item?.fancy_category === "normal")
       const prevOverbyover = prevFancy?.filter((item) => item?.fancy_category === "overbyover")
       const prevBallbyball = prevFancy?.filter((item) => item?.fancy_category === "ballbyball")
+
+
+
+
+      const dispatch = useDispatch();
+
+  const betDispatch = (elm,odds,isBack,selectionId)=>{
+    const betPayloadData = {"is_back":String(isBack),"match_id":elm?.match_id,"odds":String(odds),"selection_id":selectionId,"stack":100,"market_id":elm?.market_id}
+    dispatch(setBetData(betPayloadData));
+  }
+ 
   return (
     <>
       <div className="event">
         <MatchScore />
         <StatusOdds />
         <div style={{ marginTop: "10px" }}>
-
+{odddata?.MatchDetails?.runner_json?.length ?
           <OddsHeading max={odddata?.MatchDetails?.marketMaxStack} min={odddata?.MatchDetails?.marketMinStack} />
+:""}
           {odddata?.MatchDetails?.runner_json?.map((item,i) => {
             return (
 
-              <OddsRow data={item} key={item?.selectionName} prevOdd={prevState?.MatchDetails?.runner_json[i]}/>
+              <OddsRow matchData={odddata?.MatchDetails} data={item} key={item?.selectionName} prevOdd={prevState?.MatchDetails?.runner_json[i]} fun={betDispatch}/>
             )
           })}
         </div >
         <div style={{ marginTop: "10px" }}>
-
+{odddata?.BookerMakerMarket?.runner_json?.length ?
           <OddsHeading max={odddata?.BookerMakerMarket?.marketMaxStack} min={odddata?.BookerMakerMarket?.marketMinStack} />
+:""}
           {odddata?.BookerMakerMarket?.runner_json?.map((item) => {
             return (
 
-              <OddsRow data={item} key={item?.selectionName} />
+              <OddsRow matchData={odddata?.BookerMakerMarket} data={item} key={item?.selectionName}  fun={betDispatch}/>
             )
           })}
         </div>

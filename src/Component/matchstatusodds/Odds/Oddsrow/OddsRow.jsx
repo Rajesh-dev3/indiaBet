@@ -1,16 +1,19 @@
-import React from 'react'
+
 import './style.scss'
 import BackValue from '../../back-lay-value/BackValue'
-import { useDispatch, useSelector } from 'react-redux';
-import { setBetData } from '../../../../services/betSlice/betSlice';
-const OddsRow = ({data,prevOdd,matchData,fun}) => {
 
+
+const OddsRow = ({profithandler,profitLoss,data,prevOdd,odddata,setSelectionId}) => {
+
+
+
+  
   return (
   <>
    <div className="row-container">
     <div className="row-odds bat">
       <p className='game-name'>{data?.selectionName}</p>
-      <p className='game-price' style={{color:data?.WinAndLoss>=0?"green":"red"}} >{data?.WinAndLoss}</p>
+      <p className='game-price' style={{color:profitLoss>=0?"green":"red"}} >{profitLoss}</p>
 
     </div>
     <div className="rowright">
@@ -23,23 +26,27 @@ const OddsRow = ({data,prevOdd,matchData,fun}) => {
 
     <div className="row-odds back-value">
  
-      <BackValue top={data?.ex?.availableToBack[0].price} selectionId={data?.selectionId} bottom={data?.ex?.availableToBack[0]?.size} isBack={1} data={matchData}   bg={
+      <BackValue  top={data?.ex?.availableToBack[0].price} selectionId={data?.selectionId} selectionName={data?.selectionName}
+       bottom={data?.ex?.availableToBack[0]?.size} isBack={1} data={odddata}   bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
                           : data?.price < prevOdd?.price
                           ? "odds-down-color"
                           : ""
-                      } fun={fun}/>
+                      } setSelectionId={setSelectionId} item={data} fun={profithandler} 
+                      
+                      
+                      />
       </div>
      
     <div className="row-odds lay-value">
-      <BackValue top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} bg={
+      <BackValue setSelectionId={setSelectionId}  top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} selectionName={data?.selectionName} bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
                           : data?.price < prevOdd?.price
                           ? "odds-down-color"
                           : ""
-                      } fun={fun} isBack={0}/>
+                      } fun={profithandler} item={data}  isBack={0} data={odddata} />
                       </div>
                     
                        {/* <div className="overback">suspended

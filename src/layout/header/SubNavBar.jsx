@@ -46,8 +46,7 @@ const SubNavBar = () => {
     }
   ];
 const {pathname} = useLocation()
-const urlList = ["/"]
-console.log(pathname)
+
   return (
     <div className="sub-navbar">
       <ul className="list">

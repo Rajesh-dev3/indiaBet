@@ -8,7 +8,7 @@ import moment from 'moment';
 const AccountStatement = () => {
 
   const [trigger,{data}] = useAccountstatementMutation()
- console.log(data , 'data')
+
   const [formData, setFormData] = useState({
     from_date:'',
     to_date:'',
@@ -19,7 +19,7 @@ const AccountStatement = () => {
 
   const formHandler = (e)=>{
 const   { name, value } = e.target;
-    // console.log(e?.target?.value,"formHandler")
+    
     setFormData((prev) =>{
  return {
    ...prev,[name]:value

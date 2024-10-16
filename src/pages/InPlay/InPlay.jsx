@@ -12,7 +12,7 @@ const InPlay = () => {
   useEffect(() => {
     trigger({"limit": 10, "pageno": 1, "sport_id": 0})
   }, [])
-  console.log(data?.data , "inplay")
+ 
 
 
   const cricketData = data?.data?.filter((item)=>item?.SportName == "Cricket")

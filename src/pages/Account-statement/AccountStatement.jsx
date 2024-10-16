@@ -8,11 +8,6 @@ import moment from 'moment';
 const AccountStatement = () => {
 
   const [trigger,{data}] = useAccountstatementMutation()
-<<<<<<< HEAD
- console.log(data , 'dataac')
-=======
-
->>>>>>> 774e251b537ac2107fdf3acdf5ac8d3b1c21831c
   const [formData, setFormData] = useState({
     from_date:'',
     to_date:'',

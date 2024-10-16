@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Countdown.css'; // Import styles if needed
+import { useDispatch } from 'react-redux';
+import { setBetData } from '../../services/betSlice/betSlice';
 
 const Countdown = ({setBetModuleOpen}) => {
   const [count, setCount] = useState(8);
-
+const dispatch = useDispatch()
   useEffect(() => {
     if (count > 0) {
       const timer = setInterval(() => {
@@ -12,6 +14,7 @@ const Countdown = ({setBetModuleOpen}) => {
       return () => clearInterval(timer);
     }
     if(count ==0){
+      dispatch(setBetData());
       setBetModuleOpen(false)
     }
   }, [count]);

@@ -17,13 +17,13 @@ const DashBoardLayout = () => {
   const urlList = ["event"]
   const checkPathName =  urlList.includes(pathname.split("/")[1])
 
-  const betData = useSelector((state) => state.betData.betData);
+  const betData = useSelector((state) => state.betData);
 const [betModuleOpen, setBetModuleOpen] = useState(false)
   useEffect(() => {
-   if(betData){
+   if(betData?.betData?.odds){
     setBetModuleOpen(true)
    }
-  }, [betData])
+  }, [betData?.betData?.odds])
   
   
   // {"is_back":"1","match_id":"33642369","odds":"480","selection_id":7461,"stack":100,"market_id":"1.233736154"}

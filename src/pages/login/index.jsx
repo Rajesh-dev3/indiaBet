@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [trigger, {data}] = useLoginMutation();
 
-  console.log(data?.data?.token, 'pawan')
-  console.log(data?.data, 'pawankumar')
+
 const [formData , setFormData]= useState({
   user_name:'',
   password:'',
@@ -17,7 +16,7 @@ const [formData , setFormData]= useState({
 const formHandler = (e) =>{
   const {name, value} = e.target;
 
-  console.log(name, value)
+
   setFormData((prev)=>{
     return{
       ...prev,[name]:value

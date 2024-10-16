@@ -10,7 +10,7 @@ const BetHistory = () => {
 
   
   const [trigger ,{data}] = useBethistoryMutation()
- console.log(data, 'bethistory')
+
  const [formData, setFormData] = useState({
   betType: "P",
 from_date:'1727980200',
@@ -25,7 +25,7 @@ to_date:'1728584999',
 
 const formHandler = (e)=>{
 const   { name, value } = e.target;
-  // console.log(e?.target?.value,"formHandler")
+ 
   setFormData((prev) =>{
 return {
  ...prev,[name]:value

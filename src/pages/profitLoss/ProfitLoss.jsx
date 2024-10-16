@@ -9,7 +9,7 @@ const ProfitLoss = () => {
 
   
   const [trigger ,{data}] = useProfitnlossMutation()
- console.log(data, 'pnl')
+
  const [formData, setFormData] = useState({
 betType:"P",
 from_date:'1728498600',
@@ -24,7 +24,7 @@ to_date:'1728584999',
 
 const formHandler = (e)=>{
 const   { name, value } = e.target;
-  // console.log(e?.target?.value,"formHandler")
+ 
   setFormData((prev) =>{
 return {
  ...prev,[name]:value

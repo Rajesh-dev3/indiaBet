@@ -12,14 +12,14 @@ const [sportId, setSportId] = useState(4)
   useEffect(() => {
     trigger({"limit":50,"pageno":1,"sport_id":String(sportId),"series_id":0,"type":"home"})
   }, [sportId])
-  // console.log(data , "data")
+  
 
  const [trigge,{data:gameName}] = useGameNameMutation()
 
  useEffect(() => {
   trigge({"limit":50,"pageno":1})
  }, [])
- console.log(gameName?.data,"game")
+
   return (
     <div>
       <div className="slider-wrapper">

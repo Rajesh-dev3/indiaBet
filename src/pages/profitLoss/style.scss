@@ -193,21 +193,10 @@
                     //    color: #fff !important;
                        border-right: 1px solid black;
                        text-align: left;
-                       padding: 6px 4px;
+                       padding: 6px 6px 6px 4px;
                        line-height: 1.42857143;
                        font-size: 13px;
-                       &:nth-child(1){
-                           text-align: left;
-                           
-                       }
-                       &:nth-child(2){
-                           text-align: left;
-                           
-                       }
-                       &:nth-child(3){
-                           text-align: left;
-                           
-                       }
+                 
                      
                      
                    }

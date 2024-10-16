@@ -198,31 +198,31 @@ width: 95%;
                     background: linear-gradient(180deg, #76c7ce 0, #12717c) !important;
                     color: #fff !important;
                     border-right: 1px solid black;
-                    text-align: right;
+                    text-align: start;
                     padding: 6px 4px;
                     line-height: 1.42857143;
                     font-size: 13px;
-                    &:nth-child(1){
-                      text-align: left;
-                    //   width: 20%;
-                    }
-                    &:nth-child(2){
-                      text-align: left;
-                    //   width: 8%;
-                    }
-                    &:nth-child(3){
-                      text-align: left;
-                    //   width: 8%;
+                    // &:nth-child(1){
+                    //   text-align: left;
+                    // //   width: 20%;
+                    // }
+                    // &:nth-child(2){
+                    //   text-align: left;
+                    // //   width: 8%;
+                    // }
+                    // &:nth-child(3){
+                    //   text-align: left;
+                    // //   width: 8%;
 
-                    }
-                    &:nth-child(4){
-                        text-align: right;
-                    //   width: 8%;
+                    // }
+                    // &:nth-child(4){
+                    //     text-align: right;
+                    // //   width: 8%;
 
-                      }
-                      &:nth-child(5){
-                        text-align: right;
-                      }
+                    //   }
+                    //   &:nth-child(5){
+                    //     text-align: right;
+                    //   }
                   
                 }
             }}
@@ -234,27 +234,12 @@ width: 95%;
                     color: black !important;
                     border-right: 1px solid black;
                     text-align: left;
-                    background-color: white;
+                    // background-color: white;
                     padding: 6px 4px;
                     line-height: 1.42857143;
                     border-bottom: 1px solid black;
                     font-size: 12px;
-                    &:nth-child(1){
-                      text-align: left;
-                    }
-                    &:nth-child(2){
-                      text-align: right;
-                    }
-                    &:nth-child(3){
-                      text-align: right;
-                    }
-                    &:nth-child(4){
-                      text-align: right;
-                    }
-                    &:nth-child(5){
-                      text-align: right;
-                    }
-                  
+             
                 }
             }}
         }

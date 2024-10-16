@@ -2,59 +2,135 @@
 .fancy-container{
     width: 100%;
 //   border: 1px solid black;
-margin-top: 10px;
+background: white;
   display: flex;
-  .fancy-row{
+ 
+  .fancy-row-odds{
     display: flex;
-    width: 10%;
-    height: 20px;
+    // height: auto;
+    width: 60%;
+    // height: 20px;
     padding: 6px 3px;
-    justify-content: center;
-    color: #fff;
-
+    justify-content: space-between;
     font-weight: 700;
     font-size: 13px;
-    background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
-
     border: .5px solid black;
+    border-top: none;
     border-left:none; 
-    &:first-child{
-        width: 67.1%;
-        background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
-        color: #fff;
-        letter-spacing: .3px;
-        font-weight: 700;
-        border-left: .5px solid black;
-        justify-content: left;
-        align-items: center;
-        @include media (phone){
-            width: 60%;
-        }
-
+   
+    @include media (phone){
+      width:60% ;
     }
-    &:nth-child(5){
-        border-left:none;
+    &:last-child{
+        border-left: none;
+    }
+    &:first-child{
+        border-right: none;
+    }
+
+    .fancy-game-name{
+      padding: 4px;
+      margin: 0;
+    
+    }
+    .fancy-game-price{
+      color: green;
+      padding: 4px;
+      margin: 0;
+     }
+    
+  }
+  .bat{
+
+     border-left: .5px solid black; 
+
+  }
+  .fancy-rowright{
+    width: 40%;
+    @include media (phone){
+      width: 40%;
+    }
+    display: flex;
+    .fancy-col1{
+      width: 50%;
+      display: flex;
+      @include media (phone){
+        width: 100%;
+      }
+      .fancy-row-odds{
+        width: 50%;
+        // border: .5px solid black;
+      }
+    
+      &:last-child{
         @include media (phone){
           display: none;
-        } 
-
-    }
-    &:nth-child(2){
-        @include media (phone){
-            width: 20%;
-        } 
-
-    }
-    &:nth-child(3){
-        @include media (phone){
-            width: 20%;
-        } 
-
-    }
-    &:nth-child(4){
-        border-right:none;
-        @include media (phone){
-        display: none;
         }
+      }
     }
-  }}
+    .col2{
+      position: relative;
+      .overback{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        // padding: 5px;
+        font-weight: 700;
+        color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background:  rgba(255,255,255,0.5);
+      }
+    }
+  }
+} 
+.back-value{
+    background: #72bbef;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    justify-content: center;
+    position: relative;
+    p{
+      text-align: center;
+      padding: 0;
+      margin: 1px;
+      &:last-child{
+        font-size: 8px;
+        margin: 3px;
+        // color: green;
+      }
+    }
+
+}
+
+.lay-value{
+    background: #faa9ba;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 12px;
+    p{
+      text-align: center;
+      padding: 0;
+      margin: 1px;
+      &:last-child{
+        font-size: 8px;
+        margin: 3px;
+        // color: green;
+      }
+    }
+}
+
+
+.odds-up-color{
+  background-color: yellow !important;
+}
+.dds-down-color{
+  background-color: red !important;
+}

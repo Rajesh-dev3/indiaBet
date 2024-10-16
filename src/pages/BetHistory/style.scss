@@ -206,29 +206,42 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;   
+            text-wrap: nowrap;
             border: 1px solid black;
-            tr{
+          thead  tr{
                 th{
                     background: linear-gradient(180deg, #76c7ce 0, #12717c) !important;
                     color: #fff !important;
                     border-right: 1px solid black;
-                    text-align: right;
+                    text-align: start;
                     padding: 6px 4px;
                   text-wrap:nowrap ;
                     line-height: 1.42857143;
                     font-size: 13px;
-                    &:nth-child(1){
-                      text-align: left;
-                    }
-                    &:nth-child(2){
-                      text-align: left;
-                    }
-                    &:nth-child(3){
-                      text-align: left;
-                    }
+                    // &:nth-child(1){
+                    
+                    // }
+                    // &:nth-child(2){
+                    //   text-align: left;
+                    // }
+                    // &:nth-child(3){
+                    //   text-align: left;
+                    // }
                   
                 }
             }
+            tbody
+            {
+
+                .tablebethistory{
+                   &:hover{
+                       background:#4cebdc !important; 
+                   
+                    cursor: pointer;
+                   }
+               }
+            }
+        
         }
     }
     .data-list{

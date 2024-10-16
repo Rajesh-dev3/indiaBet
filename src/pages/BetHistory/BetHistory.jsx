@@ -110,8 +110,8 @@ useEffect(() => {
     <th>S.No.	</th>
     <th>Client</th>
     <th>Description</th>
-    <th>Market</th>
-    <th>Type	</th>
+    <th>Selection</th>
+    <th>Type</th>
     <th>Odds</th>
     <th>Stack</th>
     <th>Date </th>
@@ -127,18 +127,18 @@ useEffect(() => {
 {data?.data?.map((item , index) =>{
 return (
 
-  <tr key={index}>
-    <td>{index + 1}</td>
-    <td>{item.userId}</td>
-    <td >  {item.seriesName}</td>
-    <td>{item.marketName}</td>
+  <tr key={index}  className='tablebethistory' style={{background:item?.Type == "Back" ? "#72bbef":"#faa9ba"}}
+  >
+    <td >{index + 1}</td>
+    <td >{item.user_name}</td>
+    <td >  {item.matchName}</td>
+    <td >{item.marketName}</td>
+    <td >{item.marketType}</td>
  
-    <td>
-      {/* {item.Type} */}
-      </td>
-    <td>{item.Odds}</td>
-    <td>{item.Stack}</td>
-    <td>{
+    
+    <td >{item.Odds}</td>
+    <td >{item.Stack}</td>
+    <td >{
                 moment(
                   parseInt(
                     item && item.Placed ? item.Placed : null,
@@ -146,12 +146,12 @@ return (
                 )
                   .utcOffset("+05:30")
                   .format("DD/MM/YYYY HH:mm:a")}</td>
-    <td> <span style={{ color: item.PotentialProfit < 0 ? 'red' : 'green' }}>{item.PotentialProfit}</span></td>
-    <td>{item.description}</td>
-    <td>{item.Liability}</td>
-    <td>{item.Type}</td>
-    <td>{item.description}</td>
-    <td>{item.ipAddress}</td>
+    <td > <span style={{ color: item.PotentialProfit < 0 ? 'red' : 'green' }}>{item.PotentialProfit}</span></td>
+    <td >{item.Stack}</td>
+    <td >{item.Size}</td>
+    <td >{item.Type}</td>
+    <td >{}</td>
+    <td >{item.ipAddress?.split(",")[0]}</td>
 
   </tr>
 )

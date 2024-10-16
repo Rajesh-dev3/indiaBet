@@ -8,7 +8,7 @@ import moment from 'moment';
 const AccountStatement = () => {
 
   const [trigger,{data}] = useAccountstatementMutation()
- console.log(data , 'data')
+ console.log(data , 'dataac')
   const [formData, setFormData] = useState({
     from_date:'',
     to_date:'',
@@ -84,12 +84,15 @@ const   { name, value } = e.target;
   <thead>
 
   <tr>
-    <th>Date</th>
     <th>S.no</th>
+    <th>Date</th>
+    <th>Description	</th>
     <th>Credit</th>
     <th>Debit</th>
-    <th>Pts	</th>
-    <th>Remark</th>
+    <th>Commission</th>
+    <th>Match P&L	</th>
+    <th>Final P&L
+    </th>
 
   </tr>
   </thead>
@@ -98,6 +101,7 @@ const   { name, value } = e.target;
 return (
 
   <tr key={index}>
+    <td>{index + 1}</td>
     <td>{
                 moment(
                   parseInt(
@@ -106,11 +110,13 @@ return (
                 )
                   .utcOffset("+05:30")
                   .format("DD/MM/YYYY HH:mm:a")}</td>
-    <td>{index + 1}</td>
-    <td >  <span style={{ color: item.amount < 0 ? 'red' : 'green' }}> {item.amount}</span></td>
-    <td>-</td>
-    <td>{item.available_balance}</td>
     <td>{item.description}</td>
+    <td >  <span style={{ color:  'green'  }}> {item.amount>0 ? item?.amount:0}</span></td>
+    <td >  <span style={{ color: 'red' }}>{item.amount<0 ? item?.amount:0}</span></td>
+    <td >
+       <span style={{color:'red'}}>0</span> </td>
+    <td>-</td>
+    <td><span style={{color:'#008000'}}>{item.available_balance}</span></td>
 
   </tr>
 )

@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Tabs.scss'; // Import SCSS file for styling
+import AllBetTable from './AllBetTable';
+import FancyBetTable from './FancyBetTable';
+import { useMybetMutation } from '../../services/mybet/mybet';
+import { useParams } from 'react-router-dom';
 
 function Tabs() {
   const [activeTab, setActiveTab] = useState(0);
@@ -7,46 +11,20 @@ function Tabs() {
 
   // Array of tab labels
   const tabs = ['All Bet', 'Fancy Bet'];
-
+  const {matchId} =useParams()
+  const [formData, setFormData] = useState({
+    fancy_id:0,
+    market_id:"0",
+    match_id:matchId,
+    limit:10,
+    pageno:1,
+  });
+const[trigger, {data} ]= useMybetMutation()
+  const addData =data?.data?.MatchAndBetfair !=null  && [ ...data?.data?.MatchAndBetfair,...data?.data?.MatchFancy]
+  const fancyData = data && data?.MatchFancy
+console.log(addData,"addData")
   // Content for each tab including tables
-  const tabContent = [
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Runner</th>
-            <th>Odds</th>
-            <th>Stack</th>
-            <th>Bet Type</th>
-            <th>PnL</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* Add your table rows here */}
-        </tbody>
-      </table>
-    </div>,
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Runner</th>
-            <th>Bet Type</th>
-            <th>Odds</th>
-            <th>Stack</th>
-            <th>PnL</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* Add your table rows here */}
-        </tbody>
-      </table>
-    </div>
-  ];
+ 
 
   // Toggle content visibility based on the active tab
   const handleTabClick = (index) => {
@@ -58,6 +36,14 @@ function Tabs() {
     }
   };
 
+  const compObj = {
+    0:<AllBetTable data={addData}/>,
+    1:<FancyBetTable data={fancyData}/>
+  }
+  useEffect(() => {
+   trigger(formData)
+  }, [matchId])
+  
   return (
     <div className="tabs-container">
       {/* Tabs Header with Arrow Icon */}
@@ -82,7 +68,7 @@ function Tabs() {
       {/* Tabs Content */}
       {isContentVisible && (
         <div className="tabs-content">
-          {tabContent[activeTab]}
+          {compObj[activeTab]}
         </div>
       )}
     </div>

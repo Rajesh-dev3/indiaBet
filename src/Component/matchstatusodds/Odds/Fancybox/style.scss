@@ -37,7 +37,7 @@ width: calc(100% - 1px);
     color: #fff;
     margin-top: 6px;
     margin-left: 5px;
-
+cursor: pointer;
     border-radius: 5px;
     height: fit-content;
     padding: 4px 5px;
@@ -51,6 +51,7 @@ width: calc(100% - 1px);
     width: 20%;
     height: 100%;
     display: flex;
+    cursor: pointer;
     // background-color: rgb(63, 178, 34);
  @include media (phone){
   width: 40%;

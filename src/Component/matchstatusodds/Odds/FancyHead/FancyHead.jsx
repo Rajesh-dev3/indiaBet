@@ -26,10 +26,10 @@ const FancyHead = ({max,min}) => {
 
     <div className="fancy-row-odds " style={{padding:'0', borderRight:'.5px solid black'}}>
  
-    <Lay name='No' backgroundColor="#3199e7" />
+    <Lay name='No' backgroundColor="#f77791" />
       </div>
      
-    <div className="fancy-row-odds" style={{padding:'0'}}><Lay name='Yes' backgroundColor="#f77791" /></div>
+    <div className="fancy-row-odds" style={{padding:'0'}}><Lay name='Yes' backgroundColor="#3199e7" /></div>
                        {/* <div className="overback">suspended
                        </div> */}
     </div>

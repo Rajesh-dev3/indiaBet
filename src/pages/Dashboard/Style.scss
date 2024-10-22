@@ -20,6 +20,17 @@
     @include media (phone){
         height: 110px;
         }
+    @include media (desktop){
+        height: 190px;
+        }
+    @include media (tablet){
+        height: 190px;
+        }
+    @include media (largeHug){
+        height: 290.816px;
+
+        }
+
 }
     .nav-tabs{
         width: 100%;

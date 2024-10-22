@@ -7,7 +7,9 @@ import casinogame from './img/indiancasino.webp'
 import loginlogo from './img/logo_black.png'
 import bat from './img/cricket-icons.svg'
 import ball from './img/cricket-ball.svg'
+import logo from "../../public/assets/images/logo.png"
+// export {logo}
 
 export{
-    gameplayer,wallet,tv,userpic,slide,casinogame,loginlogo,bat,ball
+    gameplayer,wallet,tv,userpic,slide,casinogame,loginlogo,bat,ball,logo
 }

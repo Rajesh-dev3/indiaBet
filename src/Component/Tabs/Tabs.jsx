@@ -20,9 +20,8 @@ function Tabs() {
     pageno:1,
   });
 const[trigger, {data} ]= useMybetMutation()
-  const addData =data?.data?.MatchAndBetfair !=null  && [ ...data?.data?.MatchAndBetfair,...data?.data?.MatchFancy]
-  const fancyData = data && data?.MatchFancy
-console.log(addData,"addData")
+  const addData =data?.data?.MatchAndBetfair.length ? [ ...data?.data?.MatchAndBetfair]:[]
+
   // Content for each tab including tables
  
 
@@ -38,7 +37,7 @@ console.log(addData,"addData")
 
   const compObj = {
     0:<AllBetTable data={addData}/>,
-    1:<FancyBetTable data={fancyData}/>
+    1:<FancyBetTable data={data?.data?.MatchFancy}/>
   }
   useEffect(() => {
    trigger(formData)

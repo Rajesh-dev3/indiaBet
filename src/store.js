@@ -13,6 +13,8 @@ import { eventSession } from './services/fancy/Fancy';
 import { oddsBetsPlace } from './services/betPalce/oddsBetPlace';
 import betDataSlice from "./services/betSlice/betSlice"
 import { mybet } from './services/mybet/mybet';
+import { scoreBoard } from './services/Scoreboard/scoreboard';
+import { walletBalance } from './services/Walletbalance/walletbalance';
 
 export const store = configureStore({
   reducer: {
@@ -31,6 +33,8 @@ export const store = configureStore({
     [eventSession.reducerPath]: eventSession.reducer,
     [mybet.reducerPath]: mybet.reducer,
     [oddsBetsPlace.reducerPath]: oddsBetsPlace.reducer,
+    [scoreBoard.reducerPath]: scoreBoard.reducer,
+    [walletBalance.reducerPath]: walletBalance.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -41,12 +45,13 @@ export const store = configureStore({
   .concat(inplay.middleware)
   .concat(bethistory.middleware)
   .concat(profitnloss.middleware)
-  // .concat(eventdetail.middleware)
+  .concat(walletBalance.middleware)
   .concat(eventDetail.middleware)
   .concat(eventDetail.middleware)
   .concat(eventSession.middleware)
   .concat(oddsBetsPlace.middleware)
   .concat(mybet.middleware)
+  .concat(scoreBoard.middleware)
   .concat(eventgame.middleware),
 });
 

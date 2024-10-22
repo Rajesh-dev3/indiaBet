@@ -1,6 +1,11 @@
 import React from 'react'
+import moment from 'moment';
 
 const AllBetTable = ({data}) => {
+  console.log(data,"data")
+
+  // const date = moment("Wed Oct 16 10:43:24 IST 2024", "ddd MMM DD HH:mm:ss z YYYY");
+
   return (
     <div>
     <table>
@@ -16,16 +21,31 @@ const AllBetTable = ({data}) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+      {data?.map((item , index) =>{
+return (
+        <tr key={index} className='allbetchart' style={{background:item?.is_back == "1"?"#72bbef":"#faa9ba"}}>
+
+          <td style={{background:"#4cebdc"}}>{index + 1}</td>
+          <td>{item.selectionName
+          }</td>
+          <td>{item.odds}</td>
+          <td>{item.stack}</td>
+          <td>{item.is_back ==1?"Back":"Lay"}</td>
+          <td>{item.p_l}</td>
+          <td>{
+                moment(
+                  parseInt(
+                    item && item.created_at ? item.created_at : null,
+                  ) * 1000,
+                )
+                  // .utcOffset("+05:30")
+                  .format("ddd MMM DD HH:mm:ss z YYYY")}</td> 
+        
         
         </tr>
+        )
+      })
+      }
       </tbody>
       <tbody>
         {/* Add your table rows here */}

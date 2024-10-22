@@ -5,7 +5,7 @@ import BackValue from '../../back-lay-value/BackValue'
 
 const OddsRow = ({profithandler,profitLoss,data,prevOdd,odddata,setSelectionId}) => {
 
-
+console.log(data, "showdata")
 
   
   return (

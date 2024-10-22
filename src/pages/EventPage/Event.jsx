@@ -11,6 +11,7 @@ import { useEventDetailMutation } from '../../services/eventDetail/eventDetail'
 import { useGetEventSessionMutation } from '../../services/fancy/Fancy'
 import { useDispatch, useSelector } from 'react-redux'
 import { setBetData } from '../../services/betSlice/betSlice'
+import moment from 'moment'
 
 const Event = () => {
   const [odddata, setOdddata] = useState();
@@ -20,9 +21,14 @@ const Event = () => {
   const { sportId, matchId } = useParams()
   const [trigger, { data }] = useEventDetailMutation()
   const [trigg, { data: fancy }] = useGetEventSessionMutation()
+console.log(data , "betscore")
 
 
-
+  const date = moment(
+    parseInt(
+      odddata?.MatchDetails && odddata?.MatchDetails?.start_date ? odddata?.MatchDetails?.start_date : null,
+    ) * 1000,
+  )
   useEffect(() => {
 
     trigger({ "match_id": matchId, "sport_id": sportId })
@@ -30,6 +36,7 @@ const Event = () => {
     const timer = setInterval(() => {
       trigger({ "match_id": matchId, "sport_id": sportId })
       trigg({ match_id: matchId })
+      // console.log(matchId, 'dyummy')
     }, 3000);
     return () => clearInterval(timer);
   }, [sportId, matchId])
@@ -86,15 +93,15 @@ const betData = useSelector((state)=>state?.betData?.betData)
     })
    
 const checkSelectionId = (i)=>{
-  if(eventId?.runner_json[i].selectionId == item?.selectionId){
-    if(is_back == 1){
+  if(eventId?.runner_json[i]?.selectionId == item?.selectionId){
+    if(is_back == 1 || betData?.isBack == 1){
       return Number(stackWin)
     }else{
       
       return -Number(stack)
     }
   }else{
-    if(is_back == 0){
+    if(is_back == 0 || betData?.isBack == 0){
       return Number(stackWin)
     }else{
       return -Number(stack)
@@ -153,13 +160,13 @@ const checkSelectionId = (i)=>{
     }
   }, [betData == null])
   
-  
+  // console.log(matchId , "matchids")
 
   
   return (
     <>
       <div className="event">
-        <MatchScore />
+        <MatchScore odddata={odddata} date={date} matchId={matchId} />
         <StatusOdds />
         <div style={{ marginTop: "10px" }}>
           {odddata?.MatchDetails?.runner_json?.length ?

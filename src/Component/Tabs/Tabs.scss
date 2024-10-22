@@ -81,6 +81,7 @@ background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
   background-color: #f9f9f9;
   border-top: 1px solid $tab-border-color;
   height: 60vh;
+  overflow-x: scroll;
 //   border-radius: 5px;
 
   table {
@@ -88,11 +89,16 @@ background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
     border-collapse: collapse;
     // margin-top: 10px;
 
-    th, td {
-        background: #c8c8c8;
+    td {
+        // background: #c8c8c8;
         text-align: center;
         color: #000;
+        text-wrap: nowrap;
+        padding: 4px;
+font-weight: 600;
         font-size: 13px;
+        border: 1px solid rgba(0, 0, 0, .58);
+
     }
 
     th {
@@ -100,17 +106,26 @@ background: linear-gradient(-180deg, #243a48 20%, #172732 91%);
         text-align: center;
         color: #000;
         font-size: 13px;
+        text-wrap: nowrap;
+        
         font-weight: 100;
         padding: 4px;
         border: 1px solid rgba(0, 0, 0, .58);
         border-top: none;
     }
 
-    tr:hover {
-      background-color: $tab-hover-color; // Highlight on hover
-    }
+    // tr:hover {
+    //   background-color: $tab-hover-color; // Highlight on hover
+    // }
+    // tbody {
+      .allbetchart {
+      &:hover{
+        background: #c6f6f2 !important;
+        cursor: pointer;
+      }
+    }}
   }
 
 
 
-}
+// }

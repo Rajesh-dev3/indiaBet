@@ -4,17 +4,20 @@ import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
-import { useState } from "react";
+import { useWalletBalanceMutation } from "../../services/Walletbalance/walletbalance";
+import { useEffect, useState } from "react";
 import { StyledButton } from "./styled";
 import { useMediaQuery } from "../../useMediaQuery";
 import { wallet } from "../../assets/Index";
 
 import "./styles.scss"
-
+export let exposureRef;
 const Header = ({ setActiveSider }) => {
+    const [trigger, { data }] = useWalletBalanceMutation()
+    const [exposureData, setExposureData] = useState(null)
+    // const [openSearch, setOpenSearch] = useState(false)
 
-
+    const handleOpen = () => setModalOpen(true);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -26,6 +29,37 @@ const Header = ({ setActiveSider }) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+  
+    
+  
+    useEffect(() => {
+      trigger()
+      const timer = setInterval(() => {
+        trigger()
+      }, 5000);
+      return () => clearInterval(timer);
+     
+    }, [])
+  useEffect(() => {
+    if (data?.message === "Success.") {
+      setExposureData(prevData => {
+        // Update only if the data is different
+        if (
+          !prevData ||
+          prevData.data?.balance != data.data?.balance ||
+          prevData.data?.liability != data.data?.liability
+        ) {
+          return data;
+        }
+        return prevData;
+      });
+    }
+    
+  }, [data])
+
+  exposureRef = trigger
+  
+  
     const isMobile = useMediaQuery("(max-width:780px)")
 
     return (
@@ -42,7 +76,7 @@ const Header = ({ setActiveSider }) => {
                             <Link>
                                 <h3 className="logo-name">INDIABET</h3>
                             </Link>
-                            <p className="client-name">c386761</p> <p className="client-name">(chana)</p>
+                            <p className="client-name">{localStorage.getItem("user_name")} </p> <p className="client-name">(chana)</p>
 
                             <Link to={"/"}><img src={logo} alt="logo" /></Link>
                         </div>
@@ -51,7 +85,8 @@ const Header = ({ setActiveSider }) => {
 
 
                                 <Marquee>
-                                    Welcome
+                                    {/* Welcome  */}
+                                     {exposureData?.data?.site_message}
                                 </Marquee>
                             </Link>
                         </div>
@@ -61,11 +96,13 @@ const Header = ({ setActiveSider }) => {
                             <li className="exposure">
                                 <Link >
                                     <span >Main : </span>
-                                    <span style={{ marginLeft: "4px" }}>0</span>
+                                    <span style={{ marginLeft: "4px" }}>{exposureData?.data?.balance}</span>
                                 </Link>
                                 <Link >
-                                    <span>Exposure : </span>
-                                    <span style={{ marginLeft: "4px" }}>0</span>
+                                    <span
+                                     onClick={handleOpen}
+                                    >Exposure : </span>
+                                    <span style={{ marginLeft: "4px" }}>{exposureData?.data?.liability }</span>
                                 </Link>
                             </li>
                             <li className="home-icon">
@@ -83,10 +120,10 @@ const Header = ({ setActiveSider }) => {
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
                                 endIcon={<MdKeyboardArrowDown />}
-                                sx={{ fontWeight: '700', fontSize: '15px' }}
+                                sx={{ fontWeight: '700', fontSize: '15px', textTransform:'none' }}
 
                             >
-                                c386761
+                                {localStorage.getItem("user_name")} 
                             </StyledButton>
                             <Menu
                                 id="basic-menu"
@@ -106,12 +143,13 @@ const Header = ({ setActiveSider }) => {
                 </div>
                 <div className="main-expo">
                     <div className="main-area">
-                        <img src={wallet} alt="wallet-icon" /> Main : <span style={{ marginLeft: '5px' }}>0</span></div>
-                    <div className="expo-area">Exp :<span style={{ marginLeft: '5px' }}>0</span></div>
+                        <img src={wallet} alt="wallet-icon" /> Main : <span style={{ marginLeft: '5px' }}>{exposureData?.data?.balance}</span></div>
+                    <div className="expo-area"   onClick={handleOpen}>Exp :<span style={{ marginLeft: '5px' }}>{exposureData?.data?.liability }</span></div>
                 </div>
                 <div className="marquee">
                     <Marquee>
-                        Welcome
+                        {/* Welcome */}
+                        {exposureData?.data?.site_message}
                     </Marquee>
                 </div>
             </div>

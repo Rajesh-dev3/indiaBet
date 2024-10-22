@@ -25,7 +25,7 @@ const [betModuleOpen, setBetModuleOpen] = useState(false)
    }
   }, [betData?.betData?.odds])
   
-  console.log(betModuleOpen,"betModuleOpen")
+  
   // {"is_back":"1","match_id":"33642369","odds":"480","selection_id":7461,"stack":100,"market_id":"1.233736154"}
   return (
     <>

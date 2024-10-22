@@ -12,6 +12,8 @@ import { useGetEventSessionMutation } from '../../services/fancy/Fancy'
 import { useDispatch, useSelector } from 'react-redux'
 import { setBetData } from '../../services/betSlice/betSlice'
 import moment from 'moment'
+import BetPlaceSlip2 from '../../Component/BetPlaceSlip2/BetPlaceSlip2'
+import { useMediaQuery } from '../../useMediaQuery'
 
 const Event = () => {
   const [odddata, setOdddata] = useState();
@@ -21,7 +23,6 @@ const Event = () => {
   const { sportId, matchId } = useParams()
   const [trigger, { data }] = useEventDetailMutation()
   const [trigg, { data: fancy }] = useGetEventSessionMutation()
-console.log(data , "betscore")
 
 
   const date = moment(
@@ -83,6 +84,9 @@ console.log(data , "betscore")
 
   const profithandler = (stack, odds, is_back, eventId, item) => {
     setSelectionId(item)
+    if(item){
+      setBetModuleOpen(true)
+    }
     const stackWin = (Number(odds) - 1) * Number(stack);
     const findIndex = ((index) => {
       if (checkFancy == true) {
@@ -173,8 +177,8 @@ const runner_jsonLength = eventId?.runner_json?.length
   
 
 
-
-
+  const [betModuleOpen, setBetModuleOpen] = useState(false)
+  const isMobile = useMediaQuery("(max-width:780px)")
   return (
     <>
       <div className="event">
@@ -189,7 +193,7 @@ const runner_jsonLength = eventId?.runner_json?.length
             const findFancySelection = profitLoss?.find(elm => elm.selectionId === item?.selectionId)?.winLoss || 0
             const displayValue = (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2);
             return (
-
+<>
               <OddsRow
                 profithandler={profithandler}
                 setSelectionId={setSelectionId}
@@ -197,6 +201,11 @@ const runner_jsonLength = eventId?.runner_json?.length
                 odddata={odddata?.MatchDetails}
                 data={item} key={item?.selectionName}
                 prevOdd={prevState?.MatchDetails?.runner_json[i]} />
+{betModuleOpen && isMobile && item?.selectionId == selectionId2?.selectionId ?
+                <BetPlaceSlip2 setBetModuleOpen={setBetModuleOpen}/>
+              :""}
+</>
+            
             )
           })}
         </div >
@@ -209,6 +218,7 @@ const runner_jsonLength = eventId?.runner_json?.length
             const displayValue = (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2)
             
             return (
+              <>
               <OddsRow
                 profithandler={profithandler}
                 profitLoss={displayValue}
@@ -216,7 +226,11 @@ const runner_jsonLength = eventId?.runner_json?.length
                 odddata={odddata?.BookerMakerMarket}
                 data={item} key={item?.selectionName}
                 prevOdd={prevState?.BookerMakerMarket?.runner_json[i]}
-              />
+                />
+                {betModuleOpen && isMobile && item?.selectionId == selectionId2?.selectionId ?
+                <BetPlaceSlip2 setBetModuleOpen={setBetModuleOpen}/>
+              :""}
+                </>
             )
           })}
         </div>

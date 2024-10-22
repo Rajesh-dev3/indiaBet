@@ -169,7 +169,7 @@ useEffect(() => {
 
                 </div>
                 <div className="betclean-btn2">
-                    <button className='clean-all2'> <i className='fa fa-trash-o'></i> Clean All Selection</button>
+                    <button className='clean-all2' onClick={()=>setBetModuleOpen(false)}> <i className='fa fa-trash-o'></i> Clean All Selection</button>
                     <button className='place-bet2' onClick={() => betSubmitHandler()}> <i className='fa fa-trash-o'></i> Place Bet</button>
                 </div>
             </div>

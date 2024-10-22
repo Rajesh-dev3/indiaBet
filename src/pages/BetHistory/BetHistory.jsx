@@ -3,13 +3,14 @@ import './style.scss';
 import Pagination from '../../Component/Pagination/Pagination';
 import { useBethistoryMutation } from '../../services/bethistory/betHistory';
 import moment from 'moment';
+import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
 
 const BetHistory = () => {
   const [activeTab, setActiveTab] = useState('All');
   const tabs = ['All', 'Cricket', 'Tennis', 'Soccer', 'Fancy'];
 
   
-  const [trigger ,{data}] = useBethistoryMutation()
+  const [trigger ,{data, isLoading}] = useBethistoryMutation()
 
  const [formData, setFormData] = useState({
   betType: "P",
@@ -124,7 +125,7 @@ useEffect(() => {
   </tr>
   </thead>
   <tbody>
-{data?.data?.map((item , index) =>{
+  {isLoading ? <Loaderlogo />: data?.data?.map((item , index) =>{
 return (
 
   <tr key={index}  className='tablebethistory' style={{background:item?.Type == "Back" ? "#72bbef":"#faa9ba"}}

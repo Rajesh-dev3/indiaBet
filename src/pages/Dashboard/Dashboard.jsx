@@ -4,6 +4,7 @@ import SportRow from "../../Component/Sports/SportRow";
 import SwiperSlider from "../../Component/SwiperSlider/SwiperSlider";
 import { useEventgameMutation } from "../../services/eventGame/gameEvent";
 import { useGameNameMutation } from "../../services/sport/gameName";
+import Loaderlogo from "../../Component/LoaderLogo/loaderlogo";
 // import { useEffect } from "react";
 
 const Dashboard = () => {
@@ -31,7 +32,7 @@ const [sportId, setSportId] = useState(4)
 
       <div className="nav-tabs">
 <ul className="nav-list">
-  {gameName?.data?.map((game, index) =>{
+{isLoading ? <Loaderlogo />: gameName?.data?.map((game, index) =>{
     const {name,sport_id} = game
     return(
       <li
@@ -49,18 +50,19 @@ const [sportId, setSportId] = useState(4)
 </ul>
 </div>
 <div className="game-area">
-{data?.data?.InplayMatches.map((item, i)=>{
+{isLoading ? <Loaderlogo />: data?.data?.InplayMatches.map((item, i)=>{
               return(
 <SportRow  key={i} index={i} item={item} active={true}/>
   )
 })}
-{isLoading ? "Loading": data?.data?.UpCommingMatches?.length ?
+{isLoading ? <Loaderlogo />: data?.data?.UpCommingMatches?.length ?
 data?.data?.UpCommingMatches.map((item, i)=>{
   return(
     <SportRow  key={i} index={i} item={item} active={false}/>
   )
 }):"Nodata"
 }
+
 </div>
 {/* <SportRow/> */}
     </div>

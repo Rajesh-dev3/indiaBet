@@ -4,11 +4,12 @@ import './style.scss'
 import Pagination from '../../Component/Pagination/Pagination'
 import { useProfitnlossMutation } from '../../services/profitnloss/profitnloss'
 import moment from 'moment';
+import Loaderlogo from '../../Component/LoaderLogo/loaderlogo'
 
 const ProfitLoss = () => {
 
   
-  const [trigger ,{data}] = useProfitnlossMutation()
+  const [trigger ,{data, isLoading}] = useProfitnlossMutation()
 
  const [formData, setFormData] = useState({
 betType:"P",
@@ -107,7 +108,7 @@ useEffect(() => {
 
   </thead>
   <tbody>
-{data?.data?.map((item , index) =>{
+  {isLoading ? <Loaderlogo />: data?.data?.map((item , index) =>{
 return (
 
   <tr key={index}>

@@ -19,7 +19,7 @@ const Event = () => {
   const [prevFancy, setPrevFancy] = useState()
   const [fancyData, setFancyData] = useState()
   const { sportId, matchId } = useParams()
-  const [trigger, { data }] = useEventDetailMutation()
+  const [trigger, { data  }] = useEventDetailMutation()
   const [trigg, { data: fancy }] = useGetEventSessionMutation()
 console.log(data , "betscore")
 

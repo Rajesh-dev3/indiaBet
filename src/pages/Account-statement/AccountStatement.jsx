@@ -4,10 +4,11 @@ import './style.scss';
 import { useState } from 'react';
 import { useAccountstatementMutation } from '../../services/account-statement/AccountStatement';
 import moment from 'moment';
+import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
 
 const AccountStatement = () => {
 
-  const [trigger,{data}] = useAccountstatementMutation()
+  const [trigger,{data, isLoading}] = useAccountstatementMutation()
   const [formData, setFormData] = useState({
     from_date:'',
     to_date:'',
@@ -96,7 +97,7 @@ const   { name, value } = e.target;
   </tr>
   </thead>
   <tbody>
-{data?.data?.map((item , index) =>{
+  {isLoading ? <Loaderlogo />: data?.data?.map((item , index) =>{
 return (
 
   <tr key={index}>

@@ -3,10 +3,11 @@ import './style.scss';
 import MatchHead from '../../Component/matchstatusodds/Match-Head/MatchHead'
 import SportRow from '../../Component/Sports/SportRow';
 import { useInplayMutation } from "../../services/inplay/Inplay";
+import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
 
 
 const InPlay = () => {
-  const [trigger, {data}] = useInplayMutation();
+  const [trigger, {data, isLoading}] = useInplayMutation();
   // const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -24,17 +25,17 @@ const InPlay = () => {
 cricketData &&
     <MatchHead name={"cricket"}/>
 }
-    {cricketData && cricketData?.map((item, i)=>{
+    {isLoading ? <Loaderlogo />: cricketData && cricketData?.map((item, i)=>{
               return(
-<SportRow  key={i} index={i} item={item}/>
+<SportRow  key={i} index={i} item={item} active={true}/>
   )
 })}
    {tennisData && 
     <MatchHead name={"tennis"}/>
    }
-    {tennisData && tennisData?.map((item, i)=>{
+    {isLoading ? <Loaderlogo />: tennisData && tennisData?.map((item, i)=>{
               return(
-<SportRow  key={i} index={i} item={item}/>
+<SportRow  key={i} index={i} item={item} active={true}/>
   )
 })}
     {/* <SportRow/>

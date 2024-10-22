@@ -82,8 +82,7 @@ console.log(data , "betscore")
   const betData = useSelector((state) => state?.betData?.betData)
 
   const profithandler = (stack, odds, is_back, eventId, item) => {
-    console.log(eventId,item,"eventId")
-
+    setSelectionId(item)
     const stackWin = (Number(odds) - 1) * Number(stack);
     const findIndex = ((index) => {
       if (checkFancy == true) {

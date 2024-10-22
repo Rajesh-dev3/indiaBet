@@ -4,7 +4,7 @@ import { gameplayer } from '../../assets/Index'
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import moment from 'moment';
 import { NavLink } from 'react-router-dom';
-const SportRow = ({item}) => {
+const SportRow = ({item,active}) => {
   return (
     <div className='sport-sec'>
         <h4 className='game-name'> {item?.seriesName}</h4>
@@ -35,7 +35,7 @@ const SportRow = ({item}) => {
         </div>
         <div className="match_status">
         
-        {"index" ==2? <span className='blinking-inplay'>In Play</span>
+        {active? <span className='blinking-inplay'>In Play</span>
          : <span className='going-inplay'>Going In-play</span>}
 
         </div>

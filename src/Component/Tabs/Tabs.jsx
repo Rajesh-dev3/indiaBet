@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import './Tabs.scss'; // Import SCSS file for styling
 import AllBetTable from './AllBetTable';
 import FancyBetTable from './FancyBetTable';
@@ -22,7 +22,6 @@ function Tabs() {
 const[trigger, {data} ]= useMybetMutation()
   const addData =data?.data?.MatchAndBetfair !=null  && [ ...data?.data?.MatchAndBetfair,...data?.data?.MatchFancy]
   const fancyData = data && data?.MatchFancy
-console.log(addData,"addData")
   // Content for each tab including tables
  
 

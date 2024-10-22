@@ -1,6 +1,7 @@
 import React from 'react'
 
 const AllBetTable = ({data}) => {
+  console.log(data,"data")
   return (
     <div>
     <table>

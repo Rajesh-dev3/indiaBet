@@ -1,12 +1,11 @@
-import React from 'react'
 import './style.scss'
 import { ball, bat } from '../../assets/Index'
-const MatchScore = () => {
+const MatchScore = ({name}) => {
   return (
     <>
     <div className='MatchScore'>
         <div className="scoretitle">
-            <div className="titleName">New South Wales v South Australia</div>
+            <div className="titleName">{name}</div>
             <div className="matches-btn">
                 <button className="matchlist">Matches</button>
             </div>

@@ -20,6 +20,8 @@ const [sportId, setSportId] = useState(4)
   trigge({"limit":50,"pageno":1})
  }, [])
 
+ const checkMatchLength =data?.data?.UpCommingMatches && [...data?.data?.InplayMatches,...data?.data?.UpCommingMatches]
+
   return (
     <div>
       <div className="slider-wrapper">
@@ -39,7 +41,7 @@ const [sportId, setSportId] = useState(4)
     >
       <Link to={"#"}>
         <span>{name}</span> 
-        {/* <span className={`game-no ${index === 0 ? 'bg-clr' : ''}`}>8</span> */}
+        {/* <span className={`game-no ${index === 0 ? 'bg-clr' : ''}`}>{checkMatchLength?.length}</span> */}
       </Link>
     </li>
     )
@@ -49,13 +51,13 @@ const [sportId, setSportId] = useState(4)
 <div className="game-area">
 {data?.data?.InplayMatches.map((item, i)=>{
               return(
-<SportRow  key={i} index={i} item={item}/>
+<SportRow  key={i} index={i} item={item} active={true}/>
   )
 })}
 {isLoading ? "Loading": data?.data?.UpCommingMatches?.length ?
 data?.data?.UpCommingMatches.map((item, i)=>{
   return(
-    <SportRow  key={i} index={i} item={item}/>
+    <SportRow  key={i} index={i} item={item} active={false}/>
   )
 }):"Nodata"
 }

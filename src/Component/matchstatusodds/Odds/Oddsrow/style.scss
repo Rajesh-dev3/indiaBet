@@ -42,10 +42,10 @@ background: white;
   }
   .rowright{
     width: 60%;
+    display: flex;
     @include media (phone){
       width: 40%;
     }
-    display: flex;
     .col1{
       width: 33.33%;
       display: flex;

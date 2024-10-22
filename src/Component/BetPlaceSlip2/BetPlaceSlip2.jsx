@@ -108,7 +108,6 @@ useEffect(() => {
 
 }, [betData])
 
-console.log(betData,"bet")
     return (
         <>
             <div className='betplace2'>

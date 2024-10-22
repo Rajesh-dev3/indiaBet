@@ -2,10 +2,6 @@ import React from 'react'
 import moment from 'moment';
 
 const AllBetTable = ({data}) => {
-  console.log(data,"data")
-
-  // const date = moment("Wed Oct 16 10:43:24 IST 2024", "ddd MMM DD HH:mm:ss z YYYY");
-
   return (
     <div>
     <table>

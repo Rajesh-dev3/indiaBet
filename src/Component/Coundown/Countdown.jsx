@@ -14,8 +14,8 @@ const dispatch = useDispatch()
       return () => clearInterval(timer);
     }
     if(count ==0){
-      dispatch(setBetData());
-      setBetModuleOpen(false)
+      // dispatch(setBetData());
+      // setBetModuleOpen(false)
     }
   }, [count]);
 

@@ -1,12 +1,13 @@
-import React from 'react'
 import './style.scss'
 import { useScoreBoardQuery } from '../../services/Scoreboard/scoreboard'
 import { ball, bat } from '../../assets/Index'
-const MatchScore = (odddata, date, matchId) => {
-    const {data} = useScoreBoardQuery(odddata?.matchId,{
+import { useParams } from 'react-router-dom'
+const MatchScore = ({name}) => {
+  const {matchId } =useParams()
+    const {data} = useScoreBoardQuery(matchId,{
         pollingInterval:1000
       })
-      console.log(data, "data")
+     
 
       
   const calculateOvers = (balls) => {
@@ -27,7 +28,7 @@ const MatchScore = (odddata, date, matchId) => {
     <>
     <div className='MatchScore'>
         <div className="scoretitle">
-            <div className="titleName"> {odddata?.odddata?.MatchDetails?.name} </div>
+            <div className="titleName">{name}</div>
             <div className="matches-btn">
                 <button className="matchlist">Matches</button>
             </div>

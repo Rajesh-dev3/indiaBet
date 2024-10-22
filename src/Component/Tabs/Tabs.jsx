@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import './Tabs.scss'; // Import SCSS file for styling
 import AllBetTable from './AllBetTable';
 import FancyBetTable from './FancyBetTable';

@@ -70,19 +70,20 @@ console.log(data , "betscore")
   const prevNormalFancy = prevFancy?.filter((item) => item?.fancy_category === "normal")
   const prevOverbyover = prevFancy?.filter((item) => item?.fancy_category === "overbyover")
   const prevBallbyball = prevFancy?.filter((item) => item?.fancy_category === "ballbyball")
-const [profitLoss, setProfitLoss] = useState([])
+  const [profitLoss, setProfitLoss] = useState([])
 
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-const [selectionId2, setSelectionId] = useState("")
+  const [selectionId2, setSelectionId] = useState("")
 
-const [checkBookMaker,setBookMaker]=useState(0)
-const [checkFancy, setCheckFancy] = useState(false)
+  const [checkBookMaker, setBookMaker] = useState(0)
+  const [checkFancy, setCheckFancy] = useState(false)
 
-const betData = useSelector((state)=>state?.betData?.betData)
+  const betData = useSelector((state) => state?.betData?.betData)
 
-  const profithandler = (stack, odds, is_back, eventId,item) => {
-   
+  const profithandler = (stack, odds, is_back, eventId, item) => {
+    console.log(eventId,item,"eventId")
+
     const stackWin = (Number(odds) - 1) * Number(stack);
     const findIndex = ((index) => {
       if (checkFancy == true) {
@@ -91,82 +92,94 @@ const betData = useSelector((state)=>state?.betData?.betData)
         return eventId?.runner_json?.length ? eventId?.runner_json[index]?.selectionId : null
       }
     })
-   
-const checkSelectionId = (i)=>{
-  if(eventId?.runner_json[i]?.selectionId == item?.selectionId){
-    if(is_back == 1 || betData?.isBack == 1){
-      return Number(stackWin)
-    }else{
-      
-      return -Number(stack)
-    }
-  }else{
-    if(is_back == 0 || betData?.isBack == 0){
-      return Number(stackWin)
-    }else{
-      return -Number(stack)
-      
-    }
-  }
-}
 
- 
+    const checkSelectionId = (i) => {
+      if (eventId?.runner_json[i].selectionId == item?.selectionId) {
+        if (is_back == 1) {
+          return Number(stackWin)
+        }
+        else if (is_back == 0) {
+          return -Number(stackWin)
+        }
+        else {
+          return -Number(stack)
+        }
+      }
+      else if (eventId?.runner_json[i].selectionId != item?.selectionId) {
+        if (is_back == 1) {
+          return -Number(stack)
+        }
+        if (is_back == 0) {
+          return Number(stack)
+        }
+      
+      }
 
+    }
+
+
+
+const runner_jsonLength = eventId?.runner_json?.length
     const obj = [
       {
         selectionId: findIndex(0),
-        marketName:eventId?.runner_json?.[0]?.selectionName,
-        marketId:!checkFancy?  eventId?.market_id:eventId?.runner_json?.[0]?.selectionName,
-        winLoss:checkSelectionId(0)  
+        marketName: eventId?.runner_json?.[0]?.selectionName,
+        marketId: !checkFancy ? eventId?.market_id : eventId?.runner_json?.[0]?.selectionName,
+        winLoss: checkSelectionId(0)
        
+
       },
       {
         selectionId: findIndex(1),
-        marketName:eventId?.runner_json?.[1]?.selectionName,
-        marketId:  !checkFancy?  eventId?.market_id:eventId?.runner_json?.[1]?.selectionName ,
-      
-        winLoss:checkSelectionId(1) 
+        marketName: eventId?.runner_json?.[1]?.selectionName,
+        marketId: !checkFancy ? eventId?.market_id : eventId?.runner_json?.[1]?.selectionName,
+
+        winLoss: checkSelectionId(1)
+       
       },
       {
         selectionId: findIndex(2),
-        marketName:eventId?.runner_json?.[2]?.selectionName,
-        marketId:!checkFancy?  eventId?.market_id:eventId?.runner_json?.[2]?.selectionName,
-        winLoss:checkSelectionId(2) 
+        marketName: eventId?.runner_json?.[2]?.selectionName,
+        marketId: !checkFancy ? eventId?.market_id : eventId?.runner_json?.[2]?.selectionName,
+        winLoss:runner_jsonLength ==2?checkSelectionId(1): checkSelectionId(2)
+      
       }
     ];
+  
     setProfitLoss(obj)
-    dispatch(setBetData({...betData,odds:odds,event:eventId,isBack:is_back,obj}));
-    
+    dispatch(setBetData({ ...betData, odds: odds, event: eventId, isBack: is_back, obj }));
+
   }
 
   useEffect(() => {
-    if (checkFancy == false ) {
+    if (checkFancy == false) {
       if (betData?.stack != null) {
-        profithandler(betData?.stack, betData?.odds, betData?.isBack, betData?.event,selectionId2)
+        profithandler(betData?.stack, betData?.odds, betData?.isBack, betData?.event, selectionId2)
       }
     } else if (checkFancy == true) {
-      if (betData?.stack != null ) {
-        profithandler(betData?.stack, betData?.odds, betData?.isBack, betData?.event,selectionId2)
+      if (betData?.stack != null) {
+        profithandler(betData?.stack, betData?.odds, betData?.isBack, betData?.event, selectionId2)
       }
     }
-  
+
   }, [betData?.stack])
 
 
   useEffect(() => {
-    if(betData == null){
+    if (betData == null) {
 
       setProfitLoss()
     }
   }, [betData == null])
   
-  // console.log(matchId , "matchids")
 
-  
+
+
+
   return (
     <>
       <div className="event">
-        <MatchScore odddata={odddata} date={date} matchId={matchId} />
+        <MatchScore name={odddata?.BookerMakerMarket?.name} />
         <StatusOdds />
         <div style={{ marginTop: "10px" }}>
           {odddata?.MatchDetails?.runner_json?.length ?
@@ -174,17 +187,17 @@ const checkSelectionId = (i)=>{
             : ""}
           {odddata?.MatchDetails?.runner_json?.map((item, i) => {
 
-const findFancySelection =  profitLoss?.find(elm => elm.selectionId === item?.selectionId)?.winLoss || 0
-const displayValue = findFancySelection ? (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2):0;
+            const findFancySelection = profitLoss?.find(elm => elm.selectionId === item?.selectionId)?.winLoss || 0
+            const displayValue = (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2);
             return (
 
               <OddsRow
-              profithandler={profithandler}
-              setSelectionId={setSelectionId}
-               profitLoss={displayValue} 
-               odddata={odddata?.MatchDetails}
-                data={item} key={item?.selectionName} 
-                prevOdd={prevState?.MatchDetails?.runner_json[i]}  />
+                profithandler={profithandler}
+                setSelectionId={setSelectionId}
+                profitLoss={displayValue}
+                odddata={odddata?.MatchDetails}
+                data={item} key={item?.selectionName}
+                prevOdd={prevState?.MatchDetails?.runner_json[i]} />
             )
           })}
         </div >
@@ -192,19 +205,19 @@ const displayValue = findFancySelection ? (findFancySelection + (item?.WinAndLos
           {odddata?.BookerMakerMarket?.runner_json?.length ?
             <OddsHeading max={odddata?.BookerMakerMarket?.marketMaxStack} min={odddata?.BookerMakerMarket?.marketMinStack} />
             : ""}
-          {odddata?.BookerMakerMarket?.runner_json?.map((item,i) => {
-            const findFancySelection =  profitLoss?.find(elm => elm.selectionId === item?.selectionId)?.winLoss || 0
-            const displayValue =findFancySelection? (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2):0
+          {odddata?.BookerMakerMarket?.runner_json?.map((item, i) => {
+            const findFancySelection = profitLoss?.find(elm => elm.selectionId === item?.selectionId)?.winLoss || 0
+            const displayValue = (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2)
+            
             return (
-
-              <OddsRow 
-               profithandler={profithandler}
-              profitLoss={displayValue} 
-              setSelectionId={setSelectionId}
-              odddata={odddata?.BookerMakerMarket}
-               data={item} key={item?.selectionName} 
-               prevOdd={prevState?.BookerMakerMarket?.runner_json[i]}
-               />
+              <OddsRow
+                profithandler={profithandler}
+                profitLoss={displayValue}
+                setSelectionId={setSelectionId}
+                odddata={odddata?.BookerMakerMarket}
+                data={item} key={item?.selectionName}
+                prevOdd={prevState?.BookerMakerMarket?.runner_json[i]}
+              />
             )
           })}
         </div>

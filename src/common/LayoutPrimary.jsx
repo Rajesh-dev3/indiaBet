@@ -33,7 +33,7 @@ const LayoutPrimary = () => {
   return (
     <>
       {isOpen &&
-    <Modal Element={<EditStakeModal/>} closeModal={closeModal}/>
+    <Modal Element={<EditStakeModal setIsOpen={setIsOpen}/>} closeModal={closeModal}/>
     }
       <div
         className={`sider-overlay ${

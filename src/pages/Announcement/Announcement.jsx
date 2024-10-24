@@ -33,6 +33,7 @@ const Announcement = () => {
 <div className="detail-sec-annoucement">
     <p>Showing 0 to 0 enteries</p>
 </div>
+
     </>
   )
 }

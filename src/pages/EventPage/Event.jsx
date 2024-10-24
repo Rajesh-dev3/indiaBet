@@ -14,6 +14,7 @@ import { setBetData } from '../../services/betSlice/betSlice'
 import moment from 'moment'
 import BetPlaceSlip2 from '../../Component/BetPlaceSlip2/BetPlaceSlip2'
 import { useMediaQuery } from '../../useMediaQuery'
+import Tabs from '../../Component/Tabs/Tabs'
 
 const Event = () => {
   const [odddata, setOdddata] = useState();
@@ -259,7 +260,7 @@ const runner_jsonLength = eventId?.runner_json?.length
             <FancyBox key={item?.RunnerName} data={item} prev={prevBallbyball[i]} />
           )
         })}
-
+{isMobile && <Tabs />}
       </div>
     </>
   )

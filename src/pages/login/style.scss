@@ -1,3 +1,4 @@
+@import '../../Styles/mixins';
 .bg_login{
     background-image: linear-gradient(rgba(255, 184, 12, 0.6), hsla(0, 0%, 100%, 0.6)), url(/src/assets/img/bg.webp) !important;
     background-position: inherit;
@@ -223,6 +224,9 @@
         padding: 20px;
         top: 50%;
         width: calc(350px - 40px);
+        @include media (smartphone){
+            width: 80%;
+        }
         .login-title{
             background: linear-gradient(-180deg, #315195 0%, #14213D 100%);
             color: #fc0;
@@ -315,6 +319,7 @@
                         text-transform: uppercase;
                         border: #ffb80c;
                         border-radius: 0;
+                        cursor: pointer;
                         line-height: 1.5;
                         text-align: center;
                         vertical-align: middle;

@@ -18,6 +18,7 @@ const InPlay = () => {
 
   const cricketData = data?.data?.filter((item)=>item?.SportName == "Cricket")
   const tennisData = data?.data?.filter((item)=>item?.SportName == "Tennis")
+  const soccerData = data?.data?.filter((item)=>item?.SportName == "Soccer")
   return (
     <>
     <div className="inplay-sec">
@@ -34,6 +35,14 @@ cricketData &&
     <MatchHead name={"tennis"}/>
    }
     {isLoading ? <Loaderlogo />: tennisData && tennisData?.map((item, i)=>{
+              return(
+<SportRow  key={i} index={i} item={item} active={true}/>
+  )
+})}
+   {soccerData && 
+    <MatchHead name={"Soccer"}/>
+   }
+    {isLoading ? <Loaderlogo />: soccerData && soccerData?.map((item, i)=>{
               return(
 <SportRow  key={i} index={i} item={item} active={true}/>
   )

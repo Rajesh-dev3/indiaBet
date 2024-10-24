@@ -15,6 +15,8 @@ import betDataSlice from "./services/betSlice/betSlice"
 import { mybet } from './services/mybet/mybet';
 import { scoreBoard } from './services/Scoreboard/scoreboard';
 import { walletBalance } from './services/Walletbalance/walletbalance';
+import { stakeUpdate } from './services/StakeUpdate/stakeupdate';
+import { changePassword } from './services/changepassword/changepassword';
 
 export const store = configureStore({
   reducer: {
@@ -35,6 +37,8 @@ export const store = configureStore({
     [oddsBetsPlace.reducerPath]: oddsBetsPlace.reducer,
     [scoreBoard.reducerPath]: scoreBoard.reducer,
     [walletBalance.reducerPath]: walletBalance.reducer,
+    [stakeUpdate.reducerPath]: stakeUpdate.reducer,
+    [changePassword.reducerPath]: changePassword.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -52,6 +56,8 @@ export const store = configureStore({
   .concat(oddsBetsPlace.middleware)
   .concat(mybet.middleware)
   .concat(scoreBoard.middleware)
+  .concat(stakeUpdate.middleware)
+  .concat(changePassword.middleware)
   .concat(eventgame.middleware),
 });
 

@@ -5,6 +5,7 @@ import SwiperSlider from "../../Component/SwiperSlider/SwiperSlider";
 import { useEventgameMutation } from "../../services/eventGame/gameEvent";
 import { useGameNameMutation } from "../../services/sport/gameName";
 import Loaderlogo from "../../Component/LoaderLogo/loaderlogo";
+import BetPlaceSlip from "../../Component/BetPlaceSlip/BetPlaceSlip";
 // import { useEffect } from "react";
 
 const Dashboard = () => {
@@ -65,6 +66,7 @@ data?.data?.UpCommingMatches.map((item, i)=>{
 
 </div>
 {/* <SportRow/> */}
+{/* <BetPlaceSlip/> */}
     </div>
   )
 }

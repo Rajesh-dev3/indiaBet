@@ -1,7 +1,11 @@
+@import '../../Styles/mixins';
 .ChangePassword{
     width: calc(100% - 30px);
     margin: 0 auto;
     // padding: 0 15px;
+    @include media (phone){
+        width: 100%;
+    }
     .Change-title {
         display: inline-block;
         width: calc(100% - 20px) ;
@@ -11,12 +15,18 @@
         text-transform: capitalize;
         color: #fff;
         font-weight: 700;
+        @include media (phone){
+            width: calc(100% - 20px) ;
+        }
     }
     .item{
         margin: 5px 0;
         width: calc(100% - 0px);
         display: flex;
         // background: green;
+        @include media (phone){
+            flex-direction: column;
+        }
         .password-name{
             width: 22.5%;
             text-align: right;
@@ -26,6 +36,14 @@
             font-size: 13px;
             padding-right: 15px;
     padding-left: 15px;
+    @include media (phone){
+        width: 90%;
+        text-align: left;
+        padding-right: 0;
+        padding-left: 10px;
+        padding-bottom: 3px;
+
+    }
         }
         .password{
            
@@ -37,13 +55,20 @@
             border: 1px solid #ccc;
             color: gray;
             outline: none;
-         
+            @include media (phone){
+                width: 90%;
+                margin-left: 5px;
+            }
         
         }
     }
     .btn-change-password{
         padding-left: 26.5%;
         margin-top: 12px;
+        @include media (phone){
+            padding-left: 5px;
+            padding-top: 5px;
+        }
         .reset{
             padding: 8px 12px;
             background-color: #e2a521;       

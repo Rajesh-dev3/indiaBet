@@ -11,7 +11,8 @@
     left: 0;
     z-index: 99999999;
     .element {
-        animation: rotateAnimation .5s infinite;
+      height: 60px;
+        animation: rotateAnimation .4s infinite;
       }
       
       @keyframes rotateAnimation {

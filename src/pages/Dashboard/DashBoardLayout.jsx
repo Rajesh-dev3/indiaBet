@@ -30,7 +30,7 @@ const [betModuleOpen, setBetModuleOpen] = useState(false)
   return (
     <>
     {isOpen &&
-    <Modal Element={<EditStakeModal/>} closeModal={closeModal}/>
+    <Modal Element={<EditStakeModal setIsOpen={setIsOpen}/>} closeModal={closeModal}/>
     }
    <div className="dashboard-sec">
 

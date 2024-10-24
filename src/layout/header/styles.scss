@@ -16,12 +16,16 @@
         flex-direction: column;
         margin-bottom: 3px;
     }
+
 .main{
 
 width: 100%;
 display: flex;
 @include media (phone) {
     line-height: 28px;
+}
+@include media (largeHug){
+    width: 100%;
 }
 
     .logo {
@@ -88,6 +92,10 @@ display: none;
     .wrapper {
         display: flex;
         width: 77.5%;
+        @include media (largeHug) {
+            width: 85.5%;
+           
+                        }
     }
 
     .news {

@@ -43,7 +43,7 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
         if (betData) {
            
             trigge({ "match_id": matchId, "sport_id": sportId })
-
+// console.log(betdata, "betdata")
         }
 
     }, [])

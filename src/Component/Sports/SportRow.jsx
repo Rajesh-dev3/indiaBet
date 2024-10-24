@@ -8,6 +8,7 @@ const SportRow = ({item,active}) => {
   return (
     <div className='sport-sec' >
         <h4 className='game-name'> {item?.seriesName}</h4>
+        <NavLink to={`/event/${item?.sport_id}/${item?.match_id}/${item?.market_id}` }>
         <div style={{display:"flex"}}>
         <div className="game">
 
@@ -29,7 +30,7 @@ const SportRow = ({item,active}) => {
   width: "140px",
   overflow: "hidden",
   textOverflow: "ellipsis", 
-  }}> <NavLink to={`/event/${item?.sport_id}/${item?.match_id}/${item?.market_id}` }> {item?.name}</NavLink></span>
+  }}>  {item?.name}</span>
 
             </span>
         </div>
@@ -46,6 +47,7 @@ const SportRow = ({item,active}) => {
         </div>
 
         </div>
+        </NavLink>
     </div>
   )
 }

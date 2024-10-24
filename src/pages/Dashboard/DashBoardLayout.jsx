@@ -7,6 +7,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import BetPlaceSlip2 from '../../Component/BetPlaceSlip2/BetPlaceSlip2'
 import Tabs from '../../Component/Tabs/Tabs'
 import { useSelector } from 'react-redux'
+// import BetPlaceSlip from '../../Component/BetPlaceSlip/BetPlaceSlip'
 const DashBoardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -52,6 +53,7 @@ const [betModuleOpen, setBetModuleOpen] = useState(false)
         <BetPlaceSlip2 setBetModuleOpen={setBetModuleOpen}/>
       :""}
         <Tabs/>
+        {/* <BetPlaceSlip /> */}
         </>
         }
       </div>

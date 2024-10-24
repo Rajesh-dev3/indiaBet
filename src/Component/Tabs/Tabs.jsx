@@ -20,6 +20,7 @@ function Tabs() {
     pageno:1,
   });
 const[trigger, {data} ]= useMybetMutation()
+console.log(data , 'useMybetMutation')
   const addData =data?.data?.MatchAndBetfair.length ? [ ...data?.data?.MatchAndBetfair]:[]
 
   // Content for each tab including tables

@@ -124,9 +124,12 @@ display: none;
     }
 
     .right-col {
+        width: 23%;
+        display: flex;
+        justify-content: end;
         @include media (phone){
+            display: flex;
             width: 23%;
-    display: flex;
     justify-content: end;
     // margin-right: 10px;
         }

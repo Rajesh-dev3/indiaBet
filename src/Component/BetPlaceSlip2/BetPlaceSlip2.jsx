@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEventDetailMutation } from '../../services/eventDetail/eventDetail';
 import { setBetData } from '../../services/betSlice/betSlice';
+import { toast } from 'react-toastify';
+import { exposureRef } from '../../layout/header';
 const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
     const [stakeValue, setStakeValue] = useState(null);
 
@@ -27,17 +29,30 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
     const betData = useSelector((state) => state.betData?.betData);
     const { sportId, matchId ,fancyId} = useParams()
     const [trigger, { data }] = useOddsBetsPlaceMutation()
+    // {"is_back":betData?.isBack,"match_id":matchId,"odds":betData?.odds,"selection_id":selectionId2?.selectionId,"stack":betData?.stack,"market_id":betData?.event?.market_id}
     const betSubmitHandler = () => {
         const betPAyloadDat = {
             is_back:String(betData?.isBack),
-            market_id:String(fancyId),
+            market_id:String(betData?.event?.market_id),
             match_id:String(matchId),
             odds: String(betData?.odds),
             stack: stakeValue,
-            selection_id:betData?.obj?.[0]?.selectionId
+            selection_id:betData?.selectionId
         }
         trigger(betPAyloadDat)
     }
+
+
+    useEffect(() => {
+        if (data?.error) {
+          toast.error(data?.message)
+    } else if (data?.error == false) {
+        exposureRef()
+        dispatch(setBetData());
+          toast?.success(data?.message,"message")
+        }
+      }, [data])
+
 
     useEffect(() => {
         if (betData) {
@@ -68,23 +83,7 @@ const [profitLoss, setProfitLoss] = useState({
     profit:0,
     loss:0
 })
-// const checkSelectionId = (i)=>{
-//     if(obj?.runner_json[i].selectionId == item?.selectionId){
-//       if(obj?.is_back == 1){
-//         return Number(stackWin)
-//       }else{
-        
-//         return -Number(stack)
-//       }
-//     }else{
-//       if(obj?.is_back == 0){
-//         return Number(stackWin)
-//       }else{
-//         return -Number(stack)
-        
-//       }
-//     }
-//   }
+
 useEffect(() => {
     betData?.obj?.map((item,index)=>{
         if(index ==1 || index == 0 && item?.winLoss){
@@ -118,11 +117,11 @@ useEffect(() => {
                     </div>
                     <div className="bet-profit2">
                         <p className='profit2'>Profit</p>
-                        <p>{profitLoss?.profit}</p>
+                        <p>{profitLoss?.profit && profitLoss?.profit?.toFixed(2)}</p>
                     </div>
                     <div className="bet-loss2">
                         <p className='loss2'>Loss</p>
-                        <p>{profitLoss?.loss}</p>
+                        <p>{profitLoss?.loss && profitLoss?.loss?.toFixed(2)}</p>
                     </div>
                     <div className="bet-game-name2">
                         <p className='bet-name2'>{betData?.selectionName}</p>
@@ -136,7 +135,7 @@ useEffect(() => {
                     <div className="left-bet-odd2">
                         <p className='odd2'>Odd</p>
                         <div className="bet-value2">
-                            <input type="number" value={betData?.odds} />
+                            <input type="number" value={betData?.odds}  pattern="\d*"/>
                             <div className="minus2">-</div>
                             <div className="plus2">+</div>
                         </div>
@@ -144,7 +143,7 @@ useEffect(() => {
                     <div className="right-bet-stake2">
                         <p className='Stake2'>Stake</p>
                         <div className="bet-value2">
-                            <input type="number" value={betData?.stack}
+                            <input type="number"  pattern="\d*" value={betData?.stack}
                                 onChange={handleStakeChange} />
                             <div className="minus2" onClick={() =>{
                            

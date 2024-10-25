@@ -17,7 +17,7 @@ const Header = ({ setActiveSider }) => {
     const [exposureData, setExposureData] = useState(null)
     // const [openSearch, setOpenSearch] = useState(false)
 
-    const handleOpen = () => setModalOpen(true);
+    const handleOpen = () =>{};
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {

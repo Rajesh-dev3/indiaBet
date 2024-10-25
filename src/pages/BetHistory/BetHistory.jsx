@@ -14,26 +14,36 @@ const BetHistory = () => {
 
  const [formData, setFormData] = useState({
   betType: "P",
-from_date:'1727980200',
+from_date:moment().startOf('day').subtract(10, 'days').unix(),
 limit:'10',
 market_id: '0',
 match_id:'0',
 pageno:'1',
 sport_id:'0',
-to_date:'1728584999',
+to_date:moment().startOf('day').unix(),
 });
 
 
 const formHandler = (e)=>{
-const   { name, value } = e.target;
- 
-  setFormData((prev) =>{
-return {
- ...prev,[name]:value
-
-}
-  })
-}
+  const   { name, value } = e.target;
+      if(name == "from_date" || name == "to_date"){
+  
+        setFormData((prev) =>{
+     return {
+       ...prev,[name]:moment(value).startOf('day').unix()
+    
+     }
+        })
+      }else{
+  
+        setFormData((prev) =>{
+     return {
+       ...prev,[name]:value
+    
+     }
+        })
+      }
+    }
 const dateFilterHandler = (e) => {
   e.preventDefault();
   trigger(formData); // Dispatch the loginUser thunk
@@ -43,6 +53,20 @@ const dateFilterHandler = (e) => {
 useEffect(() => {
   trigger(formData); 
 }, [])
+const clearFilter= ()=>{
+  const initialData ={
+    betType: "P",
+    from_date:moment().startOf('day').subtract(10, 'days').unix(),
+    limit:'10',
+    market_id: '0',
+    match_id:'0',
+    pageno:'1',
+    sport_id:'0',
+    to_date:moment().startOf('day').unix(),
+  }
+  setFormData(initialData)
+  trigger(initialData);
+}
 
 
   return (
@@ -56,10 +80,12 @@ useEffect(() => {
          <div className="date-filters">
   
     <div className="date1">
-    <input type="date" id="fdate" className='form-control' name="from_date" onChange={formHandler}/>
+ 
+    <input type="date" id="fdate" className='form-control' name="from_date"  value={formData?.from_date ? moment.unix(formData.from_date).format("YYYY-MM-DD"): ""} onChange={formHandler}/>
     </div>
     <div className="date1">
-    <input type="date" id="fdate" className='form-control' name="to_date"onChange={formHandler} />
+
+    <input type="date" id="fdate" className='form-control' name="to_date"    value={formData?.to_date ? moment.unix(formData.to_date).format("YYYY-MM-DD") : ""} onChange={formHandler} />
     </div>
     <div className="date1">
     <select name="betType" id="gameselect" className='form-control' onChange={formHandler}>
@@ -69,8 +95,8 @@ useEffect(() => {
 </select>
     </div>
     <div className="date1 filter2">
- <span className='filter filter-btn'><span className='icon-filter'><i className="fa fa-filter" onClick={dateFilterHandler}></i></span> Filter</span>
- <span className='clear filter-btn'><span className='icon-filter'><i className="fa fa-eraser"></i></span> Clear</span>
+ <span className='filter filter-btn'onClick={dateFilterHandler}><span className='icon-filter'><i className="fa fa-filter" ></i></span> Filter</span>
+ <span className='clear filter-btn'onClick={()=>clearFilter()}><span className='icon-filter'><i className="fa fa-eraser"></i></span> Clear</span>
     </div>
 </div>
 <div className="betsalltab">

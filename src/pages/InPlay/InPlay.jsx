@@ -47,10 +47,7 @@ cricketData &&
 <SportRow  key={i} index={i} item={item} active={true}/>
   )
 })}
-    {/* <SportRow/>
-    <SportRow/>
-    <MatchHead/>
-    <SportRow/> */}
+ 
     </div>
     </>
   )

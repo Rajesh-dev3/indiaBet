@@ -29,7 +29,7 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
 
     const betData = useSelector((state) => state.betData?.betData);
     const { sportId, matchId ,fancyId} = useParams()
-    const [trigger, { data }] = useOddsBetsPlaceMutation()
+    const [trigger, { data ,isLoading }] = useOddsBetsPlaceMutation()
     // {"is_back":betData?.isBack,"match_id":matchId,"odds":betData?.odds,"selection_id":selectionId2?.selectionId,"stack":betData?.stack,"market_id":betData?.event?.market_id}
     const betSubmitHandler = () => {
         const betPAyloadDat = {

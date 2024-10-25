@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.scss'
 import { useMybetMutation } from '../../services/mybet/mybet';
 import { useParams } from 'react-router-dom';
 
 // import moment from 'moment'
 const Runningmarket = () => {
-  const[trigger, {data} ]= useMybetMutation()
   const {matchId} =useParams()
+  const[trigger, {data}]= useMybetMutation()
+  console.log(data , "usebet");
   const [formData, setFormData] = useState({
     fancy_id:0,
     market_id:"0",
@@ -14,7 +15,11 @@ const Runningmarket = () => {
     limit:10,
     pageno:1,
   });
-  console.log(data, "running")
+  useEffect(() => {
+    trigger(formData)
+   }, [matchId])
+   
+
   return (
   <>
     <div className="Runningmarket-sec">
@@ -39,6 +44,22 @@ const Runningmarket = () => {
 
   </tr>
   </thead>
+  <tbody>
+
+  <tr>
+    <td>S.no</td>
+    <td>Match_Name</td>
+    <td>Market_Name	</td>
+    <td>Sport_Name</td>
+    <td>Match_Status</td>
+    <td>pn1</td>
+    <td>pn2</td>
+    <td>The Draw
+    </td>
+
+  </tr>
+  </tbody>
+
   <tbody>
   {/* {data?.data?.map((item , index) =>{
 return (

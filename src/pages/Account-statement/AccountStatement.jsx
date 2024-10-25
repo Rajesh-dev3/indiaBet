@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom'
 import './style.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAccountstatementMutation } from '../../services/account-statement/AccountStatement';
 import moment from 'moment';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
@@ -10,29 +10,57 @@ const AccountStatement = () => {
 
   const [trigger,{data, isLoading}] = useAccountstatementMutation()
   const [formData, setFormData] = useState({
-    from_date:'',
-    to_date:'',
+    from_date:moment().startOf('day').subtract(10, 'days').unix(),
+    to_date:moment().startOf('day').unix(),
     limit:'10',
     pageno:'1',
+    
   });
   
 
   const formHandler = (e)=>{
 const   { name, value } = e.target;
-    
-    setFormData((prev) =>{
- return {
-   ...prev,[name]:value
+    if(name == "from_date" || name == "to_date"){
 
- }
-    })
+      setFormData((prev) =>{
+   return {
+     ...prev,[name]:moment(value).startOf('day').unix()
+  
+   }
+      })
+    }else{
+
+      setFormData((prev) =>{
+   return {
+     ...prev,[name]:value
+  
+   }
+      })
+    }
   }
   const dateFilterHandler = (e) => {
+    console.log(formData,"from")
     e.preventDefault();
-    trigger({...formData,from_date:moment(formData?.from_date).startOf('day').unix(),
-      to_date:moment(formData?.to_date).startOf('day').unix()
-    }); // Dispatch the loginUser thunk
+    trigger(formData
+    ); // Dispatch the loginUser thunk
   };
+
+  useEffect(() => {
+    trigger(formData);
+  }, [])
+
+
+  const clearFilter= ()=>{
+    const initialData ={
+      from_date:moment().startOf('day').subtract(10, 'days').unix(),
+      to_date:moment().startOf('day').unix(),
+      limit:'10',
+      pageno:'1',
+    }
+    setFormData(initialData)
+    trigger(initialData);
+  }
+  
   return (
    <>
    <div className="accountStatement-sec">
@@ -52,14 +80,23 @@ const   { name, value } = e.target;
 </div>
 <div className="date-filter">
     <div className="date1">
-    <input type="date" id="fdate" className='form-control' name="from_date" onChange={formHandler}/>
+    <input
+  type="date"
+  id="fdate"
+  className="form-control"
+  name="from_date"
+  value={formData?.from_date ? moment.unix(formData.from_date).format("YYYY-MM-DD"): ""}
+  onChange={formHandler}
+/>
     </div>
     <div className="date1">
-    <input type="date" id="fdate" className='form-control' name="to_date" onChange={formHandler} />
+    <input type="date" id="fdate" className='form-control' name="to_date" 
+   value={formData?.to_date ? moment.unix(formData.to_date).format("YYYY-MM-DD") : ""}
+     onChange={formHandler} />
     </div>
     <div className="date1 filter2">
  <span className='filter filter-btn' onClick={dateFilterHandler}>Filter</span>
- <span className='clear filter-btn'>Clear</span>
+ <span className='clear filter-btn' onClick={()=>clearFilter()}>Clear</span>
     </div>
 </div>
 <div className="data-filter">

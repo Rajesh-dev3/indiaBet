@@ -5,7 +5,6 @@ import SwiperSlider from "../../Component/SwiperSlider/SwiperSlider";
 import { useEventgameMutation } from "../../services/eventGame/gameEvent";
 import { useGameNameMutation } from "../../services/sport/gameName";
 import Loaderlogo from "../../Component/LoaderLogo/loaderlogo";
-import BetPlaceSlip from "../../Component/BetPlaceSlip/BetPlaceSlip";
 import { useGamelengthMutation } from "../../services/gameLength/gamelenght";
 // import { useEffect } from "react";
 
@@ -100,19 +99,11 @@ const Dashboard = () => {
         {isLoading ? (
           <Loaderlogo />
         ) : (
-          data?.data?.InplayMatches.map((item, i) => {
-            return <SportRow key={i} index={i} item={item} active={true} />;
+          checkMatchLength?.map((item, i) => {
+            return <SportRow key={i} index={i} item={item} active={data?.data?.InplayMatches?.length>i?true:false} />;
           })
         )}
-        {isLoading ? (
-          <Loaderlogo />
-        ) : data?.data?.UpCommingMatches?.length ? (
-          data?.data?.UpCommingMatches.map((item, i) => {
-            return <SportRow key={i} index={i} item={item} active={false} />;
-          })
-        ) : (
-          "Nodata"
-        )}
+        
       </div>
       {/* <SportRow/> */}
       {/* <BetPlaceSlip/> */}

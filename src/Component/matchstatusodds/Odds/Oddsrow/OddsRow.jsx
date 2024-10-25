@@ -48,8 +48,12 @@ const OddsRow = ({profithandler,profitLoss,data,prevOdd,odddata,setSelectionId,s
                       } fun={profithandler} item={data}  isBack={0} data={odddata} />
                       </div>
                     
-                       {/* <div className="overback">suspended
-                       </div> */}
+                      {(data?.GameStatus === "SUSPENDED" || data?.InplayStatus === "CLOSE") && (
+                  <div className="overback">
+                    Suspended
+                  </div>
+                )}
+              
     </div>
     <div className="col1">
 

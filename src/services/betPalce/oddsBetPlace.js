@@ -18,8 +18,15 @@ endpoints: (builder) => ({
         body  // Send user credentials
       }),
     }),
+    fancyBetsPlace: builder.mutation({
+      query: (body) => ({
+        url: "v5/save-ssn-bet",   // API endpoint for login
+        method: 'POST',
+        body  // Send user credentials
+      }),
+    }),
   }),
 });
 
 // Export the auto-generated hook for the `login` mutation
-export const { useOddsBetsPlaceMutation } = oddsBetsPlace;
+export const { useOddsBetsPlaceMutation,useFancyBetsPlaceMutation } = oddsBetsPlace;

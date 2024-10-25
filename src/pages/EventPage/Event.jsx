@@ -149,7 +149,7 @@ const Event = () => {
     ];
 
     setProfitLoss(obj)
-    dispatch(setBetData({ ...betData, odds: odds, event: eventId, isBack: is_back, obj,...item,checkBookMaker }));
+    dispatch(setBetData({ ...betData, odds: odds, event: eventId, isBack: is_back, obj,...item,checkBookMaker,checkFancy }));
 
   }
 
@@ -199,7 +199,7 @@ const Event = () => {
       },
     ];
 
-    dispatch(setBetData({ ...betData,stack:betData?.stack, odds: odds, event: eventId, isBack: is_back, obj }));
+    dispatch(setBetData({ ...betData,stack:betData?.stack, odds: odds, event: eventId, isBack: is_back, obj ,checkFancy}));
     setProfitLoss(obj)
   }
 

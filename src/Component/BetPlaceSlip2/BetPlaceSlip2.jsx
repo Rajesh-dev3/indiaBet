@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './style.scss';
 import Countdown from '../Coundown/Countdown';
-import { useOddsBetsPlaceMutation } from '../../services/betPalce/oddsBetPlace';
+import { useFancyBetsPlaceMutation, useOddsBetsPlaceMutation } from '../../services/betPalce/oddsBetPlace';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEventDetailMutation } from '../../services/eventDetail/eventDetail';
@@ -30,6 +30,7 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
     const betData = useSelector((state) => state.betData?.betData);
     const { sportId, matchId ,fancyId} = useParams()
     const [trigger, { data ,isLoading }] = useOddsBetsPlaceMutation()
+    const [trig, { data:fancyBetResponse ,isLoading:fancyBetResponseLoading }] = useFancyBetsPlaceMutation()
     // {"is_back":betData?.isBack,"match_id":matchId,"odds":betData?.odds,"selection_id":selectionId2?.selectionId,"stack":betData?.stack,"market_id":betData?.event?.market_id}
     const betSubmitHandler = () => {
         const betPAyloadDat = {
@@ -40,26 +41,41 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
             stack: stakeValue,
             selection_id:betData?.selectionId
         }
-        trigger(betPAyloadDat)
+        const fancyBetData = {
+            "fancy_id": betData?.event?.SelectionId,
+            "is_back": String(betData?.isBack),
+            "match_id": matchId,
+            "run": betData?.isBack ==0? betData?.event?.LayPrice1:betData?.event?.BackPrice1,
+            "size": betData?.isBack ==0? betData?.event?.LaySize1:betData?.event?.BackSize1,
+            "sport_id": sportId,
+            "stack": betData?.stack,
+            "fancyStatus":betData?.event?.fancyStatus
+        }
+        if(betData?.checkFancy){
+            trig(fancyBetData)
+        }else{
+
+            trigger(betPAyloadDat)
+        }
     }
 
 
     useEffect(() => {
-        if (data?.error) {
-          toast.error(data?.message)
-    } else if (data?.error == false) {
+        if (data?.error || fancyBetResponse?.error) {
+          toast.error(data?.message || fancyBetResponse?.message)
+    } else if (data?.error == false || fancyBetResponse?.error == false) {
         exposureRef()
         dispatch(setBetData());
-          toast?.success(data?.message,"message")
+          toast?.success(data?.message || fancyBetResponse?.message)
+          setBetModuleOpen(false)
         }
-      }, [data])
+      }, [data,fancyBetResponse])
 
 
     useEffect(() => {
         if (betData) {
            
             trigge({ "match_id": matchId, "sport_id": sportId })
-// console.log(betdata, "betdata")
         }
 
     }, [])
@@ -112,7 +128,7 @@ useEffect(() => {
         <>
         <div style={{position:"relative"}}>
 
-       {isLoading &&
+       {isLoading || fancyBetResponseLoading &&
                 
                 <Loaderlogo bg={"rgba(0,0,0,0.5)"} width="100%" position="absolute" height="100%"/>}
             <div className='betplace2'>

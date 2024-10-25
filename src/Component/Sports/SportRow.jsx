@@ -9,6 +9,7 @@ const SportRow = ({item,active}) => {
        <NavLink to={`/event/${item?.sport_id}/${item?.match_id}/${item?.market_id}` }>
     <div className='sport-sec' >
         <h4 className='game-name'> {item?.seriesName}</h4>
+        <NavLink to={`/event/${item?.sport_id}/${item?.match_id}/${item?.market_id}` }>
         <div style={{display:"flex"}}>
         <div className="game">
 
@@ -46,6 +47,7 @@ const SportRow = ({item,active}) => {
             <span className="lay-cell">{item?.runner_json?.[0]?.ex?.availableToLay?.[0]?.price}</span>
         </div>
         </div>
+        </NavLink>
     </div>
         </NavLink>
   )

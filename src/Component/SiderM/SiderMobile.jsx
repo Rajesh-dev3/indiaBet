@@ -47,8 +47,8 @@ const SiderMobile = ({setActiveSider}) => {
               <img src={userpic} alt="dp" />
             </div>
             <div className="user-name">
-              <p className="username">Chana</p>
-              <p className="user-id">c386761</p>
+              {/* <p className="username"></p> */}
+              <p className="user-id">{localStorage.getItem("user_name")}</p>
             </div>
           </div>
           <div className="close"> <span onClick={()=>setActiveSider(false)}>x</span> </div>

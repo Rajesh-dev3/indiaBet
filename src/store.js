@@ -12,6 +12,7 @@ import { eventDetail } from './services/eventDetail/eventDetail';
 import { eventSession } from './services/fancy/Fancy';
 import { oddsBetsPlace } from './services/betPalce/oddsBetPlace';
 import betDataSlice from "./services/betSlice/betSlice"
+import betDataPayloadSlice from "./services/betSliceData/betSliceData"
 import { mybet } from './services/mybet/mybet';
 import { scoreBoard } from './services/Scoreboard/scoreboard';
 import { walletBalance } from './services/Walletbalance/walletbalance';
@@ -23,6 +24,7 @@ export const store = configureStore({
   reducer: {
     // Add the API reducer to the store
     betData: betDataSlice,
+    betDataPayload:betDataPayloadSlice,
     [login.reducerPath]: login.reducer,
     [accountstatement.reducerPath]: accountstatement.reducer,
     [gameName.reducerPath]: gameName.reducer,

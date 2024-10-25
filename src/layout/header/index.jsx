@@ -40,6 +40,12 @@ const Header = ({ setActiveSider }) => {
       return () => clearInterval(timer);
      
     }, [])
+
+const walletbalancefun = ()=>{
+    trigger()
+}
+
+
   useEffect(() => {
     if (data?.message === "Success.") {
       setExposureData(prevData => {
@@ -57,7 +63,7 @@ const Header = ({ setActiveSider }) => {
     
   }, [data])
 
-  exposureRef = trigger
+  exposureRef = walletbalancefun
   
   
     const isMobile = useMediaQuery("(max-width:780px)")
@@ -76,7 +82,7 @@ const Header = ({ setActiveSider }) => {
                             <Link>
                                 <h3 className="logo-name">INDIABET</h3>
                             </Link>
-                            <p className="client-name">{localStorage.getItem("user_name")} </p> <p className="client-name">(chana)</p>
+                            <p className="client-name">{localStorage.getItem("user_name")} </p> <p className="client-name"></p>
 
                             <Link to={"/"}><img src={logo} alt="logo" /></Link>
                         </div>

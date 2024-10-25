@@ -4,7 +4,6 @@ import OddsHeading from '../../Component/matchstatusodds/Odds/OddsHeading/OddsHe
 import OddsRow from '../../Component/matchstatusodds/Odds/Oddsrow/OddsRow'
 import FancyHead from '../../Component/matchstatusodds/Odds/FancyHead/FancyHead'
 import FancyBox from '../../Component/matchstatusodds/Odds/Fancybox/FancyBox'
-import './style.scss'
 import MatchScore from '../../Component/MatchScorebox/.MatchScore'
 import { useParams } from 'react-router-dom'
 import { useEventDetailMutation } from '../../services/eventDetail/eventDetail'
@@ -15,9 +14,11 @@ import moment from 'moment'
 import BetPlaceSlip2 from '../../Component/BetPlaceSlip2/BetPlaceSlip2'
 import { useMediaQuery } from '../../useMediaQuery'
 import Tabs from '../../Component/Tabs/Tabs'
+import './style.scss'
 
 const Event = () => {
   const [odddata, setOdddata] = useState();
+  
   const [prevState, setPrevState] = useState();
   const [prevFancy, setPrevFancy] = useState()
   const [fancyData, setFancyData] = useState()
@@ -26,11 +27,7 @@ const Event = () => {
   const [trigg, { data: fancy }] = useGetEventSessionMutation()
 
 
-  const date = moment(
-    parseInt(
-      odddata?.MatchDetails && odddata?.MatchDetails?.start_date ? odddata?.MatchDetails?.start_date : null,
-    ) * 1000,
-  )
+
   useEffect(() => {
 
     trigger({ "match_id": matchId, "sport_id": sportId })
@@ -78,14 +75,14 @@ const Event = () => {
 
   const [selectionId2, setSelectionId] = useState("")
 
-  const [checkBookMaker, setBookMaker] = useState(0)
+  const [checkBookMaker, setBookMaker] = useState(false)
   const [checkFancy, setCheckFancy] = useState(false)
 
   const betData = useSelector((state) => state?.betData?.betData)
 
   const profithandler = (stack, odds, is_back, eventId, item) => {
     setSelectionId(item)
-    if(item){
+    if (item) {
       setBetModuleOpen(true)
     }
     const stackWin = (Number(odds) - 1) * Number(stack);
@@ -116,21 +113,22 @@ const Event = () => {
         if (is_back == 0) {
           return Number(stack)
         }
-      
+
       }
 
     }
+    // {"is_back":"1","match_id":"33706407","odds":"1.29","selection_id":1,"stack":100,"market_id":"1.234739410_B"}
 
 
 
-const runner_jsonLength = eventId?.runner_json?.length
+    const runner_jsonLength = eventId?.runner_json?.length
     const obj = [
       {
         selectionId: findIndex(0),
         marketName: eventId?.runner_json?.[0]?.selectionName,
         marketId: !checkFancy ? eventId?.market_id : eventId?.runner_json?.[0]?.selectionName,
         winLoss: checkSelectionId(0)
-       
+
 
       },
       {
@@ -139,32 +137,88 @@ const runner_jsonLength = eventId?.runner_json?.length
         marketId: !checkFancy ? eventId?.market_id : eventId?.runner_json?.[1]?.selectionName,
 
         winLoss: checkSelectionId(1)
-       
+
       },
       {
         selectionId: findIndex(2),
         marketName: eventId?.runner_json?.[2]?.selectionName,
         marketId: !checkFancy ? eventId?.market_id : eventId?.runner_json?.[2]?.selectionName,
-        winLoss:runner_jsonLength ==2?checkSelectionId(1): checkSelectionId(2)
-      
+        winLoss: runner_jsonLength == 2 ? checkSelectionId(1) : checkSelectionId(2)
+
       }
     ];
-  
+
     setProfitLoss(obj)
-    dispatch(setBetData({ ...betData, odds: odds, event: eventId, isBack: is_back, obj }));
+    dispatch(setBetData({ ...betData, odds: odds, event: eventId, isBack: is_back, obj,...item,checkBookMaker }));
 
   }
+
+//   useEffect(() => {
+//     // `${selectionId}_B`
+//   if(checkBookMaker){
+//    const bookmakerPayload =  {"is_back":betData?.isBack,"match_id":matchId,"odds":betData?.odds,"selection_id":selectionId2?.selectionId,"stack":betData?.stack,"market_id":betData?.event?.market_id}
+//    if(betData?.stack != null && betData?.isBack != undefined){
+
+//     dispatch(setBetData(bookmakerPayload));
+//   }
+//   }else{
+//     const bookmakerPayload =  {"is_back":betData?.isBack,"match_id":matchId,"odds":betData?.odds,"selection_id":selectionId2?.selectionId,"stack":betData?.stack,"market_id":betData?.event?.market_id}
+//     if(betData?.stack != null && betData?.isBack != undefined){
+
+//       dispatch(setBetData(bookmakerPayload));
+//     }
+    
+//   }
+// }, [checkBookMaker,profitLoss,betData?.isBack,betData?.stack,betData?.odds])
+
+
+
+
+  const fancyProfitLoss= (stack,odds,is_back,eventId)=>{
+    
+    setSelectionId(eventId)
+    if (eventId) {
+      setBetModuleOpen(true)
+    }
+    const obj = is_back ==0? [ 
+      {
+    selectionId: eventId?.SelectionId,
+    winLoss:stack !=null? -Number(eventId?.LaySize1):0
+  },
+        {
+      selectionId: eventId?.SelectionId,
+      winLoss:stack !=null? eventId?.BackSize1:0
+    },
+    ]:[
+      {
+    selectionId: eventId?.SelectionId,
+    winLoss:stack !=null?-Number(stack):0
+  },
+      {
+        selectionId: eventId?.SelectionId,
+        winLoss:stack !=null? eventId?.BackSize1:0
+      },
+    ];
+
+    dispatch(setBetData({ ...betData,stack:betData?.stack, odds: odds, event: eventId, isBack: is_back, obj }));
+    setProfitLoss(obj)
+  }
+
+  useEffect(() => {
+    if(checkFancy == true){
+     if (betData?.stack != null ) {
+       fancyProfitLoss(betData?.stack, betData?.odds,betData?.isBack,selectionId2)
+     }
+   }
+   
+ }, [betData?.stack,betData?.odds,betData?.isBack])
 
   useEffect(() => {
     if (checkFancy == false) {
       if (betData?.stack != null) {
         profithandler(betData?.stack, betData?.odds, betData?.isBack, betData?.event, selectionId2)
       }
-    } else if (checkFancy == true) {
-      if (betData?.stack != null) {
-        profithandler(betData?.stack, betData?.odds, betData?.isBack, betData?.event, selectionId2)
-      }
-    }
+    } 
 
   }, [betData?.stack])
 
@@ -175,11 +229,13 @@ const runner_jsonLength = eventId?.runner_json?.length
       setProfitLoss()
     }
   }, [betData == null])
-  
+
 
 
   const [betModuleOpen, setBetModuleOpen] = useState(false)
   const isMobile = useMediaQuery("(max-width:780px)")
+
+
   return (
     <>
       <div className="event">
@@ -193,20 +249,24 @@ const runner_jsonLength = eventId?.runner_json?.length
 
             const findFancySelection = profitLoss?.find(elm => elm.selectionId === item?.selectionId)?.winLoss || 0
             const displayValue = (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2);
+          
             return (
-<>
-              <OddsRow
-                profithandler={profithandler}
-                setSelectionId={setSelectionId}
-                profitLoss={displayValue}
-                odddata={odddata?.MatchDetails}
-                data={item} key={item?.selectionName}
-                prevOdd={prevState?.MatchDetails?.runner_json[i]} />
-{betModuleOpen && isMobile && item?.selectionId == selectionId2?.selectionId ?
-                <BetPlaceSlip2 setBetModuleOpen={setBetModuleOpen}/>
-              :""}
-</>
-            
+              <>
+                <OddsRow
+                  profithandler={profithandler}
+                  setSelectionId={setSelectionId}
+                  profitLoss={displayValue}
+                  setCheckFancy={setCheckFancy}
+                  setBookMaker={setBookMaker}
+                  checkBookMaker={false}
+                  odddata={odddata?.MatchDetails}
+                  data={item} key={item?.selectionName}
+                  prevOdd={prevState?.MatchDetails?.runner_json[i]} />
+                {betModuleOpen && isMobile && item?.selectionId == selectionId2?.selectionId ?
+                  <BetPlaceSlip2  setBetModuleOpen={setBetModuleOpen} />
+                  : ""}
+              </>
+
             )
           })}
         </div >
@@ -217,31 +277,39 @@ const runner_jsonLength = eventId?.runner_json?.length
           {odddata?.BookerMakerMarket?.runner_json?.map((item, i) => {
             const findFancySelection = profitLoss?.find(elm => elm.selectionId === item?.selectionId)?.winLoss || 0
             const displayValue = (findFancySelection + (item?.WinAndLoss || 0)).toFixed(2)
-            
+
             return (
               <>
-              <OddsRow
-                profithandler={profithandler}
-                profitLoss={displayValue}
-                setSelectionId={setSelectionId}
-                odddata={odddata?.BookerMakerMarket}
-                data={item} key={item?.selectionName}
-                prevOdd={prevState?.BookerMakerMarket?.runner_json[i]}
+                <OddsRow
+                  profithandler={profithandler}
+                  profitLoss={displayValue}
+                  setCheckFancy={setCheckFancy}
+                  checkBookMaker={true}
+                  setSelectionId={setSelectionId}
+                  setBookMaker={setBookMaker}
+                  odddata={odddata?.BookerMakerMarket}
+                  data={item} key={item?.selectionName}
+                  prevOdd={prevState?.BookerMakerMarket?.runner_json[i]}
                 />
                 {betModuleOpen && isMobile && item?.selectionId == selectionId2?.selectionId ?
-                <BetPlaceSlip2 setBetModuleOpen={setBetModuleOpen}/>
-              :""}
-                </>
+                  <BetPlaceSlip2 setBetModuleOpen={setBetModuleOpen} />
+                  : ""}
+              </>
             )
           })}
         </div>
 
         {normalFancy?.length ?
-          <FancyHead max={normalFancy?.[0]?.maxStack} min={normalFancy?.[0]?.minStack} />
+          <FancyHead max={normalFancy?.[0]?.maxStack} min={normalFancy?.[0]?.minStack}  />
           : ""}
         {normalFancy?.map((item, i) => {
           return (
-            <FancyBox key={item?.RunnerName} data={item} prev={prevNormalFancy[i]} />
+            <>
+            <FancyBox profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevNormalFancy[i]} fun={fancyProfitLoss}/>
+            {betModuleOpen && isMobile && item?.SelectionId == selectionId2?.SelectionId ?
+              <BetPlaceSlip2  setBetModuleOpen={setBetModuleOpen} />
+              : ""}
+              </>
           )
         })}
         {overbyover?.length ?
@@ -249,7 +317,12 @@ const runner_jsonLength = eventId?.runner_json?.length
           : ""}
         {overbyover?.map((item, i) => {
           return (
-            <FancyBox key={item?.RunnerName} data={item} prev={prevOverbyover[i]} />
+            <>
+            <FancyBox profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevOverbyover[i]} fun={fancyProfitLoss}/>
+            {betModuleOpen && isMobile && item?.SelectionId == selectionId2?.SelectionId ?
+              <BetPlaceSlip2  setBetModuleOpen={setBetModuleOpen} />
+              : ""}
+            </>
           )
         })}
         {ballbyball?.length ?
@@ -257,7 +330,12 @@ const runner_jsonLength = eventId?.runner_json?.length
           : ""}
         {ballbyball?.map((item, i) => {
           return (
-            <FancyBox key={item?.RunnerName} data={item} prev={prevBallbyball[i]} />
+            <>
+            <FancyBox profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevBallbyball[i]} fun={fancyProfitLoss}/>
+            {betModuleOpen && isMobile && item?.SelectionId == selectionId2?.SelectionId ?
+              <BetPlaceSlip2  setBetModuleOpen={setBetModuleOpen} />
+              : ""}
+            </>
           )
         })}
 {isMobile && <Tabs />}

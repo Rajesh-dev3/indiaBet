@@ -3,9 +3,8 @@ import './style.scss'
 import BackValue from '../../back-lay-value/BackValue'
 
 
-const OddsRow = ({profithandler,profitLoss,data,prevOdd,odddata,setSelectionId}) => {
+const OddsRow = ({profithandler,profitLoss,data,prevOdd,odddata,setSelectionId,setCheckFancy,setBookMaker,checkBookMaker}) => {
 
-console.log(data, "showdata")
 
   
   return (
@@ -26,7 +25,7 @@ console.log(data, "showdata")
 
     <div className="row-odds back-value">
  
-      <BackValue  top={data?.ex?.availableToBack[0].price} selectionId={data?.selectionId} selectionName={data?.selectionName}
+      <BackValue checkBookMaker={checkBookMaker} setBookMaker={setBookMaker} checkFancy={false} setCheckFancy={setCheckFancy} top={data?.ex?.availableToBack[0].price}  selectionId={data?.selectionId} selectionName={data?.selectionName}
        bottom={data?.ex?.availableToBack[0]?.size} isBack={1} data={odddata}   bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
@@ -40,7 +39,7 @@ console.log(data, "showdata")
       </div>
      
     <div className="row-odds lay-value">
-      <BackValue setSelectionId={setSelectionId}  top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} selectionName={data?.selectionName} bg={
+      <BackValue checkBookMaker={checkBookMaker} setBookMaker={setBookMaker} checkFancy={false} setCheckFancy={setCheckFancy} setSelectionId={setSelectionId}  top={data?.ex?.availableToLay[0].price} bottom={data?.ex?.availableToLay[0]?.size} selectionName={data?.selectionName} bg={
                         data?.price > prevOdd?.price
                           ? "odds-up-color"
                           : data?.price < prevOdd?.price

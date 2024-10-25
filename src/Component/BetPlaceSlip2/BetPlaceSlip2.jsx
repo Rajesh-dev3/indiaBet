@@ -9,6 +9,7 @@ import { setBetData } from '../../services/betSlice/betSlice';
 import Loaderlogo from '../LoaderLogo/loaderlogo';
 import { toast } from 'react-toastify';
 import { exposureRef } from '../../layout/header';
+import { betHistoryFunRef } from '../Tabs/Tabs';
 const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
     const [stakeValue, setStakeValue] = useState(null);
 
@@ -28,8 +29,8 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
 
 
     const betData = useSelector((state) => state.betData?.betData);
-    const { sportId, matchId ,fancyId} = useParams()
-    const [trigger, { data ,isLoading }] = useOddsBetsPlaceMutation()
+    const { sportId, matchId} = useParams()
+    const [trigger, { data ,isLoading:oddLoading }] = useOddsBetsPlaceMutation()
     const [trig, { data:fancyBetResponse ,isLoading:fancyBetResponseLoading }] = useFancyBetsPlaceMutation()
     // {"is_back":betData?.isBack,"match_id":matchId,"odds":betData?.odds,"selection_id":selectionId2?.selectionId,"stack":betData?.stack,"market_id":betData?.event?.market_id}
     const betSubmitHandler = () => {
@@ -65,6 +66,7 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
           toast.error(data?.message || fancyBetResponse?.message)
     } else if (data?.error == false || fancyBetResponse?.error == false) {
         exposureRef()
+        betHistoryFunRef()
         dispatch(setBetData());
           toast?.success(data?.message || fancyBetResponse?.message)
           setBetModuleOpen(false)
@@ -123,16 +125,16 @@ useEffect(() => {
     })
 
 }, [betData])
-
+const checkLoading = oddLoading || fancyBetResponseLoading
     return (
         <>
         <div style={{position:"relative"}}>
 
-       {isLoading || fancyBetResponseLoading &&
+       {checkLoading &&
                 
                 <Loaderlogo bg={"rgba(0,0,0,0.5)"} width="100%" position="absolute" height="100%"/>}
             <div className='betplace2'>
-                <Countdown setBetModuleOpen={setBetModuleOpen} />
+                <Countdown  isLoading={checkLoading} setBetModuleOpen={setBetModuleOpen} />
                 <div className="betheader2">
                     <div className="bettitle2">
                         <span>{betData?.isBack == 1 ? "Back" : "Lay"}</span>(Bet For)

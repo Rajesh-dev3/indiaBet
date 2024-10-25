@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Countdown.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setBetData } from '../../services/betSlice/betSlice';
 
-const Countdown = ({ setBetModuleOpen }) => {
+const Countdown = ({ setBetModuleOpen  ,isLoading}) => {
   const [count, setCount] = useState(8);
   const [circleDashoffset, setCircleDashoffset] = useState(0); // New state to control the circle stroke offset
   const dispatch = useDispatch();
@@ -25,10 +25,12 @@ const Countdown = ({ setBetModuleOpen }) => {
     }
 
     if (count === 0) {
-      dispatch(setBetData());
-      setBetModuleOpen(false);
+      if(isLoading == false){
+        dispatch(setBetData());
+        setBetModuleOpen(false);
+      }
     }
-  }, [count, circleCircumference, dispatch, setBetModuleOpen]);
+  }, [count, circleCircumference, dispatch, setBetModuleOpen,isLoading]);
 
   const stack = useSelector((state) => state?.betData?.betData);
 

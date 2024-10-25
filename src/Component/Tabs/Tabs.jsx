@@ -4,7 +4,7 @@ import AllBetTable from './AllBetTable';
 import FancyBetTable from './FancyBetTable';
 import { useMybetMutation } from '../../services/mybet/mybet';
 import { useParams } from 'react-router-dom';
-
+export let betHistoryFunRef;
 function Tabs() {
   const [activeTab, setActiveTab] = useState(0);
   const [isContentVisible, setIsContentVisible] = useState(true); // Toggle for content visibility
@@ -20,7 +20,6 @@ function Tabs() {
     pageno:1,
   });
 const[trigger, {data} ]= useMybetMutation()
-console.log(data , 'useMybetMutation')
   const addData =data?.data?.MatchAndBetfair.length ? [ ...data?.data?.MatchAndBetfair]:[]
 
   // Content for each tab including tables
@@ -40,10 +39,19 @@ console.log(data , 'useMybetMutation')
     0:<AllBetTable data={addData}/>,
     1:<FancyBetTable data={data?.data?.MatchFancy}/>
   }
+  const betLength = {
+    0:addData?.length,
+    1:data?.data?.MatchFancy?.length
+  }
   useEffect(() => {
    trigger(formData)
   }, [matchId])
   
+
+  const betHistoryFun = ()=>{
+    trigger(formData)
+  }
+  betHistoryFunRef= betHistoryFun
   return (
     <div className="tabs-container">
       {/* Tabs Header with Arrow Icon */}
@@ -54,7 +62,7 @@ console.log(data , 'useMybetMutation')
             className={`tab-button ${activeTab === index ? 'active' : ''}`}
             onClick={() => handleTabClick(index)} // Use the new click handler
           >
-            {tab} (0)
+            {tab} ({betLength[index]})
           </button>
         ))}
         <div

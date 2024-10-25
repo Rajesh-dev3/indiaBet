@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
                   element:<Dashboard />
               },
               {
-                  path:"/event/:sportId/:matchId/:fancyId",
+                  path:"/event/:sportId/:matchId",
                   element:<Event />
               },
               {

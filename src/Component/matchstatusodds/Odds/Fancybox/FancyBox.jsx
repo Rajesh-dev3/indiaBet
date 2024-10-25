@@ -2,7 +2,7 @@ import React from 'react'
 import BackValue from '../../back-lay-value/BackValue'
 import './style.scss'
 
-const FancyBox = ({data,prev,fun,setCheckFancy,profitLoss}) => {
+const FancyBox = ({data,prev,fun,setCheckFancy,setBookMaker}) => {
     return (
    
         <div className="fancybox-container">
@@ -10,14 +10,14 @@ const FancyBox = ({data,prev,fun,setCheckFancy,profitLoss}) => {
         <p className='game-price'>Book</p></div>
        <div className="middle">
 
-        <div className="lay-value"><BackValue checkFancy={true} setCheckFancy={setCheckFancy} data={data} top={data?.LayPrice1} isBack={0} bottom={data?.LaySize1} fun={fun} bg={
+        <div className="lay-value"><BackValue checkBookMaker={false} setBookMaker={setBookMaker} checkFancy={true} setCheckFancy={setCheckFancy} data={data} top={data?.LayPrice1} isBack={0} bottom={data?.LaySize1} fun={fun} bg={
           data?.LayPrice1 > prev?.price
           ? "odds-up-color"
           : data?.LayPrice1 < prev?.price
           ? "odds-down-color"
           : ""
         }/></div>
-        <div className="back-value"><BackValue checkFancy={true} setCheckFancy={setCheckFancy}data={data} isBack={1} top={data?.BackPrice1} bottom={data?.BackSize1} fun={fun} bg={
+        <div className="back-value"><BackValue checkBookMaker={false} setBookMaker={setBookMaker} checkFancy={true} setCheckFancy={setCheckFancy}data={data} isBack={1} top={data?.BackPrice1} bottom={data?.BackSize1} fun={fun} bg={
           data?.price > prev?.price
           ? "odds-up-color"
           : data?.price < prev?.price

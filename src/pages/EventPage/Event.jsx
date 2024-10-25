@@ -10,10 +10,10 @@ import { useEventDetailMutation } from '../../services/eventDetail/eventDetail'
 import { useGetEventSessionMutation } from '../../services/fancy/Fancy'
 import { useDispatch, useSelector } from 'react-redux'
 import { setBetData } from '../../services/betSlice/betSlice'
-import moment from 'moment'
 import BetPlaceSlip2 from '../../Component/BetPlaceSlip2/BetPlaceSlip2'
 import { useMediaQuery } from '../../useMediaQuery'
 import Tabs from '../../Component/Tabs/Tabs'
+
 import './style.scss'
 
 const Event = () => {
@@ -175,7 +175,6 @@ const Event = () => {
 
 
   const fancyProfitLoss= (stack,odds,is_back,eventId)=>{
-    
     setSelectionId(eventId)
     if (eventId) {
       setBetModuleOpen(true)
@@ -305,7 +304,7 @@ const Event = () => {
         {normalFancy?.map((item, i) => {
           return (
             <>
-            <FancyBox profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevNormalFancy[i]} fun={fancyProfitLoss}/>
+            <FancyBox setBookMaker={setBookMaker} profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevNormalFancy[i]} fun={fancyProfitLoss}/>
             {betModuleOpen && isMobile && item?.SelectionId == selectionId2?.SelectionId ?
               <BetPlaceSlip2  setBetModuleOpen={setBetModuleOpen} />
               : ""}
@@ -318,7 +317,7 @@ const Event = () => {
         {overbyover?.map((item, i) => {
           return (
             <>
-            <FancyBox profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevOverbyover[i]} fun={fancyProfitLoss}/>
+            <FancyBox setBookMaker={setBookMaker} profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevOverbyover[i]} fun={fancyProfitLoss}/>
             {betModuleOpen && isMobile && item?.SelectionId == selectionId2?.SelectionId ?
               <BetPlaceSlip2  setBetModuleOpen={setBetModuleOpen} />
               : ""}
@@ -331,7 +330,7 @@ const Event = () => {
         {ballbyball?.map((item, i) => {
           return (
             <>
-            <FancyBox profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevBallbyball[i]} fun={fancyProfitLoss}/>
+            <FancyBox setBookMaker={setBookMaker} profitLoss={profitLoss} setCheckFancy={setCheckFancy} key={item?.RunnerName} data={item} prev={prevBallbyball[i]} fun={fancyProfitLoss}/>
             {betModuleOpen && isMobile && item?.SelectionId == selectionId2?.SelectionId ?
               <BetPlaceSlip2  setBetModuleOpen={setBetModuleOpen} />
               : ""}

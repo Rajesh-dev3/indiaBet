@@ -6,10 +6,10 @@ import moment from 'moment';
 import { NavLink } from 'react-router-dom';
 const SportRow = ({item,active}) => {
   return (
-       <NavLink to={`/event/${item?.sport_id}/${item?.match_id}/${item?.market_id}` }>
+       <NavLink to={`/event/${item?.sport_id}/${item?.match_id}` }>
     <div className='sport-sec' >
         <h4 className='game-name'> {item?.seriesName}</h4>
-        <NavLink to={`/event/${item?.sport_id}/${item?.match_id}/${item?.market_id}` }>
+        <NavLink to={`/event/${item?.sport_id}/${item?.match_id}` }>
         <div style={{display:"flex"}}>
         <div className="game">
 

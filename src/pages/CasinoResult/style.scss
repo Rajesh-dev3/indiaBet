@@ -1,0 +1,75 @@
+@import '../../Styles/mixins';
+.casino-result-sec{
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 9999999;
+    background: #3C444B;
+    .casino-home {
+        width: 100%;
+        padding-right: 15px;
+        background: #23292e;
+        // padding-left: 15px;
+      
+        .home-c{
+            margin: 0;
+            padding: 15px;
+            color: white;
+            font-weight: 400;
+            font-size: 22px;
+        }
+    }
+    .show-casino-h{    font-size: 18px;
+        line-height: 50px;
+        color: #fff;
+        padding-left: 15px;
+        text-transform: capitalize;}
+}
+.search-area{
+display: flex;
+gap: 10px;
+@include media (phone){
+    width: calc(100% - 30px) ;
+    padding: 0 15px;
+    flex-direction: column;
+}
+    .search{
+        display: block;
+        width: 300px;
+        height: calc(1.5em + .75rem + 2px);
+        padding: 0 .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        margin-left: 15px;
+        line-height: 1;
+        color: white;
+        outline: none;
+        background-color: #23292e;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        @include media (phone){
+            width: 90%;
+            margin-left: 0;
+            font-size: 14px;
+        }
+
+    }
+    .search-btn{
+        padding: 0 15px;
+        background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    @include media (phone){
+        width: 100px;
+        padding: 10px 15px;
+        
+    }
+
+    }
+}

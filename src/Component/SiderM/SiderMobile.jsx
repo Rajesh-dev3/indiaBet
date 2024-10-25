@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { userpic } from '../../assets/Index';
 import './style.scss';
-
+import EditStakeModal from '../editStake/EditStakeModal';
+import Modal from '../modal';
+import {stakeModalRef} from "../../common/LayoutPrimary"
 const SiderMobile = ({setActiveSider}) => {
+
+  
   const menuData = [
     { name: "Dashboard", path: "/" }, // Adding path for routing
     { name: "In-Play", path: "/inplay" },
@@ -17,9 +21,9 @@ const SiderMobile = ({setActiveSider}) => {
         { name: "Match PnL", path: "/matchprofitnloss" }
       ]
     },
-    { name: "Check Casino Result", path: "/" },
+    { name: "Check Casino Result", path: "/casino-result" },
     { name: "Casino Games", path: "/CasinoGame" },
-    { name: "Edit Stake", path: "#" }
+    { name: "Edit Stake", path: "/" }
   ];
 
   const [activeMenu, setActiveMenu] = useState('Dashboard'); // Default active item
@@ -35,6 +39,7 @@ const SiderMobile = ({setActiveSider}) => {
 
   return (
     <>
+     
       <div className="mobile-nav">
         <div className="user-detail">
           <div className="user-pic">
@@ -54,7 +59,17 @@ const SiderMobile = ({setActiveSider}) => {
               <li
                 key={index}
                 className={`menulist ${activeMenu === menu.name ? 'active' : ''}`}
-                onClick={() => handleMenuClick(menu.name)}
+                onClick={() =>{
+                  if(menu.name == "Edit Stake"){
+                    stakeModalRef()
+                  }
+                  if(menu.name !== 'Report'){
+                setActiveSider(false)
+
+              }
+                  handleMenuClick(menu.name)
+                }
+              }
               >
                 {/* Use Link for the main menu */}
                 <Link to={menu.path || "#"} className="list">
@@ -71,7 +86,12 @@ const SiderMobile = ({setActiveSider}) => {
                         key={subIndex}
                         className={`menulist2 ${activeMenu === subMenu.name ? 'active' : ''}`}
                         onClick={(e) => {
+
                           e.stopPropagation();
+                          // if(menu.name !== 'Report'){
+                            setActiveSider(false)
+            
+                          // }    
                           handleMenuClick(subMenu.name);
                         }}
                       >

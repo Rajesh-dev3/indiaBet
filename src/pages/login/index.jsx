@@ -3,8 +3,9 @@ import { loginlogo } from '../../assets/Index';
 import './style.scss';
 import { useLoginMutation } from '../../services/auth/Login';
 import { useNavigate } from 'react-router-dom';
+import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
 const Login = () => {
-  const [trigger, {data}] = useLoginMutation();
+  const [trigger, {data, isLoading}] = useLoginMutation();
 
 
 const [formData , setFormData]= useState({
@@ -62,6 +63,7 @@ if(data?.data?.token){
 
   return (
    <>
+   {isLoading ? <Loaderlogo />:
    <div className="bg_login">
     <div className="animation-container">
       <div className="lightning-container">
@@ -103,8 +105,10 @@ Remember me
   </label>
 </div>
 <div className="submit-f">
+
   <button className='btn btn-default submit' onClick={submitHandler} type='submit'>Log in</button>
-  {/* <h6 className='note'>-</h6> */}
+
+{/* <h6 className='note'>-</h6> */}
 </div>
 
 </form>
@@ -113,6 +117,7 @@ Remember me
 </div>
 
    </div>
+   }
    
    </>
   )

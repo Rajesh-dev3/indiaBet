@@ -16,6 +16,7 @@ import MatchProfitnlossInner from "../pages/MatchProfitnlossInner/MatchProfitnlo
 import CasinoGame from "../pages/Casino-Game/CasinoGame";
 import Account from "../pages/Account/Account";
 import CasinoResult from "../pages/CasinoResult/CasinoResult";
+import Alert from "../Component/AlertPage/Alert";
 
 export const router = createBrowserRouter([
     {
@@ -40,10 +41,7 @@ export const router = createBrowserRouter([
                   path:"/inPlay",
                   element:<InPlay />
               },
-              {
-                  path:"/casino-result",
-                  element:<CasinoResult />
-              },
+         
               {
                   path:"/account",
                   element:<Account />
@@ -88,10 +86,19 @@ export const router = createBrowserRouter([
           path:"/matchprofitnloss",
           element:<Matchprofitnloss/>
       },
+      {
+        path:"/casino-result",
+        element:<CasinoResult />
+    },
+      {
+        path:"/alert",
+        element:<Alert />
+    },
       ]
     },
     {
         path:"/login",
         element:<Login/>
-    }
+    },
+
   ]);

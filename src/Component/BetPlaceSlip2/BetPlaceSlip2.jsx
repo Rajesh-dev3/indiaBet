@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEventDetailMutation } from '../../services/eventDetail/eventDetail';
 import { setBetData } from '../../services/betSlice/betSlice';
+import Loaderlogo from '../LoaderLogo/loaderlogo';
 const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
     const [stakeValue, setStakeValue] = useState(null);
 
@@ -26,7 +27,7 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
 
     const betData = useSelector((state) => state.betData?.betData);
     const { sportId, matchId ,fancyId} = useParams()
-    const [trigger, { data }] = useOddsBetsPlaceMutation()
+    const [trigger, { data , isLoading}] = useOddsBetsPlaceMutation()
     const betSubmitHandler = () => {
         const betPAyloadDat = {
             is_back:String(betData?.isBack),
@@ -110,6 +111,11 @@ useEffect(() => {
 
     return (
         <>
+        <div style={{position:"relative"}}>
+
+       {isLoading &&
+                
+                <Loaderlogo bg={"rgba(0,0,0,0.5)"} width="100%" position="absolute" height="100%"/>}
             <div className='betplace2'>
                 <Countdown setBetModuleOpen={setBetModuleOpen} />
                 <div className="betheader2">
@@ -168,11 +174,16 @@ useEffect(() => {
 
 
                 </div>
+               
                 <div className="betclean-btn2">
                     <button className='clean-all2' onClick={()=>setBetModuleOpen(false)}> <i className='fa fa-trash-o'></i> Clean All Selection</button>
                     <button className='place-bet2' onClick={() => betSubmitHandler()}> <i className='fa fa-trash-o'></i> Place Bet</button>
                 </div>
+
             </div>
+
+
+</div>
 
         </>
     )

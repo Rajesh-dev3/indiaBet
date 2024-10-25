@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import SiderMobile from "../Component/SiderM/SiderMobile";
 import EditStakeModal from "../Component/editStake/EditStakeModal";
 import Modal from "../Component/modal";
+
+export let stakeModalRef;
 const LayoutPrimary = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSider, setActiveSider] = useState(false);
@@ -21,7 +23,9 @@ const LayoutPrimary = () => {
   const nav = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = () => setIsOpen(true);
+  const openModal = () =>{
+    console.log("first")
+    setIsOpen(true)};
   const closeModal = () => setIsOpen(false);
   const token = localStorage.getItem("token");
   useEffect(() => {
@@ -29,7 +33,7 @@ const LayoutPrimary = () => {
       nav("/login");
     }
   }, [token]);
-
+  stakeModalRef = openModal
   return (
     <>
       {isOpen &&

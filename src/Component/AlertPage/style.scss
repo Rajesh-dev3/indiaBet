@@ -1,0 +1,62 @@
+@import '../../Styles/mixins';
+.alert-sec{
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 9999999;
+    background: rgba(0,0,0,0.5);
+    .notice{
+      position: absolute;
+      top: 20%;
+      left: 25%;
+      margin: auto;
+      background: black;
+      width: 50%;
+      height: auto;
+      padding-bottom: 20px;
+      border-bottom: 5px solid white;
+      @include media (phone){
+        width: 100%;
+        left: 0;
+      }
+.close{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background: white;
+    span{
+        padding: 5px;
+        // width: 15px;
+        // height: 15px;
+        border: 1px solid red;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg{
+            font-size: 40px;
+            color: red;
+            @include media (phone){
+                font-size: 30px;
+            }
+        }
+    }
+
+}
+.error{
+    text-align: center;
+
+    color: white;
+    h2{
+        font-weight: 500;
+    }
+    h3{
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+        }
+    }

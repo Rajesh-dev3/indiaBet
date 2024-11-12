@@ -59,12 +59,20 @@
             text-transform: capitalize;
             outline: none;
         }
-        .DW{
-border:none;
-border: 1px solid white;
-background: #f90;
-outline: none;
-        }
+        .entries-btn.active {
+            border:none;
+            border: 1px solid white;
+            background: #f90;
+            outline: none;
+            border: 2px solid black;
+            border-radius: 3px;
+          }
+//         .DW{
+// border:none;
+// border: 1px solid white;
+// background: #f90;
+// outline: none;
+//         }
     }
     .date-filter{
         display: flex;

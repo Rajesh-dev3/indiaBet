@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SportRow from "../../Component/Sports/SportRow";
 import SwiperSlider from "../../Component/SwiperSlider/SwiperSlider";
 import { useEventgameMutation } from "../../services/eventGame/gameEvent";
@@ -23,23 +23,23 @@ const Dashboard = () => {
     { data: gameLengthData, isLoading: isGameLengthLoading },
   ] = useGamelengthMutation();
 
- 
-  
+
+
   useEffect(() => {
-    triggerGamelength({ limit: 50, pageno: 1, series_id: 0, type: "home" });
+    triggerGamelength({ "limit": 50, "pageno": 1, "series_id": 0, "sport_id": 0, "type": "home" });
   }, []);
 
   useEffect(() => {
     if (gameLengthData?.data) {
-     
-        setSportLength({
-            4: gameLengthData?.data["cricketLength"],
-            1: gameLengthData?.data["soccerLength"],
-            2: gameLengthData?.data["tennisLength"],
-            111: 0,
-          });
-        }
-      }, [gameLengthData]);
+
+      setSportLength({
+        4: gameLengthData?.data["cricketLength"],
+        1: gameLengthData?.data["soccerLength"],
+        2: gameLengthData?.data["tennisLength"],
+        111: "50+",
+      });
+    }
+  }, [gameLengthData]);
 
 
   const [sportId, setSportId] = useState(4);
@@ -50,7 +50,8 @@ const Dashboard = () => {
       sport_id: String(sportId),
       series_id: 0,
       type: "home",
-    });
+    }
+    );
   }, [sportId]);
 
   const [trigge, { data: gameName }] = useGameNameMutation();
@@ -63,7 +64,7 @@ const Dashboard = () => {
     ...data?.data?.InplayMatches,
     ...data?.data?.UpCommingMatches,
   ];
-
+  const nav = useNavigate()
   return (
     <div>
       <div className="slider-wrapper">
@@ -77,16 +78,20 @@ const Dashboard = () => {
           ) : (
             gameName?.data?.map((game, index) => {
               const { name, sport_id } = game;
-
+              const url = name == "Casino" ? "/CasinoGame" : "#"
               return (
                 <li
-                  className={`list-item ${
-                    sportId === sport_id ? "active" : ""
-                  }`}
+                  className={`list-item ${sportId === sport_id ? "active" : ""
+                    }`}
                   key={sport_id + index}
-                  onClick={() => setSportId(sport_id)}
+                  onClick={() => {
+                    if (name == "Casino") {
+                      nav("/CasinoGame")
+                    }
+                    setSportId(sport_id)
+                  }}
                 >
-                  <Link to={"#"}>
+                  <Link to={url}>
                     <span>{name}</span>
                     <span className="game-no">{sportsLength[sport_id]}</span>
                   </Link>
@@ -101,10 +106,10 @@ const Dashboard = () => {
           <Loaderlogo />
         ) : (
           checkMatchLength?.map((item, i) => {
-            return <SportRow key={i} index={i} item={item} active={data?.data?.InplayMatches?.length>i?true:false} />;
+            return <SportRow key={i} index={i} item={item} active={data?.data?.InplayMatches?.length > i ? true : false} />;
           })
         )}
-        
+
       </div>
       {/* <SportRow/> */}
       {/* <BetPlaceSlip/> */}

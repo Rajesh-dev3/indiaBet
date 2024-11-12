@@ -2,24 +2,37 @@ import React, { useEffect, useState } from 'react'
 import './style.scss'
 import { useMybetMutation } from '../../services/mybet/mybet';
 import { useParams } from 'react-router-dom';
+import { useRunningMarketMutation } from '../../services/runningMarket/runningMarket';
 
 // import moment from 'moment'
 const Runningmarket = () => {
   const {matchId} =useParams()
-  const[trigger, {data}]= useMybetMutation()
+  const[trigger, {data}]= useRunningMarketMutation()
   console.log(data , "usebet");
   const [formData, setFormData] = useState({
-    fancy_id:0,
-    market_id:"0",
-    match_id:matchId,
-    limit:10,
-    pageno:1,
+    "limit":50,"pageno":1,"series_id":0,"sport_id":0,"type":"home"
   });
+  const [upddateData, setUpddateData] = useState([])
   useEffect(() => {
     trigger(formData)
    }, [matchId])
+   useEffect(() => {
+
+     const newrara = data?.data?.map(match => ({
+      Match_Name: match.Match_Name,
+      Market_Name: match.Market_Odds[0].Market_Name,
+      Sport_Name: match.Sport_Name,
+      Match_Status: match.Market_Odds[0].Odds[0].Match_Status,
+      teamName1: match.Market_Odds[0].Odds[0].teamName,
+      teamName2: match.Market_Odds[0].Odds[1].teamName,
+      pnl1: match.Market_Odds[0].Odds[0].PnL,
+      pnl2: match.Market_Odds[0].Odds[1].PnL,
+  }));
+  setUpddateData(newrara)
+   }, [data])
    
 
+console.log(upddateData,"upddateData");
   return (
   <>
     <div className="Runningmarket-sec">
@@ -28,7 +41,10 @@ const Runningmarket = () => {
     </div>
 <div className="data-area">
 <div className="tablebody">
-<table>
+  
+    {upddateData?.map((item,i)=>{
+  return(
+    <table key={i}>
   <thead>
 
   <tr>
@@ -37,8 +53,8 @@ const Runningmarket = () => {
     <th>Market_Name	</th>
     <th>Sport_Name</th>
     <th>Match_Status</th>
-    <th>pn1</th>
-    <th>pn2</th>
+    <th>{item?.teamName1}</th>
+    <th>{item?.teamName2}</th>
     <th>The Draw
     </th>
 
@@ -52,9 +68,9 @@ const Runningmarket = () => {
     <td>Market_Name	</td>
     <td>Sport_Name</td>
     <td>Match_Status</td>
-    <td>pn1</td>
-    <td>pn2</td>
-    <td>The Draw
+    <td style={{color:item?.pnl1>0?"green":"red"}}>{item?.pnl1}</td>
+    <td  style={{color:item?.pnl2>0?"green":"red"}}>{item?.pnl2}</td>
+    <td>0
     </td>
 
   </tr>
@@ -88,11 +104,18 @@ return (
 {/* } */}
   </tbody>
   </table>
+  )
+    })} 
+  
+
   {/* <div className="data-list">
     <div className="total-data">Showing 0 to 0 of 0 entries</div>
     <div className="pagination-area"></div>
   </div> */}
 </div>
+{
+  
+}
   {/* <p className='no-data-found'>No record found</p> */}
   </div>    
 </div>

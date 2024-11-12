@@ -51,7 +51,7 @@ const navHandler = (match_id,marketId)=>{
                   <td><span style={{ color:item?.totalAmt>0?"green": 'red' }}>{item?.totalAmt}</span></td>
                   <td><span >{moment(parseInt(item.created_at || 0) * 1000).utcOffset("+05:30").format("DD/MM/YYYY HH:mm:a")}</span></td>
         
-                  <td> <span style={{ color: '#008000' }} onClick={()=>navHandler(item?.matchId,item?.marketId)}>Show Bets</span></td>
+                  <td> <span style={{ color: '#008000' }} onClick={()=>navHandler(item?.matchId,item?.marketId?item?.marketId:item?.fancyId)}>Show Bets</span></td>
                 </tr>
               ))}
             </tbody>

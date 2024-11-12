@@ -25,7 +25,7 @@ const Statement = ({data,isLoading}) => {
               </tr>
             </thead>
             <tbody>
-              {isLoading ? <Loaderlogo /> : data?.data?.map((item, index) => (
+              {isLoading ? <Loaderlogo /> :data?.data?.length && data?.data?.map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>

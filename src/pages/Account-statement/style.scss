@@ -239,14 +239,21 @@ width: 95%;
             tr{
                 td{
                     // background: linear-gradient(180deg, #76c7ce 0, #12717c) !important;
-                    color: black !important;
+                    color: black;
                     border-right: 1px solid black;
                     text-align: left;
                     // background-color: white;
-                    padding: 6px 4px;
+                    padding: 4px;
                     line-height: 1.42857143;
                     border-bottom: 1px solid black;
                     font-size: 12px;
+                    font-weight: 600;
+                    a{
+                        color: #4083a9;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
              
                 }
             }}

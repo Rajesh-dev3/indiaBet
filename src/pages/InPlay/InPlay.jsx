@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect } from 'react'
 import './style.scss';
 import MatchHead from '../../Component/matchstatusodds/Match-Head/MatchHead'
 import SportRow from '../../Component/Sports/SportRow';
@@ -23,7 +23,7 @@ const InPlay = () => {
     <>
     <div className="inplay-sec">
 {
-cricketData &&
+cricketData?.length>0 &&
     <MatchHead name={"cricket"}/>
 }
     {isLoading ? <Loaderlogo />: cricketData && cricketData?.map((item, i)=>{
@@ -31,7 +31,7 @@ cricketData &&
 <SportRow  key={i} index={i} item={item} active={true}/>
   )
 })}
-   {tennisData && 
+   {tennisData?.length>0 && 
     <MatchHead name={"tennis"}/>
    }
     {isLoading ? <Loaderlogo />: tennisData && tennisData?.map((item, i)=>{
@@ -39,7 +39,7 @@ cricketData &&
 <SportRow  key={i} index={i} item={item} active={true}/>
   )
 })}
-   {soccerData && 
+   {soccerData?.legth>0 && 
     <MatchHead name={"Soccer"}/>
    }
     {isLoading ? <Loaderlogo />: soccerData && soccerData?.map((item, i)=>{

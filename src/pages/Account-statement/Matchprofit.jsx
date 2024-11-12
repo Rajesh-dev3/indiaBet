@@ -25,13 +25,13 @@ const MatchProfit = ({data,isLoading}) => {
               </tr>
             </thead>
             <tbody>
-              {isLoading ? <Loaderlogo /> : data?.data?.map((item, index) => (
+              {isLoading ? <Loaderlogo /> :data?.data?.length && data?.data?.map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
                     {moment(parseInt(item.created_at || 0) * 1000).utcOffset("+05:30").format("DD/MM/YYYY HH:mm:a")}
                   </td>
-                  <td>{item.description}</td>
+                  <td> <Link to={`/user-matchDetail/${item?.match_id}/${item?.market}`}>{item.description}</Link></td>
                   <td><span style={{ color: 'green' }}>{item?.credit}</span></td>
                   <td><span style={{ color: 'red' }}>{item?.debit}</span></td>
                   <td><span style={{ color: 'red' }}>{item?.commissions}</span></td>

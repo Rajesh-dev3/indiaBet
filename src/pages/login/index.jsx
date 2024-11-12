@@ -4,6 +4,8 @@ import './style.scss';
 import { useLoginMutation } from '../../services/auth/Login';
 import { useNavigate } from 'react-router-dom';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../services/sruleModalSlice';
 const Login = () => {
   const [trigger, {data, isLoading}] = useLoginMutation();
 
@@ -28,7 +30,7 @@ const submitHandler = (e) => {
   e.preventDefault();
   trigger(formData); // Dispatch the loginUser thunk
 };
-
+const dispatch = useDispatch()
 const nav = useNavigate()
 useEffect(() => {
   const token = localStorage.getItem("token")
@@ -53,6 +55,7 @@ if(data?.data?.token){
   localStorage.setItem("passChange",passChange)
   localStorage.setItem("ruleType",ruleType)
   localStorage.setItem("telegramConnected",telegramConnected)
+  dispatch(loginSuccess());
   nav("/")
 }else{
   return

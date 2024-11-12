@@ -89,8 +89,8 @@ export const router = createBrowserRouter([
           element:<BetHistory/>
       },
         {
-          path:"/matchprofitnlossinner",
-          element:<MatchProfitnlossInner/>
+          path:"/matchprofitnlossinner/:sportID/:matchID",
+          element:<MatchProfitnlossInner />
       },
         {
           path:"/matchprofitnloss",

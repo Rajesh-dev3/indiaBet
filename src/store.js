@@ -20,11 +20,16 @@ import { stakeUpdate } from './services/StakeUpdate/stakeupdate';
 import { changePassword } from './services/changepassword/changepassword';
 import { gamelength } from './services/gameLength/gamelenght';
 import { ShowBet } from './services/showBet/showBet';
+import authModalReducer from './services/sruleModalSlice';
+import { rules } from './services/rulesApi/rulesApi';
+import { runningMarket } from './services/runningMarket/runningMarket';
+import { matchPnl } from './services/Matchpnl/matchpnl';
 
 export const store = configureStore({
   reducer: {
     // Add the API reducer to the store
     betData: betDataSlice,
+    authModal: authModalReducer,
     betDataPayload:betDataPayloadSlice,
     [login.reducerPath]: login.reducer,
     [accountstatement.reducerPath]: accountstatement.reducer,
@@ -44,7 +49,10 @@ export const store = configureStore({
     [stakeUpdate.reducerPath]: stakeUpdate.reducer,
     [changePassword.reducerPath]: changePassword.reducer,
     [gamelength.reducerPath]: gamelength.reducer,
+    [rules.reducerPath]: rules.reducer,
+    [runningMarket.reducerPath]: runningMarket.reducer,
     [ShowBet.reducerPath]: ShowBet.reducer,
+    [matchPnl.reducerPath]: matchPnl.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -66,6 +74,9 @@ export const store = configureStore({
   .concat(changePassword.middleware)
   .concat(gamelength.middleware)
   .concat(ShowBet.middleware)
+  .concat(runningMarket.middleware)
+  .concat(rules.middleware)
+  .concat(matchPnl.middleware)
   .concat(eventgame.middleware),
 });
 

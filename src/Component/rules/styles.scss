@@ -1,0 +1,135 @@
+.rule-con {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+
+    .rule-heading {
+        width:calc(100% - 20px);
+        background: linear-gradient(-180deg, #414141 0%, #000 100%);
+        color: #FFB80C;
+        font-weight: 400;
+        font-size: 15px;
+        display: inline-block;
+        float: left;
+        padding: 10px 10px;
+    }
+
+    .rule-tabs {
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+
+        ul {
+            margin: 0%;
+            padding: 0%;
+            display: flex;
+
+            li {
+                list-style: none;
+                color: white;
+                padding: 10px 15px;
+                background-color: black;
+            }
+        }
+    }
+
+    .rule-content {
+        background-color: white;
+        padding: 25px;
+        padding-bottom: 0px;
+ul{
+    margin: 0%;
+    padding: 0%;
+    li{
+        margin-top: 3x;
+        list-style: none;
+    }
+}
+        .accept-btn {
+            display: flex;
+            justify-content: center;
+margin-block: 10px;
+            button {
+                background: linear-gradient(-180deg, #464646 15%, #121212 100%);
+                color: #FFB80C;
+                width: 50%;
+                margin: auto;
+                border: 1px solid transparent;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+           
+        }
+        .note{
+            color: black;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    }
+}
+
+.active-tab {
+    background-color: #ffc21d !important;
+    color: black !important;
+}
+
+
+
+.rule-con-c {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    background-color: white;
+margin-top: 25%;
+    .rule-heading {
+        width:calc(100% - 20px);
+        background: linear-gradient(-180deg, #315195 0%, #14213D 100%) !important;
+        text-align: center;
+        color: white;
+        font-weight: 400;
+        font-size: 15px;
+        display: inline-block;
+        float: left;
+        padding: 8px 10px;
+    }
+.rule-content{
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 100;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+  
+}
+    .accept-btn {
+        display: flex;
+        justify-content: center;
+margin-block: 10px;
+margin-bottom: 5px;
+        button {
+            background: linear-gradient(-180deg, #315195 0%, #14213D 100%) !important;
+
+            color: white;
+            width: 30%;
+            margin: auto;
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+       
+    }
+
+ 
+}
+
+.active-tab {
+    background-color: #ffc21d !important;
+    color: black !important;
+}
+
+
+

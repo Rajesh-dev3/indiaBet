@@ -28,7 +28,7 @@ const SportRow = ({item,active}) => {
             </span>
             <span className='player-top player-bottom'>
             <StarRoundedIcon/><span className='sportname time' style={{color:"#2789ce", fontSize:"12px",  whiteSpace: "nowrap",
-  width: "140px",
+  // width: "140px",
   overflow: "hidden",
   textOverflow: "ellipsis", 
   }}> {item?.name}</span>

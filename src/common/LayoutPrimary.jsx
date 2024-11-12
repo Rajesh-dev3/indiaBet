@@ -7,6 +7,12 @@ import { useEffect, useState } from "react";
 import SiderMobile from "../Component/SiderM/SiderMobile";
 import EditStakeModal from "../Component/editStake/EditStakeModal";
 import Modal from "../Component/modal";
+import {RuleModal, RuleModal2} from "../Component/modal/ruleModal";
+import { useDispatch, useSelector } from "react-redux";
+
+import { closeModalRule } from '../services/sruleModalSlice';
+import Rules from "../Component/rules/rules";
+import Continue from "../Component/rules/continue";
 
 export let stakeModalRef;
 const LayoutPrimary = () => {
@@ -34,8 +40,23 @@ const LayoutPrimary = () => {
     }
   }, [token]);
   stakeModalRef = openModal
+  const isModalOpen = useSelector((state) => state.authModal.isModalOpen);
+
+  const [rulemodalOpen, setRulemodalOpen] = useState(false)
+  
   return (
     <>
+      {rulemodalOpen &&
+    <RuleModal2 Element={<Continue setRulemodalOpen={setRulemodalOpen}/>} closeModal={closeModal}/>
+    }
+      {isModalOpen &&
+    <RuleModal Element={
+    <>
+    <Rules setRulemodalOpen={setRulemodalOpen}/>
+
+    </>
+    } closeModal={closeModal}/>
+    }
       {isOpen &&
     <Modal Element={<EditStakeModal setIsOpen={setIsOpen}/>} closeModal={closeModal}/>
     }

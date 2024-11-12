@@ -4,22 +4,27 @@ import { useEffect, useState } from 'react';
 import { useAccountstatementMutation } from '../../services/account-statement/AccountStatement';
 import moment from 'moment';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
+import Statement from './Statement';
+import MatchProfit from './Matchprofit';
+import CasinoProfit from './casinoProfit';
+import DepositWithdraw from './deposiWithdraw';
+import Ledger from './ledgers';
 
 const AccountStatement = () => {
+  const [activeButton, setActiveButton] = useState('AC'); // Track active button
   const [trigger, { data, isLoading }] = useAccountstatementMutation();
   const [formData, setFormData] = useState({
-    from_date: moment().startOf('day').subtract(10, 'days').unix(),
-    to_date: moment().startOf('day').unix(),
-    limit: '10',
-    pageno: '1',
+    from_date: String(moment().startOf('day').subtract(10, 'days').unix()),
+    to_date:String(moment().startOf('day').unix()),
+    type: activeButton,
   });
-  const [activeButton, setActiveButton] = useState('Satement'); // Track active button
 
   const formHandler = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "from_date" || name === "to_date" ? moment(value).startOf('day').unix() : value,
+   
+      [name]: name === "from_date" || name === "to_date" ? String(moment(value).startOf('day').unix()) : value,
     }));
   };
 
@@ -30,23 +35,46 @@ const AccountStatement = () => {
 
   const clearFilter = () => {
     const initialData = {
-      from_date: moment().startOf('day').subtract(10, 'days').unix(),
-      to_date: moment().startOf('day').unix(),
-      limit: '10',
-      pageno: '1',
+
+      type: activeButton,
+      from_date: String(moment().startOf('day').subtract(10, 'days').unix()),
+      to_date:String(moment().startOf('day').unix()),
+
     };
     setFormData(initialData);
     trigger(initialData);
   };
 
   const handleButtonClick = (buttonType) => {
+    setFormData((prev) => ({
+      ...prev,
+      type:buttonType
+      ,
+    }));
     setActiveButton(buttonType);
-    // You could trigger a different API call or filter data based on `buttonType`
   };
-
+    // You could trigger a different API call or filter data based on `buttonType`
+  
+  const [tabOpen, setTabOpen] = useState(2)
   useEffect(() => {
     trigger(formData);
-  }, []);
+  }, [activeButton]);
+
+console.log(formData,"formData")
+  const tabObj = {
+    0: <MatchProfit data={data} isLoading={isLoading} />,
+    1: <CasinoProfit data={data} isLoading={isLoading}/>,
+    2: <Statement data={data} isLoading={isLoading} />,
+    3: <DepositWithdraw data={data?.data} isLoading={isLoading}/>,
+    4: <Ledger data={data} isLoading={isLoading}/>
+  }
+  const typeObj  = {
+    'match profit':"MP",
+    'casino profit':"CP",
+    "Satement":"AC",
+    'D & W':"DW",
+    'Ledgers':"ML"
+  }
 
   return (
     <>
@@ -56,11 +84,15 @@ const AccountStatement = () => {
           <div className="back-btn"><Link to={"/"}><span>Back</span></Link></div>
         </div>
         <div className="profit-btn-area">
-          {['match profit', 'casino profit','Satement' , 'D & W', 'Ledgers'].map((type) => (
+          {['match profit', 'casino profit', 'Satement', 'D & W', 'Ledgers'].map((type, i) => (
             <button
               key={type}
-              className={`entries-btn ${activeButton === type ? 'active' : ''}`}
-              onClick={() => handleButtonClick(type)}
+              className={`entries-btn ${activeButton === typeObj[type] ? 'active' : ''}`}
+              onClick={() => {
+                console.log(typeObj[type])
+                handleButtonClick(typeObj[type])
+                setTabOpen(i)
+              }}
             >
               {type}
             </button>
@@ -108,42 +140,7 @@ const AccountStatement = () => {
             <input type="text" className='search-data' />
           </div>
         </div>
-        <div className="tablebody">
-          <table>
-            <thead>
-              <tr>
-                <th>S.no</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Credit</th>
-                <th>Debit</th>
-                <th>Commission</th>
-                <th>Match P&L</th>
-                <th>Final P&L</th>
-              </tr>
-            </thead>
-            <tbody>
-              {isLoading ? <Loaderlogo /> : data?.data?.map((item, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>
-                    {moment(parseInt(item.created_at || 0) * 1000).utcOffset("+05:30").format("DD/MM/YYYY HH:mm:a")}
-                  </td>
-                  <td>{item.description}</td>
-                  <td><span style={{ color: 'green' }}>{item.amount > 0 ? item.amount : 0}</span></td>
-                  <td><span style={{ color: 'red' }}>{item.amount < 0 ? item.amount : 0}</span></td>
-                  <td><span style={{ color: 'red' }}>0</span></td>
-                  <td>-</td>
-                  <td><span style={{ color: '#008000' }}>{item.available_balance}</span></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="data-list">
-            <div className="total-data">Showing 0 to 0 of 0 entries</div>
-            <div className="pagination-area"></div>
-          </div>
-        </div>
+        {tabObj[tabOpen]}
       </div>
     </>
   );

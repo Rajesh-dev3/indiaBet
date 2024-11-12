@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
 
-const MatchProfit = ({data,isLoading}) => {
+const DepositWithdraw = ({data,isLoading}) => {
 
 
   
@@ -34,10 +34,10 @@ const MatchProfit = ({data,isLoading}) => {
                   <td>{item.description}</td>
                   <td><span style={{ color: 'green' }}>{item?.credit}</span></td>
                   <td><span style={{ color: 'red' }}>{item?.debit}</span></td>
-                  <td><span style={{ color: 'red' }}>{item?.commissions}</span></td>
-                  <td><span style={{ color: 'red' }}>{item?.match_PL}</span></td>
+                  <td><span style={{ color: 'red' }}>{item?.commissions?item?.commissions:0}</span></td>
+                  <td><span style={{ color: 'red' }}>{item?.match_PL?item?.match_PL:0}</span></td>
         
-                  <td><span style={{ color: '#008000' }}>{item?.finalP_L}</span></td>
+                  <td><span style={{ color: '#008000' }}>{item?.finalP_L?item?.finalP_L:0}</span></td>
                 </tr>
               ))}
             </tbody>
@@ -53,4 +53,4 @@ const MatchProfit = ({data,isLoading}) => {
   )
 }
 
-export default MatchProfit
+export default DepositWithdraw

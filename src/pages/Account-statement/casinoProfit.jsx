@@ -1,9 +1,8 @@
 
-import { Link } from 'react-router-dom'
 import moment from 'moment';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
 
-const MatchProfit = ({data,isLoading}) => {
+const CasinoProfit = ({data,isLoading}) => {
 
 
   
@@ -32,12 +31,11 @@ const MatchProfit = ({data,isLoading}) => {
                     {moment(parseInt(item.created_at || 0) * 1000).utcOffset("+05:30").format("DD/MM/YYYY HH:mm:a")}
                   </td>
                   <td>{item.description}</td>
-                  <td><span style={{ color: 'green' }}>{item?.credit}</span></td>
-                  <td><span style={{ color: 'red' }}>{item?.debit}</span></td>
-                  <td><span style={{ color: 'red' }}>{item?.commissions}</span></td>
-                  <td><span style={{ color: 'red' }}>{item?.match_PL}</span></td>
-        
-                  <td><span style={{ color: '#008000' }}>{item?.finalP_L}</span></td>
+                  <td><span style={{ color: 'green' }}>{item.amount > 0 ? item.amount : 0}</span></td>
+                  <td><span style={{ color: 'red' }}>{item.amount < 0 ? item.amount : 0}</span></td>
+                  <td><span style={{ color: 'red' }}>0</span></td>
+                  <td>-</td>
+                  <td><span style={{ color: '#008000' }}>{item.available_balance}</span></td>
                 </tr>
               ))}
             </tbody>
@@ -53,4 +51,4 @@ const MatchProfit = ({data,isLoading}) => {
   )
 }
 
-export default MatchProfit
+export default CasinoProfit

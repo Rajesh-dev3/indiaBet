@@ -9,7 +9,7 @@ export const accountstatement = createApi({
   endpoints: (builder) => ({
     accountstatement: builder.mutation({
       query: (body) => ({
-        url: "v5/statement",   // API endpoint for login
+        url: "v5/indiaBet-Account-Statement",   // API endpoint for login
         method: 'POST',
         body  // Send user credentials
       }),

@@ -17,13 +17,22 @@ import CasinoGame from "../pages/Casino-Game/CasinoGame";
 import Account from "../pages/Account/Account";
 import CasinoResult from "../pages/CasinoResult/CasinoResult";
 import Alert from "../Component/AlertPage/Alert";
+import UserMatchDetail from "../pages/Account-statement/userMatchDetail";
+import UserShowBet from "../pages/Account-statement/userShowBet";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <LayoutPrimary />,
       children:[
-      
+        {
+          path:"/user-matchDetail/:sportId/:matchId",
+          element:<UserMatchDetail />
+      },
+        {
+          path:"/show-bet/:sportId/:matchId",
+          element:<UserShowBet />
+      },
         {
             path:"/",
             element:<DashBoardLayout />,
@@ -37,6 +46,7 @@ export const router = createBrowserRouter([
                   path:"/event/:sportId/:matchId",
                   element:<Event />
               },
+          
               {
                   path:"/inPlay",
                   element:<InPlay />

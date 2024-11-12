@@ -19,6 +19,7 @@ import { walletBalance } from './services/Walletbalance/walletbalance';
 import { stakeUpdate } from './services/StakeUpdate/stakeupdate';
 import { changePassword } from './services/changepassword/changepassword';
 import { gamelength } from './services/gameLength/gamelenght';
+import { ShowBet } from './services/showBet/showBet';
 
 export const store = configureStore({
   reducer: {
@@ -43,6 +44,7 @@ export const store = configureStore({
     [stakeUpdate.reducerPath]: stakeUpdate.reducer,
     [changePassword.reducerPath]: changePassword.reducer,
     [gamelength.reducerPath]: gamelength.reducer,
+    [ShowBet.reducerPath]: ShowBet.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -63,6 +65,7 @@ export const store = configureStore({
   .concat(stakeUpdate.middleware)
   .concat(changePassword.middleware)
   .concat(gamelength.middleware)
+  .concat(ShowBet.middleware)
   .concat(eventgame.middleware),
 });
 

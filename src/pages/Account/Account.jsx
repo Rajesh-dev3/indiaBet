@@ -2,6 +2,9 @@ import React from 'react'
 import './style.scss';
 import { Link } from 'react-router-dom';
 const Account = () => {
+  const handleLogOut = () => {
+    localStorage.clear();
+}
   return (
     <>
     <div className='account-sec'>
@@ -35,7 +38,7 @@ const Account = () => {
       </Link>
            
         </div>
-        <button className="logout-btn"> Logout <i className='fa fa-sign-in'></i> </button>
+        <button className="logout-btn" onClick={handleLogOut}> Logout <i className='fa fa-sign-in'></i> </button>
     </div>
     </>
   )

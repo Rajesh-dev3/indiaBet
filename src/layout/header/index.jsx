@@ -139,10 +139,14 @@ const walletbalancefun = ()=>{
 
                                 MenuListProps={{
                                     'aria-labelledby': 'basic-button',
+                                    className:'a',
+                                    
                                 }}
                             >
-                                <MenuItem onClick={handleClose} ><Link to={'/changePassword'} style={{ color: 'black', textDecoration: 'none' }}>Change Password</Link>  </MenuItem>
-                                <MenuItem onClick={handleLogOut}> <Link to={"#"} style={{ color: 'black', textDecoration: 'none' }}> Log Out</Link></MenuItem>
+                                <MenuItem onClick={handleClose} id="login-menu" ><Link to={'/changePassword'} style={{ color: 'black', textDecoration: 'none' }}> <span > <i className="fa fa-key"></i>
+                                    </span>  Change Password</Link>  </MenuItem>
+                                <MenuItem onClick={handleLogOut} id="login-menu"> <Link to={"#"} style={{ color: 'black', textDecoration: 'none' }}>  <span> <i className="fa fa-sign-out"></i>
+                                </span> Log Out</Link></MenuItem>
                             </Menu>
                         </ul>
                     </div>

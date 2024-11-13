@@ -43,7 +43,7 @@ const MatchProfit = ({data,isLoading}) => {
             </tbody>
           </table>
           <div className="data-list">
-            <div className="total-data">Showing 0 to 0 of 0 entries</div>
+            <div className="total-data">Showing {data?.data?.length <0 ?"0":"1"} to {data?.data?.length} entries</div>
             <div className="pagination-area"></div>
           </div>
         </div>

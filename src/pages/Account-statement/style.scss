@@ -233,6 +233,8 @@ width: 95%;
                     //   }
                   
                 }
+            
+
             }}
         }
           tbody{
@@ -256,7 +258,14 @@ width: 95%;
                     }
              
                 }
+            }
+            .showbettablehover{
+            &:hover{
+                background:#4cebdc !important; 
+            
+             cursor: pointer;
             }}
+        }
         }
     
     .data-list{
@@ -270,3 +279,32 @@ width: 95%;
             padding-top: 10px;
         }
     }
+    .back-btn2{
+     
+            span{
+                color: #000;
+                background-color: #e2a521;
+                border-color: #e2a521;
+            
+              padding: 2px 6px;
+              font-size: 12px;
+                // border: 1px solid black;
+                border-radius: 4px;
+            }
+        
+    }
+
+
+
+    .showbethead{
+        .th{   // background: linear-gradient(180deg, #76c7ce 0, #12717c) !;
+           background: #C8C8C8 !important;
+           color: black !important;
+        // color: ;
+           border-right: 1px solid black;
+           text-align: start;
+           padding: 6px 4px;
+           line-height: 1.42857143;
+           font-size: 13px;}
+         
+       }

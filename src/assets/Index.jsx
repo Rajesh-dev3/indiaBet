@@ -20,9 +20,13 @@ import game9 from "../assets/img/pragmaticplay.webp"
 import game10 from "../assets/img/superspadecasino.webp"
 import game11 from "../assets/img/spribegoal.webp"
 import game12 from "../assets/img/spribekeno.webp"
+import b1 from '../assets/img/b1.jpg'
+import b2 from '../assets/img/b2.jpg'
+import b3 from '../assets/img/b3.jpg'
+import b4 from '../assets/img/b4.jpg'
 
 // export {logo}
 
 export{
-    gameplayer,wallet,tv,userpic,slide,casinogame,loginlogo,bat,ball,logo,game1,game2,game3,game4,game5,game6,game7,game8,game9,game10,game11,game12,
+    gameplayer,wallet,tv,userpic,b1,b2,b3,b4,slide,casinogame,loginlogo,bat,ball,logo,game1,game2,game3,game4,game5,game6,game7,game8,game9,game10,game11,game12,
 }

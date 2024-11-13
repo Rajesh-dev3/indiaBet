@@ -70,7 +70,7 @@ const {pathname} = useLocation()
                         <NavLink
                         key={subItem?.list}
                           to={subItem?.path || "#"}
-                          className={`${pathname  == subItem?.path?"active-links":""}`}
+                          className={`${pathname  == subItem?.path?"active-links":""} `}
                           // className={({ isActive }) => (isActive ? "active-link" : "")}
                         >
                       <li  className="sub-list">

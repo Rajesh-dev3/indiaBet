@@ -11,7 +11,7 @@ import './swiper.scss';
 
 // Import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
-import { casinogame } from '../../assets/Index';
+import { b1, b2, b3, b4, casinogame } from '../../assets/Index';
 
 export default function App() {
   return (
@@ -31,11 +31,11 @@ export default function App() {
         className="mySwiper"
       >
         <SwiperSlide><img src={casinogame}/></SwiperSlide>
-        <SwiperSlide><img src={casinogame}/></SwiperSlide>
-        <SwiperSlide><img src={casinogame}/></SwiperSlide>
-        <SwiperSlide><img src={casinogame}/></SwiperSlide>
-        <SwiperSlide><img src={casinogame}/></SwiperSlide>
-        <SwiperSlide><img src={casinogame}/></SwiperSlide>
+        <SwiperSlide><img src={b1}/></SwiperSlide>
+        <SwiperSlide><img src={b2}/></SwiperSlide>
+        <SwiperSlide><img src={b3}/></SwiperSlide>
+        <SwiperSlide><img src={b4}/></SwiperSlide>
+        {/* <SwiperSlide><img src={casinogame}/></SwiperSlide> */}
        
       </Swiper>
     </>

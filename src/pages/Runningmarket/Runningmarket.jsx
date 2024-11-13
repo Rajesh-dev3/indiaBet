@@ -63,11 +63,11 @@ console.log(upddateData,"upddateData");
   <tbody>
 
   <tr>
-    <td>S.no</td>
-    <td>Match_Name</td>
-    <td>Market_Name	</td>
-    <td>Sport_Name</td>
-    <td>Match_Status</td>
+    <td>{i + 1}</td>
+    <td>{item?.Match_Name}</td>
+    <td>{item?.Market_Name}	</td>
+    <td>{item?.Sport_Name}</td>
+    <td>{item?.Match_Status}</td>
     <td style={{color:item?.pnl1>0?"green":"red"}}>{item?.pnl1}</td>
     <td  style={{color:item?.pnl2>0?"green":"red"}}>{item?.pnl2}</td>
     <td>0

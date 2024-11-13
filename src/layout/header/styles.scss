@@ -473,3 +473,25 @@ a{
 }
   
   }
+
+
+  .a{
+ padding: 0px 0px !important;
+    margin: 0;
+    // background: red;
+
+  }
+  #login-menu{
+    // background: #0c963d;
+    padding: 0 8px;
+    line-height:none;
+    margin: 0;
+    a{
+        letter-spacing: 1px;
+        font-size: 12px;
+        span{
+            margin-right: 3px;
+        }
+
+    }
+  }

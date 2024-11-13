@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const UserMatchDetailTable = () => {
 const {sportId,matchId} = useParams()
-
+// console.log(data?.data?.data ,"length")
   const [trigger,{data,isLoading}] = useShowBetMutation()
   useEffect(() => {
     trigger({
@@ -57,7 +57,7 @@ const navHandler = (match_id,marketId)=>{
             </tbody>
           </table>
           <div className="data-list">
-            <div className="total-data">Showing 0 to 0 of 0 entries</div>
+            <div className="total-data">Showing {data?.data?.data.length <0 ? "0":"1"} to {data?.data?.data.length} entries</div>
             <div className="pagination-area"></div>
           </div>
         </div>

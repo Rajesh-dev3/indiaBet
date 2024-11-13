@@ -88,7 +88,7 @@ const LayoutPrimary = () => {
               {links.map((link, index) => (
                 <li
                   key={index}
-                  className={activeIndex === index ? "active" : ""}
+                  className={activeIndex === index ? "active-footer" : ""}
                   onClick={() =>{
                     if(index==2)
                     {

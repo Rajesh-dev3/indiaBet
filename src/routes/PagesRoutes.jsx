@@ -39,6 +39,14 @@ export const router = createBrowserRouter([
             children:[
 
               {
+                  path:"/menu",
+                  element:<Dashboard />
+              },
+              {
+                  path:"/edit-stake",
+                  element:<Dashboard />
+              },
+              {
                   path:"/",
                   element:<Dashboard />
               },

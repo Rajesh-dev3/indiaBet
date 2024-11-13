@@ -11,6 +11,34 @@ import { toast } from 'react-toastify';
 import { exposureRef } from '../../layout/header';
 import { betHistoryFunRef } from '../Tabs/Tabs';
 const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
+// Initialize a function to speak a message
+function speakMessage(message) {
+    if ('speechSynthesis' in window) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(message);
+
+        // Get voices and filter for a female-sounding voice
+        const voices = synth.getVoices();
+        const femaleVoice = voices.find(voice => 
+            voice.name.toLowerCase().includes("female") ||
+            voice.name.toLowerCase().includes("zira") || // Common female voice
+            voice.lang === 'en-US' // You can adjust this based on language preference
+        );
+
+        // Set the female voice if found, otherwise use default
+        utterance.voice = femaleVoice || voices[0]; // Fall back to first voice if no match
+
+        // Speak the message
+        synth.speak(utterance);
+    } else {
+        console.log("Speech Synthesis not supported in this browser.");
+    }
+}
+
+// Example usage
+
+
+
     const [stakeValue, setStakeValue] = useState(null);
 
     const dispatch = useDispatch();
@@ -68,6 +96,7 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
         exposureRef()
         betHistoryFunRef()
         dispatch(setBetData());
+        speakMessage("bet Placed Successfully");
           toast?.success(data?.message || fancyBetResponse?.message)
           setBetModuleOpen(false)
         }

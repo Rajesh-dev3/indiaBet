@@ -1,7 +1,12 @@
+@import '../../Styles/mixins';
 .MatchInner-sec{
     width: calc(100% - 30px);
     padding: 0 15px;
     margin: 0 auto;
+@include media(phone){
+    width: 100%;
+    padding: 0 0;
+}
     .game1{
         margin-bottom: 20px;
     }
@@ -30,45 +35,7 @@ table{
             }
         }
     }
-//             tbody{
-//                 tr{
-// background-color:#ffffff;
-//                     &:nth-child(odd) {
-//                         background-color:#F9F9F9;
-//                       }
-//                     td{
-//                         border-right: 1px solid black;
-//                         border-bottom: 1px solid black;
-//                         text-align: left;
-//                         padding: 6px 4px;
-//                         line-height: 1.42857143;
-//                         font-size: 13px;
-//                         a{
-//                             color: #4083a9;
-//                             &:hover{
-//                                 text-decoration: underline;
-//                             }
-//                         }
-//                         .report{
-//                             color: white;
-//                             background: black;
-//                             padding: 5px 20px;
-//                             border-radius: 2px;
-//                             font-size: 12px;
-//                             font-weight: 600;
-//                             a{
-//                                 color: white;
-//                                 &:hover{
-//                                     text-decoration: underline;
-//                                 }
-//                             }
-//                         }
-            
-              
-//                     }
 
-//                 }
-//             }
     
 }
 }

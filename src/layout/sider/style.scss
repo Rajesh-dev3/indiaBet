@@ -19,3 +19,13 @@
         text-decoration: underline;
     }
 }
+#sub-list{
+    padding: 3px 5px;
+    display: flex;
+    &:hover{
+        text-decoration: underline;
+    }
+    &:nth-child(1){
+        border-top: 1px solid #ddd;
+    }
+}

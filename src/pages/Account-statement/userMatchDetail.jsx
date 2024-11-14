@@ -25,6 +25,14 @@ const UserMatchDetail = () => {
           <div className="annouce">Account Statement</div>
           <div className="back-btn"><Link to={"/"}><span>Back</span></Link></div>
         </div>
+        <div className="data-filter2 ">
+        
+          <div className=" search-filter2">
+            <span className='search2'>Search</span>
+            <input type="text" className='search-data2' />
+          </div>
+        </div>
+
       
         {tabObj[0]}
       </div>

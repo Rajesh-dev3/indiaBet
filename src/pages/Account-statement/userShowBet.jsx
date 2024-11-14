@@ -31,7 +31,7 @@ const UserShowBet = () => {
         <div className="annouce">Show Bet History</div>
         <div className="back-btn back-btn2"><span onClick={goBack}>Back</span></div>
       </div>
-      <div className="tablebody" style={{ marginTop: "30px" }}>
+      <div className="tablebody">
         <table>
           <thead>
             <tr className='showbethead'>

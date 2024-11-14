@@ -24,6 +24,10 @@
                 padding: 3px;
                 clip-path: polygon(25% 0%, 100% 0%, 100% 99%, 0% 100%);
             }
+            .tv{
+                background: #dc143c;
+                color: white;
+            }
         }
     }
     .scorebox{
@@ -35,7 +39,7 @@
         
         overflow: hidden;
         width: calc(100% - 2px) ;
-        border-top: 2px solid #9A9A9A;
+        border-top: 2px solid white;
         border-left: 2px solid #9A9A9A;
         height: 150px;
         .overlay{
@@ -51,6 +55,7 @@
             padding: 3px;
             background: #00000073;
             color: white;
+            font-size: 13px;
             // z-index:;
             .team{
                 display: flex;
@@ -75,12 +80,15 @@ width: 75%;
     list-style: none;
     padding-left: 6px;
     margin: 0;
+    font-size: 13px;
     .playerid{
         color: white;
         display: flex;
         align-items: start;
         font-weight: 500;
         margin: 3px;
+    font-size: 13px;
+
         img{
             width: 18px;
             color: white;

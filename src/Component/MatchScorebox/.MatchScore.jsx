@@ -24,6 +24,9 @@ const MatchScore = ({name}) => {
     4:"green",
     w:"red",
   }
+  const lastElement = zero?.recentBalls?.[0]?.[5];
+  const slicedArray = lastElement ? lastElement.slice(0, -1) : [];
+  console.log(slicedArray);
   return (
     <>
     <div className='MatchScore'>
@@ -31,6 +34,7 @@ const MatchScore = ({name}) => {
             <div className="titleName">{name}</div>
             <div className="matches-btn">
                 <button className="matchlist">Matches</button>
+                <button className="tv">TV</button>
             </div>
         </div>
         <div className="scorebox">
@@ -61,9 +65,11 @@ const MatchScore = ({name}) => {
                     <li className="runs">6</li> */}
                 </ul>
             </div>
-            <div className="run-right"><span>{zero?.cb}</span></div>
+            <div className="run-right"><span> 
+              {zero?.recentBalls?.[0]?.[5]}
+              </span></div>
             </div> 
-<div className="wlc">Welcome</div>
+<div className="wlc">{zero?.cb}</div>
             </div>
         </div>
       

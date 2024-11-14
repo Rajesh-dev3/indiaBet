@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 export let betHistoryFunRef;
 function Tabs() {
   const [activeTab, setActiveTab] = useState(0);
-  const [isContentVisible, setIsContentVisible] = useState(true); // Toggle for content visibility
+  const [isContentVisible, setIsContentVisible] = useState(false); // Toggle for content visibility
 
   // Array of tab labels
   const tabs = ['All Bet', 'Fancy Bet'];

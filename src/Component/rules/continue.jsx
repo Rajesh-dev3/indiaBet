@@ -5,7 +5,7 @@ import { closeModalRule } from '../../services/sruleModalSlice'
 const Continue = ({setRulemodalOpen}) => {
   const dispatch = useDispatch()
   return (
-    <div> <div className='rule-con-c'>
+    <div className='welcome-note'> <div className='rule-con-c'>
     <div className="rule-heading">
     Indiabet Important Notice
         </div> 

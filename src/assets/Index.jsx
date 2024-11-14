@@ -24,9 +24,10 @@ import b1 from '../assets/img/b1.jpg'
 import b2 from '../assets/img/b2.jpg'
 import b3 from '../assets/img/b3.jpg'
 import b4 from '../assets/img/b4.jpg'
+import rs2 from '../assets/img/wallet-icons2.png'
 
 // export {logo}
 
 export{
-    gameplayer,wallet,tv,userpic,b1,b2,b3,b4,slide,casinogame,loginlogo,bat,ball,logo,game1,game2,game3,game4,game5,game6,game7,game8,game9,game10,game11,game12,
+    gameplayer,wallet,rs2,tv,userpic,b1,b2,b3,b4,slide,casinogame,loginlogo,bat,ball,logo,game1,game2,game3,game4,game5,game6,game7,game8,game9,game10,game11,game12,
 }

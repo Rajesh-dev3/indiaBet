@@ -36,7 +36,12 @@ const Ledger = ({data,isLoading}) => {
                   <td><span style={{ color: 'red' }}>{item?.commission}</span></td>
                   <td><span style={{ color:item?.match_PL<0?"red": '#008000'  }}>{item?.match_PL}</span></td>
         
-                  <td><span style={{ color:item?.finalP_l<0?"red": '#008000' }}>{item?.finalP_l}</span></td>
+                  <td><span style={{ color:item?.finalP_l<0?"red": '#008000' }}>  <span style={{ color: item?.finalP_l < 0 ? "red" : item?.finalP_l > 0 ? '#008000' : 'black' }}>
+                    {item?.finalP_l}
+                    {item?.finalP_l < 0 && ' ( Dena Hai )'}
+                    {item?.finalP_l > 0 && ' ( Lena Hai )'}
+                    {item?.finalP_l === 0 && '( Kuch Nahi )'}
+                  </span></span></td>
                 </tr>
               ))}
             </tbody>

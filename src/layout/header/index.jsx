@@ -8,7 +8,7 @@ import { useWalletBalanceMutation } from "../../services/Walletbalance/walletbal
 import { useEffect, useState } from "react";
 import { StyledButton } from "./styled";
 import { useMediaQuery } from "../../useMediaQuery";
-import { wallet } from "../../assets/Index";
+import { rs2, wallet } from "../../assets/Index";
 
 import "./styles.scss"
 export let exposureRef;
@@ -153,8 +153,8 @@ const walletbalancefun = ()=>{
                 </div>
                 <div className="main-expo">
                     <div className="main-area">
-                        <img src={wallet} alt="wallet-icon" /> Main : <span style={{ marginLeft: '5px' }}>{exposureData?.data?.balance}</span></div>
-                    <div className="expo-area"   onClick={handleOpen}>Exp :<span style={{ marginLeft: '5px' }}>{exposureData?.data?.liability }</span></div>
+                        <img src={rs2} alt="wallet-icon" /> Main : <span style={{ marginLeft: '5px' }}>{exposureData?.data?.balance}</span></div>
+                    <div className="expo-area"   onClick={handleOpen}>Expo :<span style={{ marginLeft: '5px' }}>{exposureData?.data?.liability }</span></div>
                 </div>
                 <div className="marquee">
                     <Marquee>

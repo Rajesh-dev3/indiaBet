@@ -58,6 +58,9 @@
             border-radius: 2px;
             text-transform: capitalize;
             outline: none;
+            @include media (smartphone){
+                width: 110px;
+            }
         }
         .entries-btn.active {
             border:none;
@@ -120,7 +123,7 @@ width: 95%;
     font-weight: 700;
     text-decoration: none;
     border-radius: 2px !important;
-    color: #fff !important;
+    color: #fff ;
     cursor: pointer;
             }
             .clear{
@@ -143,6 +146,9 @@ width: 95%;
         .show-enteries{
             display: flex;
             align-items: center;
+            @include media(smartphone){
+                width: 48%;
+            }
             span{
                 font-size: 13px;
                 font-weight: 700;
@@ -174,6 +180,9 @@ width: 95%;
         .search-filter{
             display: flex;
             align-items: center;
+            @include media(smartphone){
+                width: 48%;
+            }
 .search{
     display: inline-block;
     max-width: 100%;
@@ -190,6 +199,9 @@ width: 95%;
                 border-radius: 2px;
                 // border-top-color: #c2c2c2;
                 border: solid 1px #c2c2c2;
+                @include media(smartphone){
+                    width: 100px;
+                }
             }
         }
     }
@@ -308,3 +320,44 @@ width: 95%;
            font-size: 13px;}
          
        }
+       .data-filter2{
+        display: flex;
+        justify-content: end;
+        margin-bottom: 10px;
+        padding: 5px;
+  
+        .search-filter2{
+            display: flex;
+            align-items: center;
+
+            @include media(smartphone){
+                width: 48%;
+            }
+.search2{
+    display: inline-block;
+    max-width: 100%;
+    // margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+            .search-data2{
+                height: 30px;
+                padding: 0px 10px;
+                font-size: 12px;
+                line-height: 1.5;
+                margin-left: 0.5em;
+                border-radius: 2px;
+                // border-top-color: #c2c2c2;
+                border: solid 1px #c2c2c2;
+                @include media(smartphone){
+                    width: 100px;
+                }
+            }
+        }
+    }
+
+    .showbet-btn{
+        &:hover{
+            text-decoration: underline;
+        }
+    }

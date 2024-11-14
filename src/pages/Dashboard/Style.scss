@@ -11,7 +11,7 @@
         position: fixed; /* Prevents page scroll */
         overflow-y: scroll;
         overflow-x: hidden;
-        height: 82vh;
+        height: 81vh;
         }
 .dashboard-left{
 
@@ -101,6 +101,7 @@ border-radius: 10px;
     .game-area{
         width: calc(100% - 10px);
         margin: auto;
+        padding-bottom: 5px;
     }
 }
 .dashboard-right{

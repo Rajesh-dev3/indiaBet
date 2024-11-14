@@ -9,6 +9,7 @@ const Rules = ({setRulemodalOpen}) => {
     const {data} = useGetRulesQuery()
     console.log(data)
   return (
+    <div className="welcome-note">
     <div className='rule-con'>
         <div className="rule-heading">
             INDIABET Rules & Regulations
@@ -39,6 +40,7 @@ const Rules = ({setRulemodalOpen}) => {
                 dispatch(closeModalRule());
                 setRulemodalOpen(true)}}>Accept</button>
                 </div>
+            </div>
             </div>
             </div>
   )

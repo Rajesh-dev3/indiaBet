@@ -1,88 +1,113 @@
-.rule-con {
+@import '../../Styles/mixins';
+.welcome-note{
     display: flex;
     flex-direction: column;
     width: 600px;
-
-    .rule-heading {
-        width:calc(100% - 20px);
-        background: linear-gradient(-180deg, #414141 0%, #000 100%);
-        color: #FFB80C;
-        font-weight: 400;
-        font-size: 15px;
-        display: inline-block;
-        float: left;
-        padding: 10px 10px;
+    @include media (phone){
+        width: 100%;
     }
 
-    .rule-tabs {
-        background-color: white;
-        border-bottom: 1px solid #ddd;
+    .rule-con {
+        display: flex;
+        flex-direction: column;
+        // width: 600px;
 
-        ul {
-            margin: 0%;
-            padding: 0%;
-            display: flex;
-
-            li {
-                list-style: none;
-                color: white;
-                padding: 10px 15px;
-                background-color: black;
+        .rule-heading {
+            width:calc(100% - 20px);
+            background: linear-gradient(-180deg, #414141 0%, #000 100%);
+            color: #FFB80C;
+            font-weight: 400;
+            font-size: 15px;
+            text-align: center;
+            display: inline-block;
+            float: left;
+            padding: 10px 10px;
+        }
+    
+        .rule-tabs {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+    
+            ul {
+                margin: 0%;
+                padding: 0%;
+                display: flex;
+    
+                li {
+                    list-style: none;
+                    color: white;
+                    padding: 10px 15px;
+                    background-color: black;
+                }
+            }
+        }
+    
+        .rule-content {
+            background-color: white;
+            padding: 25px;
+            padding-bottom: 0px;
+            @include media (phone){
+                padding: 15px 15px 0 15px;
+                
+            }
+    ul{
+        margin: 0%;
+        padding: 0%;
+        li{
+            margin-top: 3x;
+            list-style: none;
+        }
+    }
+            .accept-btn {
+                display: flex;
+                justify-content: center;
+    margin-block: 10px;
+                button {
+                    background: linear-gradient(-180deg, #464646 15%, #121212 100%);
+                    color: #FFB80C;
+                    width: 50%;
+                    margin: auto;
+                    border: 1px solid transparent;
+                    padding: 6px 12px;
+                    font-size: 14px;
+                    line-height: 1.42857143;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+               
+            }
+            .note{
+                color: black;
+                font-weight: bold;
+                margin-top: 20px;
             }
         }
     }
-
-    .rule-content {
-        background-color: white;
-        padding: 25px;
-        padding-bottom: 0px;
-ul{
-    margin: 0%;
-    padding: 0%;
-    li{
-        margin-top: 3x;
-        list-style: none;
-    }
-}
-        .accept-btn {
-            display: flex;
-            justify-content: center;
-margin-block: 10px;
-            button {
-                background: linear-gradient(-180deg, #464646 15%, #121212 100%);
-                color: #FFB80C;
-                width: 50%;
-                margin: auto;
-                border: 1px solid transparent;
-                padding: 6px 12px;
-                font-size: 14px;
-                line-height: 1.42857143;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-           
-        }
-        .note{
-            color: black;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+    
+    .active-tab {
+        background-color: #ffc21d !important;
+        color: black !important;
     }
 }
 
-.active-tab {
-    background-color: #ffc21d !important;
-    color: black !important;
-}
 
-
-
+.welcome-note{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    @include media (phone){
+        width: 100%;
+    }
 .rule-con-c {
     display: flex;
     flex-direction: column;
     width: 600px;
     background-color: white;
-margin-top: 25%;
+margin-top: 18%;
+@include media (phone){
+    width: 100%;
+    margin-top: 10%;
+}
     .rule-heading {
         width:calc(100% - 20px);
         background: linear-gradient(-180deg, #315195 0%, #14213D 100%) !important;
@@ -93,13 +118,26 @@ margin-top: 25%;
         display: inline-block;
         float: left;
         padding: 8px 10px;
+  
     }
 .rule-content{
-    padding: 10px;
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
     font-size: 13px;
-    font-weight: 100;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #ddd;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    letter-spacing: 1.5px;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    @include media (phone){
+        font-size: 11px;
+        color:  #333333;
+    }
   
 }
     .accept-btn {
@@ -129,7 +167,7 @@ margin-bottom: 5px;
 .active-tab {
     background-color: #ffc21d !important;
     color: black !important;
-}
+}}
 
 
 

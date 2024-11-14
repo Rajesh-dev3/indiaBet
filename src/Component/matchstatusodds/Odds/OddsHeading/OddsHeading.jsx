@@ -20,7 +20,7 @@ const OddsHeading = ({min,max}) => {
 
 
     <div className="row-container">
-    <div className="row-odds bat" style={{background:"black"}}>
+    <div className="row-odds bat" style={{background:"linear-gradient(-180deg, #243a48 20%, #172732 91%)"}}>
       <p className='game-name' style={{color:"white"}}>Min :{convertToKOrLakh(min)} Max :{convertToKOrLakh(max)}</p>
       <p className='game-price' style={{display:"none"}}>0.00</p>
 

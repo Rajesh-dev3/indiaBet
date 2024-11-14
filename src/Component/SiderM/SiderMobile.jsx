@@ -64,11 +64,10 @@ const SiderMobile = ({ setActiveSider }) => {
                     handleMenuClick(menu.name); // Toggle Report menu
                   } else if (menu.name === "Edit Stake") {
                     stakeModalRef();
+                    setActiveSider(false); // Close sidebar when Edit Stake is clicked
                   } else {
-                    if(menu?.name == "menu"){
-                      return
-                    }
-                    setActiveSider(false);
+                    if(menu?.name === "menu") return;
+                    setActiveSider(false); // Close sidebar for other items
                     handleMenuClick(menu.name); // Activate non-Report menu item
                   }
                 }}
@@ -89,27 +88,35 @@ const SiderMobile = ({ setActiveSider }) => {
                       {isReportOpen ? '-' : '+'}
                     </span>
                   )}
+                  {menu.name === 'Edit Stake' && (
+                    <span
+                      className="stake-icon"
+                    >
+                      <i className='fa fa-pencil-square-o'></i>
+                    </span>
+                  )}
                 </NavLink>
 
                 {menu.name === 'Report' && (
                   <ul className={`nav-sub-nav ${isReportOpen ? 'open' : 'closed'}`}>
                     {menu.subMenu.map((subMenu, subIndex) => (
+                          <NavLink
+                          to={subMenu.path || "#"}
+                          isActive={() => activeMenu === subMenu.name} // Apply active state based on `activeMenu`
+                        >
                       <li
                         key={subIndex}
                         className={`menulist2 ${activeMenu === subMenu.name ? 'active' : ''}`}
                         onClick={(e) => {
                           e.stopPropagation(); // Prevent parent menu activation
-                          setActiveSider(false);
+                          setActiveSider(false); // Close sidebar when a sub-menu item is selected
                           setActiveMenu(subMenu.name); // Activate only clicked sub-menu
                         }}
                       >
-                        <NavLink
-                          to={subMenu.path || "#"}
-                          isActive={() => activeMenu === subMenu.name} // Apply active state based on `activeMenu`
-                        >
+                    
                           {subMenu.name}
-                        </NavLink>
                       </li>
+                        </NavLink>
                     ))}
                   </ul>
                 )}

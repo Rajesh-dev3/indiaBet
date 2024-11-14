@@ -11,7 +11,7 @@ import { useGameNameMutation } from '../../services/sport/gameName';
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 const SideBar = () => {
   const [gameList, setGameList] = useState([])
-    const [expanded, setExpanded] = useState(4);
+    const [expanded, setExpanded] = useState(false);
 
     const handleChange = (panel) => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
@@ -47,11 +47,15 @@ const SideBar = () => {
           <h6 className='sports-heading'>Sports</h6>
           <h6 className='play-heading'>In Play</h6>
 {gameList?.map((item)=>{
+     // Hide the item if the name is "casino"
+     if (item?.name == "Casino") {
+      return null; // Skip rendering this item
+    }
   return(
 
   <CustomAccordion key={item?.name} expanded={expanded === item?.sport_id} onChange={handleChange(item?.sport_id)}>
     <AccordionSummary
-      expandIcon={<RiArrowDropDownFill size={24}/>}
+      expandIcon={<RiArrowDropDownFill size={24} color='rgb(193 185 185 / 54%)'/>}
       aria-controls="panel1bh-content"
       id="panel1bh-header"
     >
@@ -79,8 +83,8 @@ const SideBar = () => {
       {item?.list?.map((elm)=>{
         return(
 
-      <Typography key={elm?.name} sx={{color:"#4083a9",  fontSize:"13px", padding:"0", borderBottom:'1px solid #ddd'}}>
-                <MdKeyboardDoubleArrowRight style={{ marginRight: '4px', color:"#CCCCCC" }} size={16} />
+      <Typography key={elm?.name} id='sub-list' sx={{color:"#4083a9",  fontSize:"13px", padding:"0", borderBottom:'1px solid #ddd'}}>
+                <MdKeyboardDoubleArrowRight style={{ marginRight: '2px', color:"#4083a9" }} size={16} />
                 {elm?.name}
       </Typography>
         )

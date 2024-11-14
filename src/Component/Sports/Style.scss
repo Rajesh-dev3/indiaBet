@@ -150,6 +150,7 @@ a{
         background-color: #72bbef;
     margin: 1px;
     text-align: center;
+    height: 15px;
     width: 40px;
     color: #000;
     font-weight: 700;
@@ -158,6 +159,7 @@ a{
     justify-content: center;
     text-align: center;
     font-size: 13px;
+    border: 1px solid black;
     border-radius: 5px;
     vertical-align: text-bottom;
     margin: 1px !important;
@@ -165,7 +167,7 @@ padding: 8px;
 cursor: pointer;
 &:last-child{
     background: #faa9ba;
-    border-right: 1px solid black;
+    // border-right: 1px solid black;
 }
 
 }

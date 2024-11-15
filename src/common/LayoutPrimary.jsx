@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModalRule } from '../services/sruleModalSlice';
 import Rules from "../Component/rules/rules";
 import Continue from "../Component/rules/continue";
+import { useMediaQuery } from "../useMediaQuery";
 
 export let stakeModalRef;
 
@@ -32,6 +33,8 @@ const LayoutPrimary = () => {
   const openModal = () => {
     setIsOpen(true);
   };
+
+  const isMobile = useMediaQuery("(max-width:780px)")
 
   const closeModal = () => {
     setIsOpen(false);
@@ -54,10 +57,13 @@ const LayoutPrimary = () => {
 
   // Function to handle scrolling to top (200px from the top)
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0, // Scroll to 200px from the top
-      behavior: 'smooth', // Smooth scroll behavior
-    });
+   if(!isMobile){
+
+     window.scrollTo({
+       top: 0, // Scroll to 200px from the top
+       behavior: 'smooth', // Smooth scroll behavior
+      });
+    }
   };
 
   const links = [

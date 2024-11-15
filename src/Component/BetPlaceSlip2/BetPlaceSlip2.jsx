@@ -95,7 +95,7 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
         }
     }
     const handleBetSuccess = () => {
-        speakMessage("Bet placed successfully");
+        // speakMessage("Bet placed successfully");
 
         exposureRef();
         betHistoryFunRef();
@@ -105,8 +105,9 @@ const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
       };
     useEffect(() => {
         
+        data?.error == false && speakMessage("Bet placed successfully"); 
         if (data?.error || fancyBetResponse?.error) {
-            speakMessage("Bet placed successfully"); 
+            // speakMessage("Bet placed successfully"); 
           toast.error(data?.message || fancyBetResponse?.message)
         } else if (data?.error == false || fancyBetResponse?.error == false) {
         handleBetSuccess()

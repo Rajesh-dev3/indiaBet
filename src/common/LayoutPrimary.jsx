@@ -55,7 +55,7 @@ const LayoutPrimary = () => {
   // Function to handle scrolling to top (200px from the top)
   const scrollToTop = () => {
     window.scrollTo({
-      top: 300, // Scroll to 200px from the top
+      top: 0, // Scroll to 200px from the top
       behavior: 'smooth', // Smooth scroll behavior
     });
   };
@@ -95,11 +95,11 @@ const LayoutPrimary = () => {
           <SubNavBar />
         </div>
 
-        <div className="content" >
+        <div className="content" ref={topRef}>
           <div className="left">
             <SideBar />
           </div>
-          <div className="main-center" ref={topRef}>
+          <div className="main-center" >
             <Outlet />
           </div>
           <div className="footer">

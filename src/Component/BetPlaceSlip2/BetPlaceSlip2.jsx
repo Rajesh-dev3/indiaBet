@@ -10,32 +10,40 @@ import Loaderlogo from '../LoaderLogo/loaderlogo';
 import { toast } from 'react-toastify';
 import { exposureRef } from '../../layout/header';
 import { betHistoryFunRef } from '../Tabs/Tabs';
-const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
-// Initialize a function to speak a message
-function speakMessage(message) {
+function speakMessage(message, type) {
     if ('speechSynthesis' in window) {
-        const synth = window.speechSynthesis;
-        const utterance = new SpeechSynthesisUtterance(message);
+        // Speech Synthesis supported 🎤
+        var synth = window.speechSynthesis;
+        var utterThis = new SpeechSynthesisUtterance(message);
 
-        // Get voices and filter for a female-sounding voice
-        const voices = synth.getVoices();
-        const femaleVoice = voices.find(voice => 
-            voice.name.toLowerCase().includes("female") ||
-            voice.name.toLowerCase().includes("zira") || // Common female voice
-            voice.lang === 'en-US' // You can adjust this based on language preference
-        );
+        // Adjust voice properties
+        utterThis.rate = 1; // Normal speech rate
+        utterThis.volume = 1; // Max volume
+        utterThis.pitch = 1; // Normal pitch
 
-        // Set the female voice if found, otherwise use default
-        utterance.voice = femaleVoice || voices[0]; // Fall back to first voice if no match
+        // Get voices list
+        var voices = window.speechSynthesis.getVoices();
+        var selectedOption = "";
+
+        // Loop through voices to select Google UK English Female voice
+        for (let i = 0; i < voices.length; i++) {
+            if (voices[i].name === "Google UK English Female") {
+                utterThis.voice = voices[i];
+                break;
+            }
+        }
 
         // Speak the message
-        synth.speak(utterance);
+        synth.speak(utterThis);
     } else {
         console.log("Speech Synthesis not supported in this browser.");
     }
 }
+const BetPlaceSlip2 = ({ setBetModuleOpen }) => {
+// Initialize a function to speak a message
 
-// Example usage
+
+
 
 
 
@@ -52,7 +60,6 @@ function speakMessage(message) {
     };
 
     const [trigge, { data: odds }] = useEventDetailMutation()
-
 
 
 
@@ -87,18 +94,23 @@ function speakMessage(message) {
             trigger(betPAyloadDat)
         }
     }
+    const handleBetSuccess = () => {
+        speakMessage("Bet placed successfully");
 
-
-    useEffect(() => {
-        if (data?.error || fancyBetResponse?.error) {
-          toast.error(data?.message || fancyBetResponse?.message)
-    } else if (data?.error == false || fancyBetResponse?.error == false) {
-        exposureRef()
-        betHistoryFunRef()
+        exposureRef();
+        betHistoryFunRef();
         dispatch(setBetData());
-        speakMessage("bet Placed Successfully");
-          toast?.success(data?.message || fancyBetResponse?.message)
-          setBetModuleOpen(false)
+        toast.success(data?.message || fancyBetResponse?.message);
+        setBetModuleOpen(false);
+      };
+    useEffect(() => {
+        
+        if (data?.error || fancyBetResponse?.error) {
+            speakMessage("Bet placed successfully"); 
+          toast.error(data?.message || fancyBetResponse?.message)
+        } else if (data?.error == false || fancyBetResponse?.error == false) {
+        handleBetSuccess()
+    
         }
       }, [data,fancyBetResponse])
 

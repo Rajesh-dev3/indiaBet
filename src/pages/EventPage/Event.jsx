@@ -234,6 +234,7 @@ const Event = () => {
   const [betModuleOpen, setBetModuleOpen] = useState(false)
   const isMobile = useMediaQuery("(max-width:780px)")
 
+console.log(profitLoss,"profit")
 
   return (
     <>

@@ -11,7 +11,7 @@ const SiderMobile = ({ setActiveSider }) => {
     { name: "Running Market Analysis", path: "/Runningmarketanalysis" },
     {
       name: "Report",
-      path:"/menu",
+      path: "/menu",
       subMenu: [
         { name: "Account Statement", path: "/AccountStatement" },
         { name: "Profit & Loss", path: "/profitLoss" },
@@ -33,6 +33,12 @@ const SiderMobile = ({ setActiveSider }) => {
     } else {
       setActiveMenu(menu); // Activate main menu item if not 'Report'
     }
+  };
+
+  const handlePlusIconClick = (e) => {
+    e.stopPropagation(); // Prevent the parent `li` from receiving the click
+    e.preventDefault(); // Prevent the default navigation action of the NavLink
+    setIsReportOpen(!isReportOpen); // Toggle Report submenu
   };
 
   return (
@@ -59,14 +65,15 @@ const SiderMobile = ({ setActiveSider }) => {
                 className={`menulist ${
                   menu?.name === "Report" && isReportOpen ? 'active' : ''
                 }`}
-                onClick={() => {
+                onClick={(e) => {
                   if (menu.name === "Report") {
-                    handleMenuClick(menu.name); // Toggle Report menu
+                    // Do nothing if the Report menu item is clicked
+                    e.stopPropagation(); // Prevent closing the sidebar
+                    return;
                   } else if (menu.name === "Edit Stake") {
                     stakeModalRef();
                     setActiveSider(false); // Close sidebar when Edit Stake is clicked
                   } else {
-                    if(menu?.name === "menu") return;
                     setActiveSider(false); // Close sidebar for other items
                     handleMenuClick(menu.name); // Activate non-Report menu item
                   }
@@ -81,9 +88,7 @@ const SiderMobile = ({ setActiveSider }) => {
                   {menu.name === 'Report' && (
                     <span
                       className="plus-icon"
-                      onClick={() => {
-                        setIsReportOpen(!isReportOpen);
-                      }}
+                      onClick={handlePlusIconClick}
                     >
                       {isReportOpen ? '-' : '+'}
                     </span>
@@ -100,23 +105,22 @@ const SiderMobile = ({ setActiveSider }) => {
                 {menu.name === 'Report' && (
                   <ul className={`nav-sub-nav ${isReportOpen ? 'open' : 'closed'}`}>
                     {menu.subMenu.map((subMenu, subIndex) => (
-                          <NavLink
-                          to={subMenu.path || "#"}
-                          isActive={() => activeMenu === subMenu.name} // Apply active state based on `activeMenu`
-                        >
-                      <li
+                      <NavLink
                         key={subIndex}
-                        className={`menulist2 ${activeMenu === subMenu.name ? 'active' : ''}`}
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent parent menu activation
-                          setActiveSider(false); // Close sidebar when a sub-menu item is selected
-                          setActiveMenu(subMenu.name); // Activate only clicked sub-menu
-                        }}
+                        to={subMenu.path || "#"}
+                        isActive={() => activeMenu === subMenu.name} // Apply active state based on `activeMenu`
                       >
-                    
+                        <li
+                          className={`menulist2 ${activeMenu === subMenu.name ? 'active' : ''}`}
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevent parent menu activation
+                            setActiveSider(false); // Close sidebar when a sub-menu item is selected
+                            setActiveMenu(subMenu.name); // Activate only clicked sub-menu
+                          }}
+                        >
                           {subMenu.name}
-                      </li>
-                        </NavLink>
+                        </li>
+                      </NavLink>
                     ))}
                   </ul>
                 )}

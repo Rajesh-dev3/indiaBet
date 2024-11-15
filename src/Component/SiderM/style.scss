@@ -120,7 +120,7 @@ list-style: none;
     margin: 0;
     border-bottom: 1px solid gray;
     &.active {
-        background: linear-gradient(-180deg, #315195 0%, #14213D 100%);
+        background: linear-gradient(-180deg, #315195 0%, #14213D 100%) !important;
        
     }
 
@@ -133,7 +133,7 @@ list-style: none;
     justify-content: center;
     align-items: center;
     float: right;
-    
+    z-index: 999;
     color: #999;
     margin-right: 0px;
     border-left: 1px solid gray;
@@ -163,6 +163,6 @@ list-style: none;
     // border-left: 1px solid gray;
   }
   .active {
-    background: linear-gradient(-180deg, #315195 0%, #14213D 100%);
+    background: linear-gradient(-180deg, #315195 0%, #14213D 100%) !important;
    
 }

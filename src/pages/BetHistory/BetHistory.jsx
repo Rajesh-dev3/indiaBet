@@ -4,9 +4,21 @@ import Pagination from '../../Component/Pagination/Pagination';
 import { useBethistoryMutation } from '../../services/bethistory/betHistory';
 import moment from 'moment';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
+import { useGameNameMutation } from '../../services/sport/gameName';
 
 const BetHistory = () => {
-  const [activeTab, setActiveTab] = useState('All');
+  const [trig , datas]= useGameNameMutation()
+const [form , setForm] = useState({
+   limit: 50, pageno: 1 
+})
+useEffect(()=>{
+  trig({ limit: 50, pageno: 1 })
+},[])
+console.log(datas?.data?.data , "number")
+
+
+
+  const [activeTab, setActiveTab] = useState(0);
   const tabs = ['All', 'Cricket', 'Tennis', 'Soccer', 'Fancy'];
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -19,7 +31,7 @@ const BetHistory = () => {
     market_id: '0',
     match_id: '0',
     pageno: '1',
-    sport_id: '0',
+    sport_id: activeTab,
     to_date: moment().startOf('day').unix(),
   });
 
@@ -28,6 +40,10 @@ const BetHistory = () => {
     setFormData((prev) => ({
       ...prev,
       [name]: name === 'from_date' || name === 'to_date' ? moment(value).startOf('day').unix() : value,
+    }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
     }));
   };
 
@@ -38,7 +54,7 @@ const BetHistory = () => {
 
   useEffect(() => {
     trigger(formData);
-  }, []);
+  }, [activeTab]);
 
   const clearFilter = () => {
     const initialData = {
@@ -119,13 +135,32 @@ const BetHistory = () => {
 
         <div className="betsalltab">
           <ul className="bet-link-tabs">
-            {tabs.map((tab) => (
               <li
-                key={tab}
-                className={`bet-link ${activeTab === tab ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab)}
+                
+                className={`bet-link ${activeTab === 0 ? 'active' : ''}`}
+                onClick={() => {
+                  setFormData((prev)=>{
+                    return{
+                      ...prev,sport_id:0
+                    }
+                  })
+                  setActiveTab(0)}}
               >
-                <a href="#">{tab}</a>
+                <a href="#">All</a>
+              </li>
+            {datas?.data?.data?.map((item ,index) => (
+              <li
+                key={index}
+                className={`bet-link ${activeTab === item?.sport_id ? 'active' : ''}`}
+                onClick={() =>{
+                  setFormData((prev)=>{
+                    return{
+                      ...prev,sport_id:item?.sport_id
+                    }
+                  })
+                  setActiveTab(item?.sport_id)}}
+              >
+                <a href="#">{item?.name}</a>
               </li>
             ))}
           </ul>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom'; // Use NavLink instead of Link
+import { Link, NavLink, useLocation } from 'react-router-dom'; // Use NavLink instead of Link
 
 const SubNavBar = () => {
   const list = [
@@ -52,7 +52,7 @@ const {pathname} = useLocation()
       <ul className="list">
         {
           list?.map((item) => (
-              <NavLink
+              <Link
                 to={item?.path || "#"}
                 key={item?.name} 
                 className={`${pathname  == item?.path?"active-link":""}`}
@@ -67,7 +67,7 @@ const {pathname} = useLocation()
                 <div className="drop-list">
                   <ul>
                     {item?.children?.map((subItem) => (
-                        <NavLink
+                        <Link
                         key={subItem?.list}
                           to={subItem?.path || "#"}
                           className={`${pathname  == subItem?.path?"active-links":""} `}
@@ -77,13 +77,13 @@ const {pathname} = useLocation()
                         {/* Use NavLink for child items */}
                           {subItem?.list}
                       </li>
-                        </NavLink>
+                        </Link>
                     ))}
                   </ul>
                 </div>
               )}
             </li>
-            </NavLink>
+            </Link>
           ))
         }
       </ul>

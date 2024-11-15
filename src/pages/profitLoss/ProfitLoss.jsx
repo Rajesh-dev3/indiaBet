@@ -159,15 +159,15 @@ const ProfitLoss = () => {
                     <td>{item.matchName}</td>
                     <td>{item.seriesName}</td>
                     <td><span style={{ color: item.userPL < 0 ? 'red' : 'green' }}>{item.userPL}</span></td>
-                    <td>0</td>
-                    <td>{moment(parseInt(item?.matchDate) * 1000).utcOffset("+05:30").format("DD/MM/YYYY HH:mm:a")}</td>
+                    <td style={{color:'red'}}>0</td>
+                    <td>{moment(parseInt(item?.matchDate) * 1000).utcOffset("+05:30").format("DD/MM/YYYY HH:mm:ss")}</td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
           <div className="dat-list">
-            <div className="total-data">Showing {filteredData.length} Entries</div>
+            <div className="total-data">Showing {filteredData.length <0 ?"0":"1"} to {filteredData.length} Entries {filteredData.length} </div>
             <div className="pagination-area">
               <Pagination />
             </div>

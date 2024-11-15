@@ -15,7 +15,7 @@ const FancyHead = ({max,min}) => {
 
 
     <div className="fancy-container">
-    <div className="fancy-row-odds bat" style={{background:"black"}}>
+    <div className="fancy-row-odds bat" >
       <p className='fancy-game-name' style={{color:"white"}}>Min :{min} Max :{max}</p>
       <p className='fancy-game-price' style={{display:"none"}}>0.00</p>
 
@@ -33,10 +33,10 @@ const FancyHead = ({max,min}) => {
                        {/* <div className="overback">suspended
                        </div> */}
     </div>
-    <div className="fancy-col1  ">
+    <div className="fancy-col1 " style={{background:'white'}} >
 
-    <div className="fancy-row-odds"></div>
-    <div className="fancy-row-odds"></div>
+    <div className="fancy-row-odds"style={{background:'white'}} ></div>
+    <div className="fancy-row-odds"style={{background:'white'}} ></div>
     </div>
     </div>
     </div> 

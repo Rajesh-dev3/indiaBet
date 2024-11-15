@@ -1,3 +1,5 @@
+
+@import "../../Styles/mixins";
 .sport-sec{
     width: 100%;
     margin: 3px auto;
@@ -146,12 +148,12 @@ a{
     margin-top: 5px;
     margin-bottom: 5px;
     span{
-        width: 70px;
+       
         background-color: #72bbef;
     margin: 1px;
     text-align: center;
     height: 15px;
-    width: 40px;
+    
     color: #000;
     font-weight: 700;
     display: flex;
@@ -159,7 +161,11 @@ a{
     justify-content: center;
     text-align: center;
     font-size: 13px;
-    border: 1px solid black;
+    width: 78px;
+    @include media(phone){
+        width: 40px;
+        border: 1px solid black;
+    }
     border-radius: 5px;
     vertical-align: text-bottom;
     margin: 1px !important;

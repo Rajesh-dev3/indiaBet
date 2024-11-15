@@ -67,8 +67,11 @@ list-style: none;
     border-bottom: 1px solid gray;
     &:last-child{
         .list{
+           i{
+            margin-right: 5px;
+           }
 
-            padding-left: 28px;
+            // padding-left: 28px;
         }
     }
 
@@ -163,6 +166,8 @@ list-style: none;
     // border-left: 1px solid gray;
   }
   .active {
-    background: linear-gradient(-180deg, #315195 0%, #14213D 100%) !important;
+    background: linear-gradient(-180deg, #315195 0%, #14213D 100%) ;
    
 }
+
+

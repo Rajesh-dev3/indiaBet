@@ -11,7 +11,7 @@ const SiderMobile = ({ setActiveSider }) => {
     { name: "Running Market Analysis", path: "/Runningmarketanalysis" },
     {
       name: "Report",
-      path: "/menu",
+      path: "/menu", // Not directly used in "Report", it has a submenu
       subMenu: [
         { name: "Account Statement", path: "/AccountStatement" },
         { name: "Profit & Loss", path: "/profitLoss" },
@@ -25,20 +25,19 @@ const SiderMobile = ({ setActiveSider }) => {
   ];
 
   const [activeMenu, setActiveMenu] = useState(null); // No default active item
-  const [isReportOpen, setIsReportOpen] = useState(false);
+  const [isReportOpen, setIsReportOpen] = useState(false); // Track the Report submenu state
+  const [isReportIconActive, setIsReportIconActive] = useState(false); // Track the plus icon state
 
   const handleMenuClick = (menu) => {
-    if (menu === 'Report') {
-      setIsReportOpen(!isReportOpen); // Toggle the sub-menu for Report
-    } else {
-      setActiveMenu(menu); // Activate main menu item if not 'Report'
+    if (menu !== 'Report') {
+      setActiveMenu(menu); // Activate non-Report menu item
     }
   };
 
   const handlePlusIconClick = (e) => {
     e.stopPropagation(); // Prevent the parent `li` from receiving the click
-    e.preventDefault(); // Prevent the default navigation action of the NavLink
-    setIsReportOpen(!isReportOpen); // Toggle Report submenu
+    setIsReportOpen(!isReportOpen); // Toggle the Report submenu
+    setIsReportIconActive(!isReportIconActive); // Toggle the plus icon state (open/close)
   };
 
   return (
@@ -62,13 +61,10 @@ const SiderMobile = ({ setActiveSider }) => {
             {menuData.map((menu, index) => (
               <li
                 key={index}
-                className={`menulist ${
-                  menu?.name === "Report" && isReportOpen ? 'active' : ''
-                }`}
+                className={`menulist ${menu?.name === "Report" && isReportOpen ? 'active' : ''}`}
                 onClick={(e) => {
                   if (menu.name === "Report") {
-                    // Do nothing if the Report menu item is clicked
-                    e.stopPropagation(); // Prevent closing the sidebar
+                    e.stopPropagation(); // Prevent closing the sidebar if Report is clicked
                     return;
                   } else if (menu.name === "Edit Stake") {
                     stakeModalRef();
@@ -79,29 +75,30 @@ const SiderMobile = ({ setActiveSider }) => {
                   }
                 }}
               >
-                <NavLink
-                  to={menu.path || "#"}
-                  className="list"
-                  isActive={() => activeMenu === menu.name} // Apply active state based on `activeMenu`
-                >
-                  {menu.name}
-                  {menu.name === 'Report' && (
+                {menu.name !== "Report" ? (
+                  <NavLink
+                    to={menu.path || "#"}
+                    className="list"
+                    isActive={() => activeMenu === menu.name} // Apply active state based on `activeMenu`
+                  >
+                    {menu?.name == "Edit Stake" ? 
+                    <i class="fa fa-pencil-square-o"></i>
+                    :""}
+                    {menu.name}
+                  </NavLink>
+                ) : (
+                  <span className="list">
+                    {menu.name}
                     <span
-                      className="plus-icon"
+                      className={`plus-icon ${isReportIconActive ? 'active' : ''}`}
                       onClick={handlePlusIconClick}
                     >
-                      {isReportOpen ? '-' : '+'}
+                      {isReportIconActive ? '-' : '+'}
                     </span>
-                  )}
-                  {menu.name === 'Edit Stake' && (
-                    <span
-                      className="stake-icon"
-                    >
-                      <i className='fa fa-pencil-square-o'></i>
-                    </span>
-                  )}
-                </NavLink>
+                  </span>
+                )}
 
+                {/* Submenu for Report */}
                 {menu.name === 'Report' && (
                   <ul className={`nav-sub-nav ${isReportOpen ? 'open' : 'closed'}`}>
                     {menu.subMenu.map((subMenu, subIndex) => (

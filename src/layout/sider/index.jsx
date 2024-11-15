@@ -45,7 +45,7 @@ const SideBar = () => {
   return (
          <div>
           <h6 className='sports-heading'>Sports</h6>
-          <h6 className='play-heading'>In Play</h6>
+          <h3 className='play-heading'>In Play</h3>
 {gameList?.map((item)=>{
      // Hide the item if the name is "casino"
      if (item?.name == "Casino") {

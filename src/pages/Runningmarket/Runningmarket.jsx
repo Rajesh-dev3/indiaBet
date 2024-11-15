@@ -40,9 +40,9 @@ console.log(upddateData,"upddateData");
     My Market
     </div>
 <div className="data-area">
-<div className="tablebody">
+<div className="tablebody" style={{padding:upddateData?.lengt?"":"5px"}}>
   
-    {upddateData?.map((item,i)=>{
+    {upddateData?.length ? upddateData?.map((item,i)=>{
   return(
     <table key={i}>
   <thead>
@@ -105,7 +105,7 @@ return (
   </tbody>
   </table>
   )
-    })} 
+    }):"No record found"} 
   
 
   {/* <div className="data-list">

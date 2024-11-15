@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 const MatchScore = ({name}) => {
   const {matchId } =useParams()
     const {data} = useScoreBoardQuery(matchId,{
-        pollingInterval:1000
+        pollingInterval:700
       })
      
 
@@ -66,7 +66,7 @@ const MatchScore = ({name}) => {
                 </ul>
             </div>
             <div className="run-right"><span> 
-              {zero?.recentBalls?.[0]?.[5]}
+              {zero?.recentBalls?.[0]?.[0]}
               </span></div>
             </div> 
 <div className="wlc">{zero?.cb}</div>

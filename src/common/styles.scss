@@ -29,6 +29,7 @@ display: flex;
 padding-top: 12px;
 @include media (phone){
   width: 100%;
+  padding-top: 0px;
   display: block; 
   // height: calc(100% - 264px);
   // display: inherit;

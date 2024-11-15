@@ -17,7 +17,8 @@ export const CustomAccordion = styled(Accordion)(({ theme }) => {
       boxShadow: "none", // this styles directly apply to accordion
       ".MuiAccordionDetails-root": {
         backgroundColor:"#bbbbbb",
-        
+        fontSize:"14px",
+        fontWeight: "600",
       },
       
   
@@ -32,7 +33,8 @@ export const CustomAccordion = styled(Accordion)(({ theme }) => {
         fontWeight:"bold",
         margin: "0px 0 !important",
         padding:"8px !important",
-        fontSize:"13px",
+        fontSize:"14px",
+        fontWeight: "600",
       }, // this apply to Summary
       "&.Mui-expanded":{
         margin: "0px 0 !important",

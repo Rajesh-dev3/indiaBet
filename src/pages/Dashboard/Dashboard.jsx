@@ -84,6 +84,7 @@ const Dashboard = () => {
                   className={`list-item ${sportId === sport_id ? "active" : ""
                     }`}
                   key={sport_id + index}
+                  // style={{}}
                   onClick={() => {
                     if (name == "Casino") {
                       nav("/CasinoGame")
@@ -93,7 +94,7 @@ const Dashboard = () => {
                 >
                   <Link to={url}>
                     <span>{name}</span>
-                    <span className="game-no">{sportsLength[sport_id]}</span>
+                    <span className="game-no" style={{background:sport_id == 4?"#2b87ca":""}}>{sportsLength[sport_id]}</span>
                   </Link>
                 </li>
               );

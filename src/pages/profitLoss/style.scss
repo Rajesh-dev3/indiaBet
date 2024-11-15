@@ -164,6 +164,10 @@
     }
     .tablebody{
         width: 100%;
+        overflow-x:scroll ;
+        &.example::-webkit-scrollbar {
+            display: none;
+          }
         table{
             font-family: arial, sans-serif;
             border-collapse: collapse;

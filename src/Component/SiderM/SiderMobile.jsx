@@ -90,7 +90,7 @@ const SiderMobile = ({ setActiveSider }) => {
                   <span className="list">
                     {menu.name}
                     <span
-                      className={`plus-icon ${isReportIconActive ? 'active' : ''}`}
+                      className={`plus-icon ${isReportIconActive ? 'actives' : ''}`}
                       onClick={handlePlusIconClick}
                     >
                       {isReportIconActive ? '-' : '+'}

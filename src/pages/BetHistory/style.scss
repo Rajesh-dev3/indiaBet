@@ -146,6 +146,10 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
+        @include media(phone){
+            justify-content: center;
+            gap: 5%;
+        }
         .show-enteries{
             display: flex;
             align-items: center;

@@ -143,6 +143,14 @@ width: 95%;
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
+        @include media(phone){
+            justify-content: center;
+            gap: 5%;
+        }
+        @include media(smartphone){
+            justify-content: center;
+            gap: 5%;
+        }
         .show-enteries{
             display: flex;
             align-items: center;
@@ -183,6 +191,10 @@ width: 95%;
             @include media(smartphone){
                 width: 48%;
             }
+            @include media(smartphone){
+                width: 48%;
+            }
+
 .search{
     display: inline-block;
     max-width: 100%;
@@ -200,6 +212,9 @@ width: 95%;
                 // border-top-color: #c2c2c2;
                 border: solid 1px #c2c2c2;
                 @include media(smartphone){
+                    width: 100px;
+                }
+                @include media(phone){
                     width: 100px;
                 }
             }

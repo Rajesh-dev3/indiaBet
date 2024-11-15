@@ -119,7 +119,7 @@ list-style: none;
 
 .menulist2{
     background: linear-gradient(#f60105 0, #801011 100%);
-    padding: 11px 8px 11px 8px;
+    padding: 9px 8px 9px 8px;
     margin: 0;
     border-bottom: 1px solid gray;
     &.active {
@@ -167,6 +167,10 @@ list-style: none;
   }
   .active {
     background: linear-gradient(-180deg, #315195 0%, #14213D 100%) ;
+   
+}
+  .actives {
+    background: black;
    
 }
 

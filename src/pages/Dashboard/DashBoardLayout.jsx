@@ -8,6 +8,7 @@ import BetPlaceSlip2 from '../../Component/BetPlaceSlip2/BetPlaceSlip2'
 import Tabs from '../../Component/Tabs/Tabs'
 import { useSelector } from 'react-redux'
 // import BetPlaceSlip from '../../Component/BetPlaceSlip/BetPlaceSlip'
+// import BetPlaceSlip from '../../Component/BetPlaceSlip/BetPlaceSlip'
 const DashBoardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -45,6 +46,7 @@ const [betModuleOpen, setBetModuleOpen] = useState(false)
         <p className='editstake'  onClick={openModal}>
         <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Stake</p>
       </div>
+      {/* <BetPlaceSlip/> */}
       <div className="betslip-sec">
         {/* <BetPlaceSlip/> */}
         {checkPathName && 

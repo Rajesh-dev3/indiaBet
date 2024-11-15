@@ -134,6 +134,9 @@ width: 95%;
                 &:hover{
                     text-decoration: underline;
                 }
+                @include media(phone){
+                    font-weight: 400;
+                }
             }
         }
 
@@ -278,7 +281,10 @@ width: 95%;
                     font-size: 12px;
                     font-weight: 600;
                     a{
-                        color: #4083a9;
+                color: #4083a9;
+                        
+                    font-size: 12px;
+
                         &:hover{
                             text-decoration: underline;
                         }
@@ -374,5 +380,16 @@ width: 95%;
     .showbet-btn{
         &:hover{
             text-decoration: underline;
+        }
+    }
+    .disc-n{
+        @include media(phone){
+
+            // font-size: 2px !important;
+            a{
+                font-size: 12px !important;
+                color: #4083a9;
+    
+            }
         }
     }

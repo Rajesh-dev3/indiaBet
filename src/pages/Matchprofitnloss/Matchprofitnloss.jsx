@@ -71,10 +71,10 @@ const submitHnadler= ()=>{
   {data?.data?.map((item , index)=>{
   return(
  
-    <tr key={index}>
+    <tr key={index} className='mpl'>
     <td>
     {index + 1}</td>
-    <td><Link to={`/matchprofitnlossinner/${item?.sport_id}/${item?.match_id}`}>{item?.name}</Link></td>
+    <td className='mnpn'><Link to={`/matchprofitnlossinner/${item?.sport_id}/${item?.match_id}`} >{item?.name}</Link></td>
     <td ><span className='report'> <Link to={`/matchprofitnlossinner/${item?.sport_id}/${item?.match_id}`}>	Report</Link></span>	</td>
    
   </tr>

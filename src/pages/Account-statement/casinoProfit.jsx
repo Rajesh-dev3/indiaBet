@@ -8,7 +8,22 @@ const CasinoProfit = ({data,isLoading}) => {
   
   return (
    <>
-
+   <div className="data-filter">
+          <div className="show-enteries">
+            <span className='show'>Show</span>
+            <select name="limit" id="entery-data" >
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            <span className='Enteries'>Entries</span>
+          </div>
+          <div className="search-filter">
+            <span className='search'>Search</span>
+            <input type="text" className='search-data' />
+          </div>
+        </div>
 <div className="tablebody">
           <table>
             <thead>

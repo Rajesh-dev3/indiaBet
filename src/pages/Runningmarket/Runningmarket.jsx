@@ -40,7 +40,7 @@ console.log(upddateData,"upddateData");
     My Market
     </div>
 <div className="data-area">
-<div className="tablebody" style={{padding:upddateData?.lengt?"":"5px"}}>
+<div className="tablebody ">
   
     {upddateData?.length ? upddateData?.map((item,i)=>{
   return(

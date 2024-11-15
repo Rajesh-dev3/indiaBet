@@ -135,6 +135,7 @@ display: none;
         width: 23%;
         display: flex;
         justify-content: end;
+        align-items: flex-start;
         @include media (phone){
             display: flex;
             width: 23%;

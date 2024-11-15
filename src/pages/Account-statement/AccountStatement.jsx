@@ -124,7 +124,7 @@ console.log(formData,"formData")
             <span className='clear filter-btn' onClick={clearFilter}>Clear</span>
           </div>
         </div>
-        <div className="data-filter">
+        {/* <div className="data-filter">
           <div className="show-enteries">
             <span className='show'>Show</span>
             <select name="limit" id="entery-data" onChange={formHandler}>
@@ -139,7 +139,7 @@ console.log(formData,"formData")
             <span className='search'>Search</span>
             <input type="text" className='search-data' />
           </div>
-        </div>
+        </div> */}
         {tabObj[tabOpen]}
       </div>
     </>

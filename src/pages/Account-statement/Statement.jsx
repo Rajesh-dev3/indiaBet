@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
@@ -22,6 +22,27 @@ const Statement = ({ data, isLoading }) => {
       item?.available_balance?.toString().includes(searchQuery)
     );
   };
+
+  // Function to replace '->' with '-'
+  const formatDescription = (description) => {
+    if (!description) return '';
+    return description
+    .replace(/->/g, '-')   // Replace '->' with '-'
+    .replace(/:/g, '')     // Remove ':'
+    .replace(/[()]/g, '')  // Remove parentheses ()
+    .replace(/\[|\]/g, '');
+  };
+
+  const [isIphone, setIsIphone] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
+
+  useEffect(() => {
+    const iphone = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    const android = /Android/.test(navigator.userAgent);
+    setIsIphone(iphone);
+    setIsAndroid(android);
+  }, []);
+  console.log(isIphone,isAndroid)
 
   return (
     <>
@@ -68,29 +89,32 @@ const Statement = ({ data, isLoading }) => {
             ) : (
               filteredData().length > 0 ? (
                 filteredData().map((item, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
+                  <tr key={index+item.amount}>
+                    <td style={{fontSize:"11px"}}>{index + 1}</td>
+                    <td style={{fontSize:"11px"}}>
                       {moment(parseInt(item.created_at || 0) * 1000)
                         .utcOffset('+05:30')
                         .format('DD/MM/YYYY HH:mm:a')}
                     </td>
                     <td className="disc-n">
                       <Link to={`/user-matchDetail/${item?.match_id}/${item?.market}`}>
-                        {item.description}
+                       <p style={{margin:0,padding:0,fontSize:isIphone?"10px":"12px"}}>
+                         {item?.description } Apply the formatting here
+                        </p>
+                        {/* afdaf */}
                       </Link>
                     </td>
-                    <td>
+                    <td style={{fontSize:"11px"}}>
                       <span style={{ color: 'green' }}>
                         {item.amount > 0 ? item.amount : 0}
                       </span>
                     </td>
-                    <td>
+                    <td style={{fontSize:"11px"}}>
                       <span style={{ color: 'red' }}>
                         {item.amount < 0 ? item.amount : 0}
                       </span>
                     </td>
-                    <td>
+                    <td style={{fontSize:"11px"}}>
                       <span style={{ color: 'red' }}>0</span>
                     </td>
                     <td>-</td>

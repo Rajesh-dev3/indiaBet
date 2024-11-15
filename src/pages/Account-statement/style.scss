@@ -387,9 +387,98 @@ width: 95%;
 
             // font-size: 2px !important;
             a{
+                font-family: sans-serif;
                 font-size: 12px !important;
                 color: #4083a9;
     
             }
         }
     }
+
+
+
+
+
+
+    .tablebody2{
+        width: 100%;
+        overflow-x: scroll;
+        table{
+            border-collapse: collapse;
+            width: 100%;   
+            border: 1px solid black;
+          thead{
+            tr{
+                th{
+                    background: linear-gradient(180deg, #76c7ce 0, #12717c) !important;
+                    color: #fff !important;
+                    border-right: 1px solid black;
+                    text-align: start;
+                    padding: 6px 4px;
+                    white-space: nowrap;
+                    // line-height: 1.42857143;
+                    font-size: 12px;
+                    // &:nth-child(1){
+                    //   text-align: left;
+                    // //   width: 20%;
+                    // }
+                    // &:nth-child(2){
+                    //   text-align: left;
+                    // //   width: 8%;
+                    // }
+                    // &:nth-child(3){
+                    //   text-align: left;
+                    // //   width: 8%;
+
+                    // }
+                    // &:nth-child(4){
+                    //     text-align: right;
+                    // //   width: 8%;
+
+                    //   }
+                    //   &:nth-child(5){
+                    //     text-align: right;
+                    //   }
+                  
+                }
+            
+
+            }}
+        }
+          tbody{
+            tr{
+                td{
+                    // background: linear-gradient(180deg, #76c7ce 0, #12717c) !important;
+                    color: black;
+                    border-right: 1px solid black;
+                    text-align: left;
+                    // background-color: white;
+                    padding: 4px;
+                    white-space:nowrap;
+                    text-wrap: nowrap;
+
+                    border-bottom: 1px solid black;
+               
+                    font-weight: 600;
+                    a{
+                        font-size: 12px ;
+                    }
+                    a{
+                color: #4083a9;
+                        
+
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+             
+                }
+            }
+            .showbettablehover{
+            &:hover{
+                background:#4cebdc !important; 
+            
+             cursor: pointer;
+            }}
+        }
+        }

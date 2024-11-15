@@ -2,13 +2,14 @@
 .dashboard-sec{
     width: 100%;
     display: flex;
+   
     // overscroll-behavior: contain;
      /* Prevents rubber-banding */
     
         //   touch-action: none;
     @include media (phone){
         // position: fixed; /* Prevents page scroll */
-      
+      display: block;
         // height: 82vh;
         }
 .dashboard-left{

@@ -98,7 +98,7 @@ const Statement = ({ data, isLoading }) => {
                     </td>
                     <td className="disc-n">
                       <Link to={`/user-matchDetail/${item?.match_id}/${item?.market}`}>
-                       <p style={{margin:0,padding:0,fontSize:isIphone?"10px":"12px"}}>
+                       <p style={{margin:0,padding:0,fontSize:"12px"}}>
                          {item?.description } Apply the formatting here
                         </p>
                         {/* afdaf */}

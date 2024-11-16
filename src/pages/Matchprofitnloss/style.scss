@@ -41,6 +41,8 @@
                     cursor: pointer;
                     font-weight: 700;
                     margin: 3px 0;
+                -webkit-border-radius:0px;
+
                     display: block;
                     width: calc(100% - 24px) ;
                     height: 34px;
@@ -51,6 +53,7 @@
                     background-color: #fff;
                     background-image: none;
                     border: 1px solid #ccc;
+                    border-radius: 0;
                     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
                 }
                 #gameselect {

@@ -41,7 +41,10 @@
                 cursor: pointer;
                 font-weight: 700;
                 margin: 3px 0;
+                -webkit-border-radius:0px;
+
                 display: block;
+                border-radius: 0;
                 width: calc(100% - 24px) ;
                 height: 34px;
                 padding: 0px 12px;
@@ -101,6 +104,9 @@
                 margin-left: 10px;
                 &:hover{
                     text-decoration: underline;
+                }
+                @include media(phone){
+                    font-weight: 400;
                 }
             }
         }

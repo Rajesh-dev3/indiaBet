@@ -15,6 +15,7 @@ const MatchProfitnlossInner = () => {
   useEffect(()=>{
     trigger({match_id:matchID,
       sport_id:sportID})
+      ""
     },[])
 
 const oddmatch = data?.data?.fetchMatchPnl?.betsOdds

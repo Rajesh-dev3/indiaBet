@@ -21,7 +21,10 @@ const oddmatch = data?.data?.fetchMatchPnl?.betsOdds
 const funncy = data?.data?.fetchMatchPnl?.fancyBets
 
 const totalPL = oddmatch?.reduce((acc, item) => acc + (item?.pL || 0), 0);
-const result = totalPL <0 ? `You Loss ${totalPL}` : `You Won ${totalPL}`
+const result = totalPL <0 ? `You Loss ${totalPL}/- Coins` : `You Won ${totalPL}/- Coins`
+
+const totalPL2 = funncy?.reduce((acc, item) => acc + (item?.pnl || 0), 0);
+const result2 = totalPL2 <0 ? `You Loss ${totalPL2}/- Coins` : `You Won ${totalPL2}/- Coins`
   return (
     <div className='MatchInner-sec'>
         <div className="game1">
@@ -82,7 +85,7 @@ const result = totalPL <0 ? `You Loss ${totalPL}` : `You Won ${totalPL}`
 </div>
         <div className="game1">
         <Tittle name='Fancy Bets
-' textcolor='' bgcolor='' />
+' textcolor='' bgcolor=''   gamename={result2} />
         <div className="tablebody">
 <table>
   <thead>
@@ -108,12 +111,15 @@ const result = totalPL <0 ? `You Loss ${totalPL}` : `You Won ${totalPL}`
   return(
 <tr key={index}>
   <td>{item?.Date}</td>
+  <td>{item?.Fancy}	</td>
+  <td>{item?.Selection}	</td>
   <td>{item?.Rate}	</td>
-  <td>{item?.Amt}	</td>
-  <td>{item?.Mode}	</td>
-  <td>{item?.Team}</td>
-  <td>{item?.Result}</td>
-  <td style={{color: item?.pL <0 ? "red" : "green"}}>{item?.pL}</td>
+  <td>{item?.Amt}</td>
+  <td>{item?.mode
+  }</td>
+  <td>{item?.result
+  }</td>
+  <td style={{color: item?.pL <0 ? "red" : "green"}}>{item?.pnl}</td>
 
  
 </tr>

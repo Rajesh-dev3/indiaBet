@@ -14,7 +14,7 @@
     width:  calc(100% - 20px);
     display: inline-block;
     background: linear-gradient(-180deg, #315195 0%, #14213D 100%);
-    padding: 11px 10px;
+    padding: 6px 10px;
     color: #fff;
     font-size: 13px;
     // text-align: center;
@@ -42,6 +42,9 @@
         display: flex;
         flex-wrap: wrap;
         margin-top: 5px;
+        @include media (phone) {
+            margin-left:2px;
+        }
         .entries-btn{
             color: #fff;
             // border-color: #ffff !important;
@@ -60,7 +63,7 @@
             outline: none;
             @include media (phone){
                 width: 110px;
-                background: black;
+              //  background: black;
             }
         }
         .entries-btn.active {

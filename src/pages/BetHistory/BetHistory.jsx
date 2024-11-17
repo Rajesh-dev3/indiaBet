@@ -148,21 +148,23 @@ console.log(datas?.data?.data , "number")
               >
                 <a href="#">All</a>
               </li>
-            {datas?.data?.data?.map((item ,index) => (
-              <li
-                key={index}
-                className={`bet-link ${activeTab === item?.sport_id ? 'active' : ''}`}
-                onClick={() =>{
-                  setFormData((prev)=>{
-                    return{
-                      ...prev,sport_id:item?.sport_id
-                    }
-                  })
-                  setActiveTab(item?.sport_id)}}
-              >
-                <a href="#">{item?.name}</a>
-              </li>
-            ))}
+              {datas?.data?.data?.map((item, index) => (
+  <li
+    key={index}
+    className={`bet-link ${activeTab === item?.sport_id ? 'active' : ''}`}
+    onClick={() => {
+      setFormData((prev) => ({
+        ...prev,
+        sport_id: item?.sport_id
+      }));
+      setActiveTab(item?.sport_id);
+    }}
+  >
+    <a href="#">
+      {item?.name === 'Casino' ? 'Funcy' : item?.name}
+    </a>
+  </li>
+))}
           </ul>
         </div>
 

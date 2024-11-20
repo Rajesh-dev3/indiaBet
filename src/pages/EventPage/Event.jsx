@@ -234,13 +234,26 @@ const Event = () => {
   const [betModuleOpen, setBetModuleOpen] = useState(false)
   const isMobile = useMediaQuery("(max-width:780px)")
 
-console.log(profitLoss,"profit")
+// console.log(profitLoss,"profit")
+
+const [isLiveTVVisible, setIsLiveTVVisible] = useState(false);
+
+const toggleLiveTV = () => {
+  setIsLiveTVVisible(prevState => !prevState);
+};
+
 
   return (
     <>
       <div className="event">
-        <MatchScore name={odddata?.BookerMakerMarket?.name} />
+        <MatchScore name={odddata?.BookerMakerMarket?.name} toggle={toggleLiveTV} />
+             {/* Conditional rendering of the Live TV section */}
         <StatusOdds />
+      {isLiveTVVisible && (
+        <div className="live-tv">
+          <p>Service not available</p>
+        </div>
+      )}
         <div style={{ marginTop: "10px" }}>
           {odddata?.MatchDetails?.runner_json?.length ?
             <OddsHeading max={odddata?.MatchDetails?.marketMaxStack} min={odddata?.MatchDetails?.marketMinStack} />

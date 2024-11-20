@@ -9,6 +9,7 @@ import './style.scss'
 import { useEventGameListMutation } from '../../services/sport/eventGameList';
 import { useGameNameMutation } from '../../services/sport/gameName';
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
+import { NavLink } from 'react-router-dom';
 const SideBar = () => {
   const [gameList, setGameList] = useState([])
     const [expanded, setExpanded] = useState(false);
@@ -82,11 +83,13 @@ const SideBar = () => {
     }}>
       {item?.list?.map((elm)=>{
         return(
+          <NavLink to={`/event/${elm?.sport_id}/${elm?.series_id}` }>
 
       <Typography key={elm?.name} id='sub-list' sx={{color:"#4083a9",  fontSize:"13px", padding:"0", borderBottom:'1px solid #ddd'}}>
                 <MdKeyboardDoubleArrowRight style={{ marginRight: '2px', color:"#4083a9" }} size={16} />
                 {elm?.name}
       </Typography>
+          </NavLink>
         )
       })}
     </AccordionDetails>

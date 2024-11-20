@@ -293,6 +293,13 @@
                     }
                     .checkbox {
                         width: 40%;
+                        @include media(smartphone){
+                            display: flex;
+                            width: 100%;
+                            text-align: center;
+                            margin-bottom: 20px;
+                            gap: 10px;
+                        }
                         input {
                             width: auto;
                             float: left;
@@ -308,6 +315,11 @@
                             font-size: 14px;
                             margin-bottom: 20px;
     font-weight: 400;
+    @include media(smartphone){
+        margin-bottom: 0px;
+        padding-top: 3px;
+     
+    }
 
                         }
                 }

@@ -90,8 +90,8 @@ const Statement = ({ data, isLoading }) => {
               filteredData().length > 0 ? (
                 filteredData().map((item, index) => (
                   <tr key={index+item.amount}>
-                    <td style={{fontSize:"11px"}}>{index + 1}</td>
-                    <td style={{fontSize:"11px"}}>
+                    <td style={{fontSize:"12px"}}>{index + 1}</td>
+                    <td style={{fontSize:"12px"}}>
                       {moment(parseInt(item.created_at || 0) * 1000)
                         .utcOffset('+05:30')
                         .format('DD/MM/YYYY HH:mm:a')}
@@ -104,21 +104,21 @@ const Statement = ({ data, isLoading }) => {
                         {/* afdaf */}
                       </Link>
                     </td>
-                    <td style={{fontSize:"11px"}}>
+                    <td style={{fontSize:"12px"}}>
                       <span style={{ color: 'green' }}>
                         {item.amount > 0 ? item.amount : 0}
                       </span>
                     </td>
-                    <td style={{fontSize:"11px"}}>
+                    <td style={{fontSize:"12px"}}>
                       <span style={{ color: 'red' }}>
                         {item.amount < 0 ? item.amount : 0}
                       </span>
                     </td>
-                    <td style={{fontSize:"11px"}}>
+                    <td style={{fontSize:"12px"}}>
                       <span style={{ color: 'red' }}>0</span>
                     </td>
                     <td>-</td>
-                    <td>
+                    <td style={{fontSize:"12px"}}>
                       <span style={{ color: '#008000' }}>
                         {item.available_balance}
                       </span>

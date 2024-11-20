@@ -193,3 +193,10 @@ background-color:#ffffff;
   vertical-align: top !important;
     // padding: 0;
 }
+
+.filter3{
+    @include media (phone){
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

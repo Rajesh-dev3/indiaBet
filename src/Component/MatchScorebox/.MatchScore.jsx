@@ -2,7 +2,7 @@ import './style.scss'
 import { useScoreBoardQuery } from '../../services/Scoreboard/scoreboard'
 import { ball, bat } from '../../assets/Index'
 import { useParams } from 'react-router-dom'
-const MatchScore = ({name}) => {
+const MatchScore = ({name , toggle}) => {
   const {matchId } =useParams()
     const {data} = useScoreBoardQuery(matchId,{
         pollingInterval:700
@@ -34,7 +34,7 @@ const MatchScore = ({name}) => {
             <div className="titleName">{name}</div>
             <div className="matches-btn">
                 <button className="matchlist">Matches</button>
-                <button className="tv">TV</button>
+                <button className="tv" onClick={()=>toggle()}>TV</button>
             </div>
         </div>
         <div className="scorebox">
@@ -69,7 +69,7 @@ const MatchScore = ({name}) => {
               {zero?.recentBalls?.[0]?.[0]}
               </span></div>
             </div> 
-<div className="wlc">{zero?.cb}</div>
+<div className="wlc">{zero?.cb ?zero?.cb:"Welcome"}</div>
             </div>
         </div>
       

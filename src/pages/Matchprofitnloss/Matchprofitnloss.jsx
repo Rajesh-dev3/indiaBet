@@ -48,7 +48,7 @@ const submitHnadler= ()=>{
     <div className="date1">
     <input type="date" id="fdate" className='form-control' name="to_date" value={formData?.to_date ? moment.unix(formData.to_date).format("YYYY-MM-DD") : ""} onChange={formHandler} />
     </div>
-    <div className="date1 filter2">
+    <div className="date1 filter2 filter3" >
  <span className='filter filter-btn' onClick={submitHnadler}><span className='icon-filter'><i className="fa fa-filter"></i></span> Filter</span>
  {/* <span className='clear filter-btn'><span className='icon-filter'><i className="fa fa-eraser"></i></span> Clear</span> */}
     </div>

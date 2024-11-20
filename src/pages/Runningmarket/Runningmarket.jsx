@@ -105,7 +105,7 @@ return (
   </tbody>
   </table>
   )
-    }):"No record found"} 
+    }):<div style={{padding:'3px'}}> No record found</div>} 
   
 
   {/* <div className="data-list">

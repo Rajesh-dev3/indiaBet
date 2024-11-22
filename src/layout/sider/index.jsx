@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { CustomAccordion } from './styled';
 import './style.scss'
-import { useEventGameListMutation } from '../../services/sport/eventGameList';
+import { useIndiaEventListMutation } from '../../services/sport/eventGameList';
 import { useGameNameMutation } from '../../services/sport/gameName';
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
@@ -18,7 +18,7 @@ const SideBar = () => {
       setExpanded(isExpanded ? panel : false);
     };
     const [trigger,{data}] = useGameNameMutation()
-    const [trigg,{data:gameEvent}] = useEventGameListMutation()
+    const [trigg,{data:gameEvent}] = useIndiaEventListMutation()
 
     useEffect(() => {
     trigger({limit: 50, pageno: 1})
@@ -26,7 +26,8 @@ const SideBar = () => {
 
 
     useEffect(() => {
-      trigg({"limit":10,"sport_id":expanded,"pageno":1})
+      // trigg({"limit":10,"sport_id":expanded,"pageno":1})
+      trigg({limit:100,sport_id:expanded,pageno:1})
     }, [expanded])
     
 
@@ -83,13 +84,17 @@ const SideBar = () => {
     }}>
       {item?.list?.map((elm)=>{
         return(
-          <NavLink to={`/event/${elm?.sport_id}/${elm?.series_id}` }>
+          <NavLink to={`/event/${elm?.sport_id}/${elm?.match_id}` }>
 
       <Typography key={elm?.name} id='sub-list' sx={{color:"#4083a9",  fontSize:"13px", padding:"0", borderBottom:'1px solid #ddd'}}>
                 <MdKeyboardDoubleArrowRight style={{ marginRight: '2px', color:"#4083a9" }} size={16} />
                 {elm?.name}
+
+      
+
+
       </Typography>
-          </NavLink>
+         </NavLink>
         )
       })}
     </AccordionDetails>

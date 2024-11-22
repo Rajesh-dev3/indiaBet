@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Loaderlogo from '../../Component/LoaderLogo/loaderlogo';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../services/sruleModalSlice';
+import { toast } from 'react-toastify';
 const Login = () => {
   const [trigger, {data, isLoading}] = useLoginMutation();
 
@@ -55,10 +56,13 @@ if(data?.data?.token){
   localStorage.setItem("passChange",passChange)
   localStorage.setItem("ruleType",ruleType)
   localStorage.setItem("telegramConnected",telegramConnected)
+  toast.success(data?.message);
   dispatch(loginSuccess());
   nav("/")
-}else{
-  return
+}
+ 
+ else {
+  toast.error(data?.message);
 }
 
 }, [data])
